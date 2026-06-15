@@ -24,48 +24,69 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
 
-/* صور بدون إطار - شفافة - متحركة - كأنها ذكرى */
+/* صور مربعة، مندمجة، متناسقة - بدون تقوس */
 .memory-gallery {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 0px;
     flex-wrap: wrap;
     margin: 50px 20px;
-    padding: 20px;
+    padding: 0;
+    background: transparent;
 }
 
 .memory-photo {
     width: 280px;
-    height: 280px;
-    border-radius: 50%;
+    height: 320px;
     object-fit: cover;
-    opacity: 0.7;
+    opacity: 0.85;
     transition: all 0.5s ease;
-    filter: grayscale(20%) sepia(5%);
+    filter: grayscale(15%) sepia(5%);
     animation: floatMemory 5s ease-in-out infinite;
     box-shadow: none;
     border: none;
-    background: transparent;
+    border-radius: 0px;
+    margin: 0;
+    display: block;
 }
 
-.memory-photo:nth-child(1) {
-    animation-delay: 0s;
+/* تداخل خفيف بين الصور */
+.memory-photo:first-child {
+    margin-right: -15px;
+    z-index: 2;
 }
 
-.memory-photo:nth-child(3) {
-    animation-delay: 0.6s;
+.memory-photo:last-child {
+    margin-left: -15px;
+    z-index: 1;
+}
+
+/* قلب بين الصور متناسق */
+.heart-divider {
+    font-size: 35px;
+    color: #d4af37;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    background: #faf8f5;
+    padding: 0 10px;
+    z-index: 3;
+    position: relative;
 }
 
 @keyframes floatMemory {
     0%, 100% {
         transform: translateY(0px);
-        opacity: 0.65;
+        opacity: 0.8;
     }
     50% {
-        transform: translateY(-15px);
-        opacity: 0.85;
+        transform: translateY(-8px);
+        opacity: 0.95;
     }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
 .memory-photo:hover {
@@ -73,18 +94,8 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
     filter: grayscale(0%) sepia(0%);
     transform: scale(1.02);
     cursor: pointer;
-}
-
-.heart-divider {
-    font-size: 45px;
-    color: #d4af37;
-    animation: heartbeat 1.5s ease-in-out infinite;
-    opacity: 0.8;
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; }
+    z-index: 10;
+    position: relative;
 }
 
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
@@ -122,7 +133,7 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.memory-photo{width:160px;height:160px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.memory-photo{width:140px;height:160px}.memory-photo:first-child{margin-right:-8px}.memory-photo:last-child{margin-left:-8px}.heart-divider{font-size:25px;padding:0 5px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
 </style>
 </head>
 <body>
@@ -144,7 +155,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
-    <!-- صور بدون إطار، شفافة، متحركة -->
+    <!-- صور مربعة، مندمجة، متناسقة -->
     <div class="memory-gallery">
         <img class="memory-photo" src="nebras.jpg" alt="Nebras">
         <div class="heart-divider">♥</div>
