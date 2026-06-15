@@ -8,44 +8,43 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-    background:#faf8f5;
-    font-family:'Cinzel',serif;
-    color:#4a4a4a;
-    overflow-x:hidden;
-    position:relative;
-}
+body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a;overflow-x:hidden}
 
-/* خلفية شعر وكلمات عربية زخرفية موحدة لكل الصفحات */
+/* ===== خلفية شعر وزخارف عربية أصيلة ===== */
 body::before {
-    content: "ﷺ ﷻ ﷰ ★ ★ ★ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ★ ★ ★ وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَى ★ ★ ★ وَأَنْكِحُوا الْأَيَامَى مِنْكُمْ ★ ★ ★ زواج • مودة • رحمة • حب • سكينة • ألفة • زواج • مودة • رحمة • حب • سكينة • ألفة • ﷺ ﷻ ﷰ ★ ★ ★ وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ★ ★ ★ اللهم ألف بين قلوبهم ★ ★ ★ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ★ ★ ★";
+    content: "★ ﷺ ★ ﷻ ★ ﷰ ★ ★ ★ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ★ ★ ★ وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَى ★ ★ ★ وَأَنْكِحُوا الْأَيَامَى مِنْكُمْ ★ ★ ★ زواج • مودة • رحمة • حب • سكينة • ألفة • زواج • مودة • رحمة • حب • سكينة • ألفة • ★ ★ ★ وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ★ ★ ★ اللهم ألف بين قلوبهم ★ ★ ★ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ★ ★ ★ ﷺ ﷻ ﷰ ★ ★ ★";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', 'Noto Naskh Arabic', serif;
-    font-size: clamp(12px, 3.5vw, 24px);
+    font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade', 'Noto Naskh Arabic', 'Diwani', serif;
+    font-size: clamp(12px, 3.2vw, 22px);
     color: #d4af37;
-    opacity: 0.04;
+    opacity: 0.045;
     text-align: center;
     white-space: normal;
     word-wrap: break-word;
-    padding: 30px;
+    padding: 25px;
     pointer-events: none;
     z-index: 0;
-    line-height: 3;
+    line-height: 3.2;
     direction: rtl;
     letter-spacing: 2px;
-    font-weight: normal;
-    text-shadow: 0 0 2px rgba(212,175,55,0.3);
+    font-weight: 400;
+    text-shadow: 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
-/* جميع المحتويات فوق الخلفية */
-.welcome-screen, .prayer-screen, #main, .hero-section, .rsvp-section, footer {
+/* المحتوى فوق الخلفية */
+.welcome-screen, .prayer-screen, #main, .hero-section, .rsvp-section, footer, .invitation-text, .rsvp-card, .detail-card, .time-card, .prayer-card {
     position: relative;
     z-index: 2;
     background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(2px);
+}
+
+.welcome-screen, .prayer-screen, .hero-section, .rsvp-section {
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(2px);
 }
 
@@ -70,15 +69,14 @@ body::before {
 }
 .detail-icon:hover, .ring-icon:hover, .heart-icon:hover {
     transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
 }
 .timer:hover {
     transform: scale(1.05);
     text-shadow: 0 0 15px #d4af37;
 }
 
-/* الشاشة الترحيبية */
-.welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px}
+/* باقي الأنماط */
 .welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px;z-index:100}
 .lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
 .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
@@ -94,7 +92,6 @@ body::before {
 .btn-open:hover{background:#d4af37;color:#fff}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
 
-/* صفحة الآية والدعاء */
 .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;display:none}
 .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
 .ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif;color:#2c2c2c}
@@ -102,7 +99,6 @@ body::before {
 .dua-text{font-size:20px;line-height:1.8;margin:30px 0 20px;font-family:'Amiri',serif;color:#2c2c2c}
 .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0;cursor:pointer}
 
-/* الصفحة الرئيسية */
 #main{display:none}
 .main-lang{display:flex;justify-content:flex-end;gap:10px;padding:15px 20px}
 .hero-section{padding:40px 20px 30px;text-align:center}
@@ -253,7 +249,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 <script>
 AOS.init({ duration: 800, once: true, offset: 100, easing: 'ease-out-cubic' });
 
-// ========== RSVP والردود ==========
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
 function saveRSVP() {
@@ -282,7 +277,7 @@ function showAdminPanel() {
 function loadResponsesTable() {
     let tbody = document.getElementById('responsesBody');
     tbody.innerHTML = "";
-    if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></td>"; return; }
+    if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>"; return; }
     for (let i = 0; i < responses.length; i++) {
         let r = responses[i];
         let row = tbody.insertRow();
@@ -306,7 +301,6 @@ function exportToCSV() {
     link.click();
 }
 
-// ========== صفحات الدعوة ==========
 function openPrayerPage() {
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('prayerScreen').style.display = 'flex';
@@ -344,7 +338,6 @@ function startCountdown() {
     }, 1000);
 }
 
-// ========== الترجمة ==========
 const welcomeTranslations = {
     ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "29 أغسطس 2026" },
     en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 29, 2026" },
@@ -377,4 +370,20 @@ function changeMainLanguage(lang) {
     document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
     document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
     document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
-    document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date
+    document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
+    document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
+    document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
+}
+
+document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
+    btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
+});
+document.querySelectorAll('[data-lang-main]').forEach(btn => {
+    btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
+});
+
+changeWelcomeLanguage('ar');
+changeMainLanguage('ar');
+</script>
+</body>
+</html>
