@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nebras & Zena | دعوة زفاف</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 
 .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
-.welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px}
+.welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px;z-index:100}
 .lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
 .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
 .rings{display:flex;justify-content:center;align-items:center;margin-bottom:20px}
@@ -37,9 +38,9 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:40px 20px 30px;text-align:center}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
-.merged-gallery{display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap;margin:40px auto;padding:0;max-width:600px}
-.merged-photo{width:50%;height:auto;object-fit:cover;display:block;margin:0;padding:0;border:none;outline:none;box-shadow:none;border-radius:0;opacity:0.85;transition:all 0.4s ease}
-.merged-photo:hover{opacity:1;transform:scale(1.01)}
+.merged-gallery{display:flex;justify-content:center;align-items:center;margin:40px auto;padding:0;max-width:400px}
+.merged-photo{width:100%;height:auto;object-fit:contain;display:block;margin:0;padding:0;border:none;outline:none;box-shadow:none;border-radius:0;opacity:0.9;transition:all 0.4s ease}
+.merged-photo:hover{opacity:1;transform:scale(1.02)}
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
 .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
 .quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
@@ -69,7 +70,7 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.time-card{width:75px;height:75px}.time-number{font-size:24px}.ayah-text{font-size:18px}.dua-text{font-size:16px}.timer{font-size:36px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.time-card{width:75px;height:75px}.time-number{font-size:24px}.ayah-text{font-size:18px}.dua-text{font-size:16px}.timer{font-size:36px}.merged-gallery{max-width:250px}}
 </style>
 </head>
 <body>
@@ -80,16 +81,16 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-welcome="en">🇬🇧 English</button>
         <button class="lang-btn" data-lang-welcome="sv">🇸🇪 Svenska</button>
     </div>
-    <div class="rings">
+    <div class="rings" data-aos="zoom-in" data-aos-duration="800">
         <div class="ring-icon mens-ring">💍</div>
     </div>
-    <div class="names-arabic" id="welcomeNames">Nebras & Zena</div>
-    <div class="names-english" id="welcomeSub">ALSHAREF & YOUSEF</div>
-    <div class="divider"></div>
-    <p class="welcome-text" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
-    <p class="welcome-text" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-    <button class="btn-open" id="welcomeBtn" onclick="openPrayerPage()">فتح الدعوة</button>
-    <div class="date-bottom" id="welcomeDate">29 أغسطس 2026</div>
+    <div class="names-arabic" id="welcomeNames" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Nebras & Zena</div>
+    <div class="names-english" id="welcomeSub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">ALSHAREF & YOUSEF</div>
+    <div class="divider" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"></div>
+    <p class="welcome-text" id="welcomeText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
+    <p class="welcome-text" id="welcomeText2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">لتكونوا جزءاً من أجمل أيام حياتنا</p>
+    <button class="btn-open" id="welcomeBtn" onclick="openPrayerPage()" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">فتح الدعوة</button>
+    <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 أغسطس 2026</div>
 </div>
 
 <div class="prayer-screen" id="prayerScreen">
@@ -98,7 +99,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-prayer="en">🇬🇧 English</button>
         <button class="lang-btn" data-lang-prayer="sv">🇸🇪 Svenska</button>
     </div>
-    <div class="prayer-card">
+    <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
         <div id="ayahText" class="ayah-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
         <div id="ayahTrans" class="ayah-trans">"And among His signs is that He created for you spouses from yourselves..."</div>
         <div id="duaText" class="dua-text">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
@@ -114,24 +115,23 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-main="en">🇬🇧 English</button>
         <button class="lang-btn" data-lang-main="sv">🇸🇪 Svenska</button>
     </div>
-    <div class="hero-section">
+    <div class="hero-section" data-aos="fade-down" data-aos-duration="800">
         <div class="hero-title" id="mainTitle">Nebras & Zena</div>
         <div class="hero-sub" id="mainSub">Together With Their Families</div>
     </div>
 
-    <div class="merged-gallery">
-        <img class="merged-photo" src="nebras.2.jpg" alt="Nebras" onerror="this.src='https://via.placeholder.com/300x400?text=Nebras'">
-        <img class="merged-photo" src="zena.1.jpg" alt="Zena" onerror="this.src='https://via.placeholder.com/300x400?text=Zena'">
+    <div class="merged-gallery" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+        <img class="merged-photo" src="couple-symbol.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+&+Zena'">
     </div>
 
-    <div class="invitation-text">
+    <div class="invitation-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="quote" id="quoteText">"Your presence is our greatest gift"</div>
         <p id="inviteText1">بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
         <p id="inviteText2">نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى</p>
         <p style="font-size:16px; margin-top:20px">Nebras Alsharef & Zena Yousef</p>
     </div>
 
-    <div class="countdown-section">
+    <div class="countdown-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <h2 class="countdown-title" id="countdownTitle">العد التنازلي لزفافنا</h2>
         <div class="countdown-box">
             <div class="time-card"><span class="time-number" id="days">0</span><span class="time-label" id="daysLabel">أيام</span></div>
@@ -141,13 +141,13 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         </div>
     </div>
 
-    <div class="details-section">
+    <div class="details-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
         <div class="detail-card"><div class="detail-icon">📅</div><div class="detail-title" id="dateTitle">التاريخ</div><div class="detail-text">29 أغسطس 2026</div></div>
         <div class="detail-card"><div class="detail-icon">🕕</div><div class="detail-title" id="timeTitle">الوقت</div><div class="detail-text">الساعة 18:00</div></div>
         <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
     </div>
 
-    <div class="rsvp-section">
+    <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
         <div class="rsvp-card">
             <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
             <div class="input-group"><input type="text" id="name" placeholder="الاسم الكامل *"></div>
@@ -165,10 +165,13 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
     </div>
 
-    <footer>Nebras & Zena ♥ 29.08.2026</footer>
+    <footer data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">Nebras & Zena ♥ 29.08.2026</footer>
 </div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+AOS.init({ duration: 800, once: true, offset: 100 });
+
 const welcomeTranslations = {
     ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "29 أغسطس 2026" },
     en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 29, 2026" },
@@ -256,6 +259,7 @@ function startTimer() {
             document.getElementById('prayerScreen').style.display = 'none';
             document.getElementById('main').style.display = 'block';
             startCountdown();
+            AOS.refresh();
         }
     }, 1000);
 }
