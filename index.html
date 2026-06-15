@@ -13,24 +13,9 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px}
 .lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
 .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
-.rings{display:flex;justify-content:center;align-items:center;gap:30px;margin-bottom:20px;position:relative}
+.rings{display:flex;justify-content:center;align-items:center;margin-bottom:20px}
 .ring-icon{font-size:80px;animation:floatRing 3s ease-in-out infinite}
-.silver-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8;animation-delay:0s}
-.gold-ring{color:#d4af37;text-shadow:0 0 8px #f5e18b;animation-delay:0.3s;position:relative}
-/* تأثير البريق حول الخاتم الذهبي فقط */
-.gold-ring::after {
-    content: "✨";
-    font-size: 22px;
-    position: absolute;
-    top: -15px;
-    right: -20px;
-    animation: sparkle 1.2s ease-in-out infinite;
-    text-shadow: 0 0 3px gold;
-}
-@keyframes sparkle {
-    0%, 100% { opacity: 0.2; transform: scale(0.7) rotate(0deg); }
-    50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
-}
+.mens-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8}
 @keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .names-arabic{font-family:'Great Vibes',cursive;font-size:65px;color:#c9a227;margin:15px 0;line-height:1.2}
 .names-english{font-size:22px;letter-spacing:4px;color:#b89a2a;margin-bottom:20px}
@@ -96,8 +81,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-welcome="sv">🇸🇪 Svenska</button>
     </div>
     <div class="rings">
-        <div class="ring-icon silver-ring">💍</div>
-        <div class="ring-icon gold-ring">💍</div>
+        <div class="ring-icon mens-ring">💍</div>
     </div>
     <div class="names-arabic" id="welcomeNames">Nebras & Zena</div>
     <div class="names-english" id="welcomeSub">ALSHAREF & YOUSEF</div>
