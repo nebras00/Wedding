@@ -9,6 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 
+/* الشاشة الأولى الترحيبية */
 .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%)}
 .ring-icon{font-size:80px;color:#d4af37;animation:floatRing 3s ease-in-out infinite;margin-bottom:20px}
 @keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -19,89 +20,28 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .btn-open{background:transparent;border:2px solid #d4af37;padding:12px 35px;border-radius:40px;color:#c9a227;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s;margin:25px 0 10px}
 .btn-open:hover{background:#d4af37;color:#fff}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
+
+/* صفحة القرآن والأدعية */
+.prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);position:relative;display:none}
+.prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.9);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1);backdrop-filter:blur(5px)}
+.prayer-text{font-size:24px;line-height:1.8;color:#6b5a44;margin:20px 0;font-family:'Amiri',serif}
+.prayer-trans{font-size:16px;color:#b89a2a;margin:20px 0;font-style:italic}
+.timer{font-size:48px;color:#d4af37;font-weight:bold;margin:30px 0}
+.language-selector{position:absolute;top:20px;right:20px;display:flex;gap:10px}
+.lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
+.lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
+
+/* الصفحة الرئيسية */
 #main{display:none}
 .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:80px 20px 50px;text-align:center}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
-
-/* صور مربعة، مندمجة، متناسقة - بدون تقوس */
-.memory-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0px;
-    flex-wrap: wrap;
-    margin: 50px 20px;
-    padding: 0;
-    background: transparent;
-}
-
-.memory-photo {
-    width: 280px;
-    height: 320px;
-    object-fit: cover;
-    opacity: 0.85;
-    transition: all 0.5s ease;
-    filter: grayscale(15%) sepia(5%);
-    animation: floatMemory 5s ease-in-out infinite;
-    box-shadow: none;
-    border: none;
-    border-radius: 0px;
-    margin: 0;
-    display: block;
-}
-
-/* تداخل خفيف بين الصور */
-.memory-photo:first-child {
-    margin-right: -15px;
-    z-index: 2;
-}
-
-.memory-photo:last-child {
-    margin-left: -15px;
-    z-index: 1;
-}
-
-/* قلب بين الصور متناسق */
-.heart-divider {
-    font-size: 35px;
-    color: #d4af37;
-    animation: heartbeat 1.5s ease-in-out infinite;
-    background: #faf8f5;
-    padding: 0 10px;
-    z-index: 3;
-    position: relative;
-}
-
-@keyframes floatMemory {
-    0%, 100% {
-        transform: translateY(0px);
-        opacity: 0.8;
-    }
-    50% {
-        transform: translateY(-8px);
-        opacity: 0.95;
-    }
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-
-.memory-photo:hover {
-    opacity: 1;
-    filter: grayscale(0%) sepia(0%);
-    transform: scale(1.02);
-    cursor: pointer;
-    z-index: 10;
-    position: relative;
-}
-
+.merged-gallery{display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap;margin:50px auto;padding:0;max-width:600px}
+.merged-photo{width:50%;height:auto;object-fit:cover;display:block;margin:0;padding:0;border:none;outline:none;box-shadow:none;border-radius:0;opacity:0.85;transition:all 0.4s ease}
+.merged-photo:hover{opacity:1;transform:scale(1.01)}
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
 .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
 .quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
-
 .countdown-section{padding:50px 20px;background:#fefcf8;text-align:center}
 .countdown-title{font-size:28px;color:#c9a227;margin-bottom:35px}
 .countdown-box{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
@@ -109,21 +49,17 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .time-card:hover{transform:translateY(-8px)}
 .time-number{font-size:38px;font-weight:700;color:#d4af37}
 .time-label{font-size:12px;color:#b89a2a;letter-spacing:1px}
-
 .details-section{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:50px 20px;max-width:1000px;margin:auto}
 .detail-card{background:white;border-radius:25px;padding:30px;width:280px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
 .detail-card:hover{transform:translateY(-5px)}
 .detail-icon{font-size:45px;margin-bottom:15px}
 .detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
 .detail-text{color:#7d6b52;line-height:1.6}
-.map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37;transition:0.3s}
-.map-link:hover{color:#b38f1f;border-bottom-color:#b38f1f}
-
+.map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37}
 .rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
 .rsvp-card{max-width:600px;margin:auto;background:white;border-radius:30px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.05)}
 .input-group{width:100%;margin:12px 0}
 .input-group input,.input-group select,.input-group textarea{width:100%;padding:14px 18px;border:1px solid #e0d6c8;border-radius:50px;font-family:inherit;background:#fefcf8}
-.input-group input:focus,.input-group select:focus,.input-group textarea:focus{outline:none;border-color:#d4af37}
 .btn-send{background:#d4af37;color:white;border:none;padding:14px 35px;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:15px;transition:0.3s}
 .btn-send:hover{background:#b38f1f;transform:scale(1.02)}
 .btn-view{background:transparent;border:2px solid #d4af37;color:#c9a227;padding:10px 20px;border-radius:40px;margin-top:10px;cursor:pointer}
@@ -133,11 +69,12 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.memory-photo{width:140px;height:160px}.memory-photo:first-child{margin-right:-8px}.memory-photo:last-child{margin-left:-8px}.heart-divider{font-size:25px;padding:0 5px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.time-card{width:75px;height:75px}.time-number{font-size:24px}.prayer-text{font-size:18px}.prayer-trans{font-size:14px}.timer{font-size:36px}}
 </style>
 </head>
 <body>
 
+<!-- الشاشة الأولى الترحيبية -->
 <div class="welcome-screen" id="welcomeScreen">
     <div class="ring-icon">💍</div>
     <div class="names-arabic">Nebras & Zena</div>
@@ -145,21 +82,35 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     <div class="divider"></div>
     <p class="welcome-text">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
     <p class="welcome-text">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-    <button class="btn-open" onclick="openWedding()">فتح الدعوة</button>
+    <button class="btn-open" onclick="openPrayerPage()">فتح الدعوة</button>
     <div class="date-bottom">29 أغسطس 2026</div>
 </div>
 
+<!-- صفحة القرآن والدعاء -->
+<div class="prayer-screen" id="prayerScreen">
+    <div class="language-selector">
+        <button class="lang-btn" data-lang="ar">🇸🇦 عربي</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang="sv">🇸🇪 Svenska</button>
+    </div>
+    <div class="prayer-card">
+        <div id="prayerText" class="prayer-text">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
+        <div id="prayerTrans" class="prayer-trans">O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.</div>
+        <div class="timer" id="timer">15</div>
+        <div id="waitingText" class="prayer-trans">سيتم نقلك للدعوة بعد...</div>
+    </div>
+</div>
+
+<!-- الصفحة الرئيسية (الدعوة) -->
 <div id="main">
     <div class="hero-section">
         <div class="hero-title">Nebras & Zena</div>
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
-    <!-- صور مربعة، مندمجة، متناسقة -->
-    <div class="memory-gallery">
-        <img class="memory-photo" src="nebras.2.jpg" alt="Nebras">
-        <div class="heart-divider">♥</div>
-        <img class="memory-photo" src="zena.1.jpg" alt="Zena">
+    <div class="merged-gallery">
+        <img class="merged-photo" src="nebras.jpg" alt="Nebras">
+        <img class="merged-photo" src="zena.jpg" alt="Zena">
     </div>
 
     <div class="invitation-text">
@@ -185,11 +136,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="detail-card">
             <div class="detail-icon">📍</div>
             <div class="detail-title">المكان</div>
-            <div class="detail-text">
-                <a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">
-                    Björkvallen IP – Kristianstad FC
-                </a>
-            </div>
+            <div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div>
         </div>
     </div>
 
@@ -228,66 +175,104 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </div>
 
 <script>
+// بيانات الترجمة للدعاء الجديد
+const translations = {
+    ar: {
+        prayer: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية",
+        trans: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير 🤲",
+        waiting: "سيتم نقلك للدعوة بعد..."
+    },
+    en: {
+        prayer: "O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.",
+        trans: "O Allah, bless them and bring them together in goodness 🤲",
+        waiting: "You will be redirected to the invitation after..."
+    },
+    sv: {
+        prayer: "Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv.",
+        trans: "Åh Allah, välsigna dem och sammanför dem i godhet 🤲",
+        waiting: "Du kommer att omdirigeras till inbjudan efter..."
+    }
+};
+
+let currentLang = 'ar';
+let timerInterval;
+let secondsLeft = 15;
+
+function openPrayerPage() {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    document.getElementById('prayerScreen').style.display = 'flex';
+    startTimer();
+}
+
+function startTimer() {
+    secondsLeft = 15;
+    document.getElementById('timer').innerText = secondsLeft;
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        secondsLeft--;
+        document.getElementById('timer').innerText = secondsLeft;
+        if (secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById('prayerScreen').style.display = 'none';
+            document.getElementById('main').style.display = 'block';
+            startCountdown();
+        }
+    }, 1000);
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    document.getElementById('prayerText').innerHTML = translations[lang].prayer;
+    document.getElementById('prayerTrans').innerHTML = translations[lang].trans;
+    document.getElementById('waitingText').innerHTML = translations[lang].waiting;
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+        else btn.classList.remove('active');
+    });
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => changeLanguage(btn.getAttribute('data-lang')));
+});
+
+// تعيين اللغة الافتراضية (العربية)
+changeLanguage('ar');
+
+// الردود والعد التنازلي
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
-function saveRSVP(){
+function saveRSVP() {
     let name = document.getElementById('name').value.trim();
     let count = document.getElementById('count').value;
     let status = document.getElementById('status').value;
     let notes = document.getElementById('notes').value;
-    
-    if(name === ""){
-        alert("❌ الرجاء إدخال اسمك");
-        return;
-    }
-    
-    let newResponse = {
-        id: Date.now(),
-        name: name,
-        count: count || "غير محدد",
-        status: status,
-        notes: notes || "لا يوجد",
-        date: new Date().toLocaleString('ar-EG')
-    };
-    
+    if (name === "") { alert("❌ الرجاء إدخال اسمك"); return; }
+    let newResponse = { id: Date.now(), name: name, count: count || "غير محدد", status: status, notes: notes || "لا يوجد", date: new Date().toLocaleString('ar-EG') };
     responses.push(newResponse);
     localStorage.setItem('weddingRSVP', JSON.stringify(responses));
-    
     document.getElementById('name').value = "";
     document.getElementById('count').value = "";
     document.getElementById('notes').value = "";
-    
     alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
-    
-    let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A`;
-    message += `👤 *الاسم:* ${name}%0A`;
-    message += `👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A`;
-    message += `✅ *الحضور:* ${status}%0A`;
-    if(notes) message += `📝 *ملاحظة:* ${notes}%0A`;
+    let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A👤 *الاسم:* ${name}%0A👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A✅ *الحضور:* ${status}%0A${notes ? `📝 *ملاحظة:* ${notes}` : ''}`;
     window.open(`https://wa.me/46760801562?text=${message}`, '_blank');
 }
 
-function showAdminPanel(){
+function showAdminPanel() {
     let panel = document.getElementById('adminPanel');
-    if(panel.style.display === 'none' || panel.style.display === ''){
-        loadResponsesTable();
-        panel.style.display = 'block';
-    } else {
-        panel.style.display = 'none';
-    }
+    if (panel.style.display === 'none' || panel.style.display === '') { loadResponsesTable(); panel.style.display = 'block'; }
+    else panel.style.display = 'none';
 }
 
-function loadResponsesTable(){
+function loadResponsesTable() {
     let tbody = document.getElementById('responsesBody');
     tbody.innerHTML = "";
-    if(responses.length === 0){
-        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
-        return;
-    }
-    for(let i=0; i<responses.length; i++){
+    if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>"; return; }
+    for (let i = 0; i < responses.length; i++) {
         let r = responses[i];
         let row = tbody.insertRow();
-        row.insertCell(0).innerHTML = i+1;
+        row.insertCell(0).innerHTML = i + 1;
         row.insertCell(1).innerHTML = r.name;
         row.insertCell(2).innerHTML = r.count;
         row.insertCell(3).innerHTML = r.status;
@@ -296,38 +281,30 @@ function loadResponsesTable(){
     }
 }
 
-function exportToCSV(){
-    if(responses.length === 0){
-        alert("لا توجد ردود للتصدير");
-        return;
-    }
+function exportToCSV() {
+    if (responses.length === 0) { alert("لا توجد ردود للتصدير"); return; }
     let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
-    for(let r of responses){
-        csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
-    }
-    let blob = new Blob([csv], {type: 'text/csv'});
+    for (let r of responses) csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+    let blob = new Blob([csv], { type: 'text/csv' });
     let link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `wedding_responses_${new Date().toISOString().slice(0,10)}.csv`;
+    link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
     link.click();
 }
 
-function openWedding(){
-    document.getElementById('welcomeScreen').style.display='none';
-    document.getElementById('main').style.display='block';
+function startCountdown() {
+    const target = new Date('2026-08-29T18:00:00').getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff > 0) {
+            document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+        }
+    }, 1000);
 }
-
-const target = new Date('2026-08-29T18:00:00').getTime();
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = target - now;
-    if(diff > 0){
-        document.getElementById('days').innerHTML = Math.floor(diff / (1000*60*60*24));
-        document.getElementById('hours').innerHTML = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        document.getElementById('minutes').innerHTML = Math.floor((diff % (1000*60*60)) / (1000*60));
-        document.getElementById('seconds').innerHTML = Math.floor((diff % (1000*60)) / 1000);
-    }
-}, 1000);
 </script>
 </body>
 </html>
