@@ -9,15 +9,28 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 
-/* الشاشة الأولى مع أزرار اللغة */
 .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
 .welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px}
 .lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
 .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
-.rings{display:flex;justify-content:center;align-items:center;gap:25px;margin-bottom:20px}
-.ring-icon{font-size:75px;animation:floatRing 3s ease-in-out infinite}
+.rings{display:flex;justify-content:center;align-items:center;gap:30px;margin-bottom:20px;position:relative}
+.ring-icon{font-size:80px;animation:floatRing 3s ease-in-out infinite}
 .silver-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8;animation-delay:0s}
-.gold-ring{color:#d4af37;text-shadow:0 0 8px #f5e18b;animation-delay:0.3s}
+.gold-ring{color:#d4af37;text-shadow:0 0 8px #f5e18b;animation-delay:0.3s;position:relative}
+/* تأثير البريق حول الخاتم الذهبي فقط */
+.gold-ring::after {
+    content: "✨";
+    font-size: 22px;
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    animation: sparkle 1.2s ease-in-out infinite;
+    text-shadow: 0 0 3px gold;
+}
+@keyframes sparkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.7) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
+}
 @keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .names-arabic{font-family:'Great Vibes',cursive;font-size:65px;color:#c9a227;margin:15px 0;line-height:1.2}
 .names-english{font-size:22px;letter-spacing:4px;color:#b89a2a;margin-bottom:20px}
@@ -27,7 +40,6 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .btn-open:hover{background:#d4af37;color:#fff}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
 
-/* صفحة الآية والدعاء */
 .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);position:relative;display:none}
 .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.9);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
 .ayah-text{font-size:24px;line-height:1.8;color:#6b5a44;margin:20px 0;font-family:'Amiri',serif}
@@ -35,7 +47,6 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .dua-text{font-size:20px;line-height:1.8;color:#6b5a44;margin:30px 0 20px;font-family:'Amiri',serif}
 .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0}
 
-/* الصفحة الرئيسية */
 #main{display:none}
 .main-lang{display:flex;justify-content:flex-end;gap:10px;padding:15px 20px}
 .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:40px 20px 30px;text-align:center}
@@ -78,7 +89,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </head>
 <body>
 
-<!-- الشاشة الأولى مع أزرار اللغة -->
 <div class="welcome-screen" id="welcomeScreen">
     <div class="welcome-lang">
         <button class="lang-btn" data-lang-welcome="ar">🇸🇦 عربي</button>
@@ -98,7 +108,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     <div class="date-bottom" id="welcomeDate">29 أغسطس 2026</div>
 </div>
 
-<!-- صفحة الآية والدعاء مع أزرار اللغة -->
 <div class="prayer-screen" id="prayerScreen">
     <div class="welcome-lang">
         <button class="lang-btn" data-lang-prayer="ar">🇸🇦 عربي</button>
@@ -115,7 +124,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     </div>
 </div>
 
-<!-- الصفحة الرئيسية -->
 <div id="main">
     <div class="main-lang">
         <button class="lang-btn" data-lang-main="ar">🇸🇦 عربي</button>
@@ -177,92 +185,28 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </div>
 
 <script>
-// ترجمات الشاشة الأولى
 const welcomeTranslations = {
     ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "29 أغسطس 2026" },
     en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 29, 2026" },
     sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "Öppna Inbjudan", date: "29 augusti 2026" }
 };
 
-// ترجمات صفحة الآية والدعاء
 const prayerTranslations = {
-    ar: {
-        ayah: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
-        ayahTrans: "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة",
-        dua: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية",
-        duaTrans: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير 🤲",
-        waiting: "سيتم نقلك للدعوة بعد..."
-    },
-    en: {
-        ayah: "And among His signs is that He created for you spouses from yourselves to find tranquility in them, and He placed between you affection and mercy",
-        ayahTrans: "– Quran, Surah Ar-Rum, 30:21",
-        dua: "O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.",
-        duaTrans: "O Allah, bless them and bring them together in goodness 🤲",
-        waiting: "You will be redirected to the invitation after..."
-    },
-    sv: {
-        ayah: "Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet",
-        ayahTrans: "– Koranen, Ar-Rum, 30:21",
-        dua: "Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv.",
-        duaTrans: "Åh Allah, välsigna dem och sammanför dem i godhet 🤲",
-        waiting: "Du kommer att omdirigeras till inbjudan efter..."
-    }
+    ar: { ayah: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً", ayahTrans: "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة", dua: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية", duaTrans: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير 🤲", waiting: "سيتم نقلك للدعوة بعد..." },
+    en: { ayah: "And among His signs is that He created for you spouses from yourselves to find tranquility in them, and He placed between you affection and mercy", ayahTrans: "– Quran, Surah Ar-Rum, 30:21", dua: "O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.", duaTrans: "O Allah, bless them and bring them together in goodness 🤲", waiting: "You will be redirected to the invitation after..." },
+    sv: { ayah: "Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet", ayahTrans: "– Koranen, Ar-Rum, 30:21", dua: "Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv.", duaTrans: "Åh Allah, välsigna dem och sammanför dem i godhet 🤲", waiting: "Du kommer att omdirigeras till inbjudan efter..." }
 };
 
-// ترجمات الصفحة الرئيسية
 const mainTranslations = {
-    ar: {
-        title: "Nebras & Zena",
-        sub: "Together With Their Families",
-        quote: "Your presence is our greatest gift",
-        invite1: "بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا",
-        invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى",
-        countdown: "العد التنازلي لزفافنا",
-        days: "أيام",
-        hours: "ساعات",
-        minutes: "دقائق",
-        seconds: "ثواني",
-        date: "التاريخ",
-        time: "الوقت",
-        location: "المكان"
-    },
-    en: {
-        title: "Nebras & Zena",
-        sub: "Together With Their Families",
-        quote: "Your presence is our greatest gift",
-        invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy",
-        invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory",
-        countdown: "Countdown To Our Wedding",
-        days: "Days",
-        hours: "Hours",
-        minutes: "Minutes",
-        seconds: "Seconds",
-        date: "Date",
-        time: "Time",
-        location: "Location"
-    },
-    sv: {
-        title: "Nebras & Zena",
-        sub: "Together With Their Families",
-        quote: "Your presence is our greatest gift",
-        invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje",
-        invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne",
-        countdown: "Nedräkning till vårt bröllop",
-        days: "Dagar",
-        hours: "Timmar",
-        minutes: "Minuter",
-        seconds: "Sekunder",
-        date: "Datum",
-        time: "Tid",
-        location: "Plats"
-    }
+    ar: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى", countdown: "العد التنازلي لزفافنا", days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني", date: "التاريخ", time: "الوقت", location: "المكان" },
+    en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", date: "Date", time: "Time", location: "Location" },
+    sv: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne", countdown: "Nedräkning till vårt bröllop", days: "Dagar", hours: "Timmar", minutes: "Minuter", seconds: "Sekunder", date: "Datum", time: "Tid", location: "Plats" }
 };
 
 let currentLang = 'ar';
 let timerInterval;
 let secondsLeft = 15;
 
-// دوال تغيير اللغة
 function changeWelcomeLanguage(lang) {
     document.getElementById('welcomeNames').innerHTML = welcomeTranslations[lang].names;
     document.getElementById('welcomeSub').innerHTML = welcomeTranslations[lang].sub;
@@ -296,7 +240,6 @@ function changeMainLanguage(lang) {
     document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
 }
 
-// أحداث أزرار اللغة
 document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
     btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
 });
@@ -307,7 +250,6 @@ document.querySelectorAll('[data-lang-main]').forEach(btn => {
     btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
 });
 
-// تعيين اللغة الافتراضية
 changeWelcomeLanguage('ar');
 changePrayerLanguage('ar');
 changeMainLanguage('ar');
@@ -334,7 +276,6 @@ function startTimer() {
     }, 1000);
 }
 
-// الردود
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
 function saveRSVP() {
