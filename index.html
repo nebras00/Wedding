@@ -22,11 +22,73 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:80px 20px 50px;text-align:center}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
-.gallery{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:50px 20px}
-.gallery-img{width:250px;height:250px;border-radius:50%;object-fit:cover;border:5px solid #d4af37;box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:0.4s}
-.gallery-img:hover{transform:scale(1.03)}
+
+/* ===== تصميم البطاقات الجديد للصور ===== */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 50px 20px;
+}
+.card-container {
+    position: relative;
+    width: 300px;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.card-container:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.25);
+}
+.card-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.card-container:hover .card-img {
+    transform: scale(1.05);
+}
+.card-content {
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to top, #fff, #fefcf8);
+}
+.card-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #c9a227;
+    margin-bottom: 8px;
+}
+.card-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #b89a2a;
+    text-transform: uppercase;
+}
+.card-divider {
+    width: 50px;
+    height: 1px;
+    background: #d4af37;
+    margin: 12px auto;
+}
+.heart-icon-big {
+    font-size: 45px;
+    color: #d4af37;
+    animation: pulse 1.8s infinite;
+    align-self: center;
+}
+@keyframes pulse {
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+/* باقي التنسيقات كما هي */
 .heart-icon{font-size:45px;color:#d4af37;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
 .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
 .quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
@@ -56,7 +118,7 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.gallery-img{width:170px;height:170px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.card-container{width:240px}.card-img{height:280px}}
 </style>
 </head>
 <body>
@@ -78,10 +140,27 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
+    <!-- تصميم البطاقات الجديد -->
     <div class="gallery">
-        <img class="gallery-img" src="nebras.jpg" alt="Nebras">
-        <div class="heart-icon">♥</div>
-        <img class="gallery-img" src="zena.jpg" alt="Zena">
+        <div class="card-container">
+            <img class="card-img" src="nebras.jpg" alt="Nebras">
+            <div class="card-content">
+                <div class="card-name">Nebras</div>
+                <div class="card-title">العريس</div>
+                <div class="card-divider"></div>
+                <p style="font-size:13px; color:#7d6b52">بهاء العرس ونوره</p>
+            </div>
+        </div>
+        <div class="heart-icon-big">♥</div>
+        <div class="card-container">
+            <img class="card-img" src="zena.jpg" alt="Zena">
+            <div class="card-content">
+                <div class="card-name">Zena</div>
+                <div class="card-title">العروس</div>
+                <div class="card-divider"></div>
+                <p style="font-size:13px; color:#7d6b52">زينة الحفل وضيائه</p>
+            </div>
+        </div>
     </div>
 
     <div class="invitation-text">
@@ -125,7 +204,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         </div>
     </div>
 
-    <!-- لوحة التحكم لعرض الردود -->
     <div class="admin-panel" id="adminPanel">
         <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
         <div style="overflow-x:auto">
@@ -143,7 +221,6 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </div>
 
 <script>
-// تحميل الردود المحفوظة
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
 function saveRSVP(){
@@ -157,7 +234,6 @@ function saveRSVP(){
         return;
     }
     
-    // حفظ الرد
     let newResponse = {
         id: Date.now(),
         name: name,
@@ -170,14 +246,12 @@ function saveRSVP(){
     responses.push(newResponse);
     localStorage.setItem('weddingRSVP', JSON.stringify(responses));
     
-    // تفريغ الحقول
     document.getElementById('name').value = "";
     document.getElementById('count').value = "";
     document.getElementById('notes').value = "";
     
     alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
     
-    // إرسال أيضاً على واتساب (اختياري)
     let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A`;
     message += `👤 *الاسم:* ${name}%0A`;
     message += `👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A`;
@@ -200,7 +274,7 @@ function loadResponsesTable(){
     let tbody = document.getElementById('responsesBody');
     tbody.innerHTML = "";
     if(responses.length === 0){
-        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن<\/td></tr>";
         return;
     }
     for(let i=0; i<responses.length; i++){
@@ -236,7 +310,6 @@ function openWedding(){
     document.getElementById('main').style.display='block';
 }
 
-// العد التنازلي
 const target = new Date('2026-08-29T18:00:00').getTime();
 setInterval(() => {
     const now = new Date().getTime();
