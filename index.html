@@ -24,66 +24,67 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
 
-/* شير مرئي وصور متحركة */
-.glass-gallery {
+/* صور بدون إطار - شفافة - متحركة - كأنها ذكرى */
+.memory-gallery {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
     margin: 50px 20px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 80px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    padding: 20px;
 }
 
-.animated-photo {
-    width: 260px;
-    height: 260px;
+.memory-photo {
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #d4af37;
-    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
-    background: white;
-    padding: 5px;
-    transition: all 0.4s ease;
-    animation: floatPhoto 4s ease-in-out infinite;
+    opacity: 0.7;
+    transition: all 0.5s ease;
+    filter: grayscale(20%) sepia(5%);
+    animation: floatMemory 5s ease-in-out infinite;
+    box-shadow: none;
+    border: none;
+    background: transparent;
 }
 
-.animated-photo:nth-child(1) {
+.memory-photo:nth-child(1) {
     animation-delay: 0s;
 }
 
-.animated-photo:nth-child(3) {
-    animation-delay: 0.5s;
+.memory-photo:nth-child(3) {
+    animation-delay: 0.6s;
 }
 
-@keyframes floatPhoto {
+@keyframes floatMemory {
     0%, 100% {
         transform: translateY(0px);
+        opacity: 0.65;
     }
     50% {
-        transform: translateY(-12px);
+        transform: translateY(-15px);
+        opacity: 0.85;
     }
 }
 
-.animated-photo:hover {
-    transform: scale(1.05) rotate(2deg);
-    border-color: #f5e18b;
-    box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.3);
+.memory-photo:hover {
+    opacity: 1;
+    filter: grayscale(0%) sepia(0%);
+    transform: scale(1.02);
+    cursor: pointer;
 }
 
 .heart-divider {
     font-size: 45px;
     color: #d4af37;
     animation: heartbeat 1.5s ease-in-out infinite;
+    opacity: 0.8;
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.25); }
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
 }
 
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
@@ -121,7 +122,7 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.animated-photo{width:170px;height:170px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.memory-photo{width:160px;height:160px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
 </style>
 </head>
 <body>
@@ -143,11 +144,11 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
-    <!-- قسم الصور: شير مرئي + صور متحركة -->
-    <div class="glass-gallery">
-        <img class="animated-photo" src="nebras.jpg" alt="Nebras">
+    <!-- صور بدون إطار، شفافة، متحركة -->
+    <div class="memory-gallery">
+        <img class="memory-photo" src="nebras.jpg" alt="Nebras">
         <div class="heart-divider">♥</div>
-        <img class="animated-photo" src="zena.jpg" alt="Zena">
+        <img class="memory-photo" src="zena.jpg" alt="Zena">
     </div>
 
     <div class="invitation-text">
