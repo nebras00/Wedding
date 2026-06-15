@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebras & Zena | دعوة زفاف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
+.welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%)}
+.ring-icon{font-size:80px;color:#d4af37;animation:floatRing 3s ease-in-out infinite;margin-bottom:20px}
+@keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.names-arabic{font-family:'Great Vibes',cursive;font-size:65px;color:#c9a227;margin:15px 0;line-height:1.2}
+.names-english{font-size:22px;letter-spacing:4px;color:#b89a2a;margin-bottom:20px}
+.divider{width:120px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:20px auto}
+.welcome-text{font-size:15px;color:#9e8b6f;max-width:400px;margin:20px auto;line-height:1.8}
+.btn-open{background:transparent;border:2px solid #d4af37;padding:12px 35px;border-radius:40px;color:#c9a227;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s;margin:25px 0 10px}
+.btn-open:hover{background:#d4af37;color:#fff}
+.date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
+#main{display:none}
+.hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:80px 20px 50px;text-align:center}
+.hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
+.hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
+.gallery{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:50px 20px}
+.gallery-img{width:250px;height:250px;border-radius:50%;object-fit:cover;border:5px solid #d4af37;box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:0.4s}
+.gallery-img:hover{transform:scale(1.03)}
+.heart-icon{font-size:45px;color:#d4af37;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
+.invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
+.quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
+.countdown-section{padding:50px 20px;background:#fefcf8;text-align:center}
+.countdown-title{font-size:28px;color:#c9a227;margin-bottom:35px}
+.countdown-box{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.time-card{background:white;width:110px;height:110px;border-radius:50%;border:2px solid #d4af37;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
+.time-card:hover{transform:translateY(-8px)}
+.time-number{font-size:38px;font-weight:700;color:#d4af37}
+.time-label{font-size:12px;color:#b89a2a;letter-spacing:1px}
+.details-section{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:50px 20px;max-width:1000px;margin:auto}
+.detail-card{background:white;border-radius:25px;padding:30px;width:280px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
+.detail-card:hover{transform:translateY(-5px)}
+.detail-icon{font-size:45px;margin-bottom:15px}
+.detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
+.detail-text{color:#7d6b52;line-height:1.6}
+.rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
+.rsvp-card{max-width:600px;margin:auto;background:white;border-radius:30px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.05)}
+.input-group{width:100%;margin:12px 0}
+.input-group input,.input-group select,.input-group textarea{width:100%;padding:14px 18px;border:1px solid #e0d6c8;border-radius:50px;font-family:inherit;background:#fefcf8}
+.input-group input:focus,.input-group select:focus,.input-group textarea:focus{outline:none;border-color:#d4af37}
+.btn-send{background:#d4af37;color:white;border:none;padding:14px 35px;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:15px;transition:0.3s}
+.btn-send:hover{background:#b38f1f;transform:scale(1.02)}
+.btn-view{background:transparent;border:2px solid #d4af37;color:#c9a227;padding:10px 20px;border-radius:40px;margin-top:10px;cursor:pointer}
+.admin-panel{background:#fff;border-radius:20px;padding:20px;margin-top:30px;text-align:left;display:none}
+.admin-panel table{width:100%;border-collapse:collapse}
+.admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right}
+.admin-panel th{background:#d4af37;color:white}
+footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.gallery-img{width:170px;height:170px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="welcome-screen" id="welcomeScreen">
+    <div class="ring-icon">💍</div>
+    <div class="names-arabic">Nebras & Zena</div>
+    <div class="names-english">ALSHAREF & YOUSEF</div>
+    <div class="divider"></div>
+    <p class="welcome-text">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
+    <p class="welcome-text">لتكونوا جزءاً من أجمل أيام حياتنا</p>
+    <button class="btn-open" onclick="openWedding()">فتح الدعوة</button>
+    <div class="date-bottom">29 أغسطس 2026</div>
+</div>
+
+<div id="main">
+    <div class="hero-section">
+        <div class="hero-title">Nebras & Zena</div>
+        <div class="hero-sub">Together With Their Families</div>
+    </div>
+
+    <div class="gallery">
+        <img class="gallery-img" src="https://via.placeholder.com/250x250?text=Nebras" alt="Nebras">
+        <div class="heart-icon">♥</div>
+        <img class="gallery-img" src="https://via.placeholder.com/250x250?text=Zena" alt="Zena">
+    </div>
+
+    <div class="invitation-text">
+        <div class="quote">"Your presence is our greatest gift"</div>
+        <p>بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
+        <p>نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى</p>
+        <p style="font-size:16px; margin-top:20px">Nebras Alsharef & Zena Yousef</p>
+    </div>
+
+    <div class="countdown-section">
+        <h2 class="countdown-title">العد التنازلي لزفافنا</h2>
+        <div class="countdown-box">
+            <div class="time-card"><span class="time-number" id="days">0</span><span class="time-label">أيام</span></div>
+            <div class="time-card"><span class="time-number" id="hours">0</span><span class="time-label">ساعات</span></div>
+            <div class="time-card"><span class="time-number" id="minutes">0</span><span class="time-label">دقائق</span></div>
+            <div class="time-card"><span class="time-number" id="seconds">0</span><span class="time-label">ثواني</span></div>
+        </div>
+    </div>
+
+    <div class="details-section">
+        <div class="detail-card"><div class="detail-icon">📅</div><div class="detail-title">التاريخ</div><div class="detail-text">29 أغسطس 2026</div></div>
+        <div class="detail-card"><div class="detail-icon">🕕</div><div class="detail-title">الوقت</div><div class="detail-text">الساعة 18:00</div></div>
+        <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-title">المكان</div><div class="detail-text">Björkvallen IP – Kristianstad FC</div></div>
+    </div>
+
+    <div class="rsvp-section">
+        <div class="rsvp-card">
+            <h2 style="color:#c9a227; margin-bottom:20px">تأكيد الحضور</h2>
+            <div class="input-group"><input type="text" id="name" placeholder="الاسم الكامل *"></div>
+            <div class="input-group"><input type="number" id="count" placeholder="عدد الأشخاص"></div>
+            <div class="input-group">
+                <select id="status">
+                    <option value="سأحضر">✅ سأحضر</option>
+                    <option value="لن أحضر">❌ لن أحضر</option>
+                    <option value="متردد">🤔 متردد</option>
+                </select>
+            </div>
+            <div class="input-group"><textarea id="notes" rows="3" placeholder="ملاحظة أو رسالة (اختياري)"></textarea></div>
+            <button class="btn-send" onclick="saveRSVP()">إرسال التأكيد</button>
+            <button class="btn-view" onclick="showAdminPanel()">📋 عرض الردود</button>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم لعرض الردود -->
+    <div class="admin-panel" id="adminPanel">
+        <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
+        <div style="overflow-x:auto">
+            <table id="responsesTable">
+                <thead>
+                    <tr><th>#</th><th>الاسم</th><th>عدد الأشخاص</th><th>الحضور</th><th>الملاحظة</th><th>التاريخ</th></tr>
+                </thead>
+                <tbody id="responsesBody"></tbody>
+            </table>
+        </div>
+        <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
+    </div>
+
+    <footer>Nebras & Zena ♥ 29.08.2026</footer>
+</div>
+
+<script>
+// تحميل الردود المحفوظة
+let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+function saveRSVP(){
+    let name = document.getElementById('name').value.trim();
+    let count = document.getElementById('count').value;
+    let status = document.getElementById('status').value;
+    let notes = document.getElementById('notes').value;
+    
+    if(name === ""){
+        alert("❌ الرجاء إدخال اسمك");
+        return;
+    }
+    
+    // حفظ الرد
+    let newResponse = {
+        id: Date.now(),
+        name: name,
+        count: count || "غير محدد",
+        status: status,
+        notes: notes || "لا يوجد",
+        date: new Date().toLocaleString('ar-EG')
+    };
+    
+    responses.push(newResponse);
+    localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+    
+    // تفريغ الحقول
+    document.getElementById('name').value = "";
+    document.getElementById('count').value = "";
+    document.getElementById('notes').value = "";
+    
+    alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+    
+    // إرسال أيضاً على واتساب (اختياري)
+    let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A`;
+    message += `👤 *الاسم:* ${name}%0A`;
+    message += `👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A`;
+    message += `✅ *الحضور:* ${status}%0A`;
+    if(notes) message += `📝 *ملاحظة:* ${notes}%0A`;
+    window.open(`https://wa.me/46760801562?text=${message}`, '_blank');
+}
+
+function showAdminPanel(){
+    let panel = document.getElementById('adminPanel');
+    if(panel.style.display === 'none' || panel.style.display === ''){
+        loadResponsesTable();
+        panel.style.display = 'block';
+    } else {
+        panel.style.display = 'none';
+    }
+}
+
+function loadResponsesTable(){
+    let tbody = document.getElementById('responsesBody');
+    tbody.innerHTML = "";
+    if(responses.length === 0){
+        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+        return;
+    }
+    for(let i=0; i<responses.length; i++){
+        let r = responses[i];
+        let row = tbody.insertRow();
+        row.insertCell(0).innerHTML = i+1;
+        row.insertCell(1).innerHTML = r.name;
+        row.insertCell(2).innerHTML = r.count;
+        row.insertCell(3).innerHTML = r.status;
+        row.insertCell(4).innerHTML = r.notes;
+        row.insertCell(5).innerHTML = r.date;
+    }
+}
+
+function exportToCSV(){
+    if(responses.length === 0){
+        alert("لا توجد ردود للتصدير");
+        return;
+    }
+    let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+    for(let r of responses){
+        csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+    }
+    let blob = new Blob([csv], {type: 'text/csv'});
+    let link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `wedding_responses_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+}
+
+function openWedding(){
+    document.getElementById('welcomeScreen').style.display='none';
+    document.getElementById('main').style.display='block';
+}
+
+// العد التنازلي
+const target = new Date('2026-08-29T18:00:00').getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = target - now;
+    if(diff > 0){
+        document.getElementById('days').innerHTML = Math.floor(diff / (1000*60*60*24));
+        document.getElementById('hours').innerHTML = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        document.getElementById('minutes').innerHTML = Math.floor((diff % (1000*60*60)) / (1000*60));
+        document.getElementById('seconds').innerHTML = Math.floor((diff % (1000*60)) / 1000);
+    }
+}, 1000);
+</script>
+</body>
+</html>
