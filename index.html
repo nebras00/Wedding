@@ -24,14 +24,67 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
 
-/* قالب البطاقة الجديد للصور */
-.gallery-card{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;margin:50px 20px;background:linear-gradient(145deg,#fff8f0,#fef7e8);padding:40px 30px;border-radius:60px;box-shadow:0 20px 40px rgba(0,0,0,0.05);border:1px solid rgba(212,175,55,0.3)}
-.photo-frame{position:relative;width:250px;height:250px;border-radius:50%;background:linear-gradient(135deg,#d4af37,#f5e18b);padding:6px;box-shadow:0 15px 25px rgba(0,0,0,0.1);transition:transform 0.4s ease}
-.photo-frame:hover{transform:scale(1.03)}
-.photo-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid white}
-.photo-label{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);background:#d4af37;color:white;padding:5px 18px;border-radius:40px;font-size:14px;font-weight:bold;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
-.heart-divider{font-size:45px;color:#d4af37;animation:pulse 1.8s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+/* شير مرئي وصور متحركة */
+.glass-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 50px 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 80px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.animated-photo {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d4af37;
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 5px;
+    transition: all 0.4s ease;
+    animation: floatPhoto 4s ease-in-out infinite;
+}
+
+.animated-photo:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.animated-photo:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+@keyframes floatPhoto {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.animated-photo:hover {
+    transform: scale(1.05) rotate(2deg);
+    border-color: #f5e18b;
+    box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.3);
+}
+
+.heart-divider {
+    font-size: 45px;
+    color: #d4af37;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
 
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
 .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
@@ -68,7 +121,7 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.photo-frame{width:170px;height:170px}.photo-label{font-size:11px;bottom:-15px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.animated-photo{width:170px;height:170px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
 </style>
 </head>
 <body>
@@ -90,17 +143,11 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
-    <!-- قالب الصور الجديد -->
-    <div class="gallery-card">
-        <div class="photo-frame">
-            <img src="nebras.jpg" alt="Nebras">
-            <div class="photo-label">Nebras</div>
-        </div>
+    <!-- قسم الصور: شير مرئي + صور متحركة -->
+    <div class="glass-gallery">
+        <img class="animated-photo" src="nebras.jpg" alt="Nebras">
         <div class="heart-divider">♥</div>
-        <div class="photo-frame">
-            <img src="zena.jpg" alt="Zena">
-            <div class="photo-label">Zena</div>
-        </div>
+        <img class="animated-photo" src="zena.jpg" alt="Zena">
     </div>
 
     <div class="invitation-text">
