@@ -27,10 +27,10 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
 
 .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);position:relative;display:none}
-.prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
-.ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif}
-.ayah-trans{font-size:16px;margin:10px 0;font-style:italic}
-.dua-text{font-size:20px;line-height:1.8;margin:30px 0 20px;font-family:'Amiri',serif}
+.prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.9);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
+.ayah-text{font-size:24px;line-height:1.8;color:#6b5a44;margin:20px 0;font-family:'Amiri',serif}
+.ayah-trans{font-size:16px;color:#b89a2a;margin:10px 0;font-style:italic}
+.dua-text{font-size:20px;line-height:1.8;color:#6b5a44;margin:30px 0 20px;font-family:'Amiri',serif}
 .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0}
 
 #main{display:none}
@@ -100,14 +100,10 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-prayer="sv">🇸🇪 Svenska</button>
     </div>
     <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
-        <!-- الآية القرآنية - لون ذهبي -->
-        <div id="ayahText" class="ayah-text" style="color: #d4af37; font-weight: bold;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
-        <div id="ayahTrans" class="ayah-trans" style="color: #b89a2a;">"And among His signs is that He created for you spouses from yourselves..."</div>
-        
-        <!-- الدعاء - لون أسود فاخر -->
-        <div id="duaText" class="dua-text" style="color: #2c2c2c; font-weight: 500;">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
-        <div id="duaTrans" class="ayah-trans" style="color: #7d6b52;">"O Allah, bless them and their union, and bring them together in goodness..."</div>
-        
+        <div id="ayahText" class="ayah-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+        <div id="ayahTrans" class="ayah-trans">"And among His signs is that He created for you spouses from yourselves..."</div>
+        <div id="duaText" class="dua-text">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
+        <div id="duaTrans" class="ayah-trans">"O Allah, bless them and their union, and bring them together in goodness..."</div>
         <div class="timer" id="timer">15</div>
         <div id="waitingText" class="ayah-trans">سيتم نقلك للدعوة بعد...</div>
     </div>
@@ -165,7 +161,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 
     <div class="admin-panel" id="adminPanel">
         <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
-        <div style="overflow-x:auto"><table id="responsesTable"><thead><tr><th>#</th><th>الاسم</th><th>عدد الأشخاص</th><th>الحضور</th><th>الملاحظة</th><th>التاريخ</th></tr></thead><tbody id="responsesBody"></tbody></tr></div>
+        <div style="overflow-x:auto"><table id="responsesTable"><thead><tr><th>#</th><th>الاسم</th><th>عدد الأشخاص</th><th>الحضور</th><th>الملاحظة</th><th>التاريخ</th></tr></thead><tbody id="responsesBody"></tbody></table></div>
         <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
     </div>
 
@@ -320,4 +316,19 @@ function exportToCSV() {
     link.click();
 }
 
-function startCount
+function startCountdown() {
+    const target = new Date('2026-08-29T18:00:00').getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff > 0) {
+            document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+        }
+    }, 1000);
+}
+</script>
+</body>
+</html>
