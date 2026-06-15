@@ -8,6 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
+
 .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%)}
 .ring-icon{font-size:80px;color:#d4af37;animation:floatRing 3s ease-in-out infinite;margin-bottom:20px}
 @keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -23,75 +24,19 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
 .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
 
-/* ===== تصميم البطاقات الجديد للصور ===== */
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin: 50px 20px;
-}
-.card-container {
-    position: relative;
-    width: 300px;
-    background: white;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-.card-container:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.25);
-}
-.card-img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-.card-container:hover .card-img {
-    transform: scale(1.05);
-}
-.card-content {
-    padding: 20px;
-    text-align: center;
-    background: linear-gradient(to top, #fff, #fefcf8);
-}
-.card-name {
-    font-family: 'Great Vibes', cursive;
-    font-size: 28px;
-    color: #c9a227;
-    margin-bottom: 8px;
-}
-.card-title {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #b89a2a;
-    text-transform: uppercase;
-}
-.card-divider {
-    width: 50px;
-    height: 1px;
-    background: #d4af37;
-    margin: 12px auto;
-}
-.heart-icon-big {
-    font-size: 45px;
-    color: #d4af37;
-    animation: pulse 1.8s infinite;
-    align-self: center;
-}
-@keyframes pulse {
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.15)}
-}
-/* باقي التنسيقات كما هي */
-.heart-icon{font-size:45px;color:#d4af37;animation:pulse 1.5s infinite}
+/* قالب البطاقة الجديد للصور */
+.gallery-card{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;margin:50px 20px;background:linear-gradient(145deg,#fff8f0,#fef7e8);padding:40px 30px;border-radius:60px;box-shadow:0 20px 40px rgba(0,0,0,0.05);border:1px solid rgba(212,175,55,0.3)}
+.photo-frame{position:relative;width:250px;height:250px;border-radius:50%;background:linear-gradient(135deg,#d4af37,#f5e18b);padding:6px;box-shadow:0 15px 25px rgba(0,0,0,0.1);transition:transform 0.4s ease}
+.photo-frame:hover{transform:scale(1.03)}
+.photo-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid white}
+.photo-label{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);background:#d4af37;color:white;padding:5px 18px;border-radius:40px;font-size:14px;font-weight:bold;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.heart-divider{font-size:45px;color:#d4af37;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
 .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
 .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
 .quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
+
 .countdown-section{padding:50px 20px;background:#fefcf8;text-align:center}
 .countdown-title{font-size:28px;color:#c9a227;margin-bottom:35px}
 .countdown-box{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
@@ -99,12 +44,16 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .time-card:hover{transform:translateY(-8px)}
 .time-number{font-size:38px;font-weight:700;color:#d4af37}
 .time-label{font-size:12px;color:#b89a2a;letter-spacing:1px}
+
 .details-section{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:50px 20px;max-width:1000px;margin:auto}
 .detail-card{background:white;border-radius:25px;padding:30px;width:280px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
 .detail-card:hover{transform:translateY(-5px)}
 .detail-icon{font-size:45px;margin-bottom:15px}
 .detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
 .detail-text{color:#7d6b52;line-height:1.6}
+.map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37;transition:0.3s}
+.map-link:hover{color:#b38f1f;border-bottom-color:#b38f1f}
+
 .rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
 .rsvp-card{max-width:600px;margin:auto;background:white;border-radius:30px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.05)}
 .input-group{width:100%;margin:12px 0}
@@ -118,7 +67,8 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right}
 .admin-panel th{background:#d4af37;color:white}
 footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
-@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.card-container{width:240px}.card-img{height:280px}}
+
+@media(max-width:600px){.names-arabic{font-size:48px}.hero-title{font-size:52px}.photo-frame{width:170px;height:170px}.photo-label{font-size:11px;bottom:-15px}.heart-divider{font-size:35px}.time-card{width:75px;height:75px}.time-number{font-size:24px}}
 </style>
 </head>
 <body>
@@ -140,26 +90,16 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <div class="hero-sub">Together With Their Families</div>
     </div>
 
-    <!-- تصميم البطاقات الجديد -->
-    <div class="gallery">
-        <div class="card-container">
-            <img class="card-img" src="nebras.jpg" alt="Nebras">
-            <div class="card-content">
-                <div class="card-name">Nebras</div>
-                <div class="card-title">العريس</div>
-                <div class="card-divider"></div>
-                <p style="font-size:13px; color:#7d6b52">بهاء العرس ونوره</p>
-            </div>
+    <!-- قالب الصور الجديد -->
+    <div class="gallery-card">
+        <div class="photo-frame">
+            <img src="nebras.jpg" alt="Nebras">
+            <div class="photo-label">Nebras</div>
         </div>
-        <div class="heart-icon-big">♥</div>
-        <div class="card-container">
-            <img class="card-img" src="zena.jpg" alt="Zena">
-            <div class="card-content">
-                <div class="card-name">Zena</div>
-                <div class="card-title">العروس</div>
-                <div class="card-divider"></div>
-                <p style="font-size:13px; color:#7d6b52">زينة الحفل وضيائه</p>
-            </div>
+        <div class="heart-divider">♥</div>
+        <div class="photo-frame">
+            <img src="zena.jpg" alt="Zena">
+            <div class="photo-label">Zena</div>
         </div>
     </div>
 
@@ -183,7 +123,15 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     <div class="details-section">
         <div class="detail-card"><div class="detail-icon">📅</div><div class="detail-title">التاريخ</div><div class="detail-text">29 أغسطس 2026</div></div>
         <div class="detail-card"><div class="detail-icon">🕕</div><div class="detail-title">الوقت</div><div class="detail-text">الساعة 18:00</div></div>
-        <div class="detail-card"><div class="detail-icon">📍</div><div class="detail-title">المكان</div><div class="detail-text">Björkvallen IP – Kristianstad FC</div></div>
+        <div class="detail-card">
+            <div class="detail-icon">📍</div>
+            <div class="detail-title">المكان</div>
+            <div class="detail-text">
+                <a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">
+                    Björkvallen IP – Kristianstad FC
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="rsvp-section">
@@ -274,7 +222,7 @@ function loadResponsesTable(){
     let tbody = document.getElementById('responsesBody');
     tbody.innerHTML = "";
     if(responses.length === 0){
-        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن<\/td></tr>";
+        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
         return;
     }
     for(let i=0; i<responses.length; i++){
