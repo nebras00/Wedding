@@ -9,8 +9,12 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 
-.welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%)}
-.rings{display:flex;justify-content:center;align-items:center;gap:20px;margin-bottom:20px}
+/* الشاشة الأولى مع أزرار اللغة */
+.welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
+.welcome-lang{position:absolute;top:20px;right:20px;display:flex;gap:10px}
+.lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
+.lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
+.rings{display:flex;justify-content:center;align-items:center;gap:25px;margin-bottom:20px}
 .ring-icon{font-size:75px;animation:floatRing 3s ease-in-out infinite}
 .silver-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8;animation-delay:0s}
 .gold-ring{color:#d4af37;text-shadow:0 0 8px #f5e18b;animation-delay:0.3s}
@@ -23,16 +27,15 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .btn-open:hover{background:#d4af37;color:#fff}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
 
+/* صفحة الآية والدعاء */
 .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);position:relative;display:none}
 .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.9);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
 .ayah-text{font-size:24px;line-height:1.8;color:#6b5a44;margin:20px 0;font-family:'Amiri',serif}
 .ayah-trans{font-size:16px;color:#b89a2a;margin:10px 0;font-style:italic}
 .dua-text{font-size:20px;line-height:1.8;color:#6b5a44;margin:30px 0 20px;font-family:'Amiri',serif}
 .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0}
-.language-selector{position:absolute;top:20px;right:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.lang-btn{background:transparent;border:1px solid #d4af37;padding:6px 12px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:12px}
-.lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
 
+/* الصفحة الرئيسية */
 #main{display:none}
 .main-lang{display:flex;justify-content:flex-end;gap:10px;padding:15px 20px}
 .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:40px 20px 30px;text-align:center}
@@ -75,25 +78,32 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </head>
 <body>
 
+<!-- الشاشة الأولى مع أزرار اللغة -->
 <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-lang">
+        <button class="lang-btn" data-lang-welcome="ar">🇸🇦 عربي</button>
+        <button class="lang-btn" data-lang-welcome="en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang-welcome="sv">🇸🇪 Svenska</button>
+    </div>
     <div class="rings">
         <div class="ring-icon silver-ring">💍</div>
         <div class="ring-icon gold-ring">💍</div>
     </div>
-    <div class="names-arabic">Nebras & Zena</div>
-    <div class="names-english">ALSHAREF & YOUSEF</div>
+    <div class="names-arabic" id="welcomeNames">Nebras & Zena</div>
+    <div class="names-english" id="welcomeSub">ALSHAREF & YOUSEF</div>
     <div class="divider"></div>
-    <p class="welcome-text">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
-    <p class="welcome-text">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-    <button class="btn-open" onclick="openPrayerPage()">فتح الدعوة</button>
-    <div class="date-bottom">29 أغسطس 2026</div>
+    <p class="welcome-text" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
+    <p class="welcome-text" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
+    <button class="btn-open" id="welcomeBtn" onclick="openPrayerPage()">فتح الدعوة</button>
+    <div class="date-bottom" id="welcomeDate">29 أغسطس 2026</div>
 </div>
 
+<!-- صفحة الآية والدعاء مع أزرار اللغة -->
 <div class="prayer-screen" id="prayerScreen">
-    <div class="language-selector">
-        <button class="lang-btn" data-lang="ar">🇸🇦 عربي</button>
-        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
-        <button class="lang-btn" data-lang="sv">🇸🇪 Svenska</button>
+    <div class="welcome-lang">
+        <button class="lang-btn" data-lang-prayer="ar">🇸🇦 عربي</button>
+        <button class="lang-btn" data-lang-prayer="en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang-prayer="sv">🇸🇪 Svenska</button>
     </div>
     <div class="prayer-card">
         <div id="ayahText" class="ayah-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
@@ -105,6 +115,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     </div>
 </div>
 
+<!-- الصفحة الرئيسية -->
 <div id="main">
     <div class="main-lang">
         <button class="lang-btn" data-lang-main="ar">🇸🇦 عربي</button>
@@ -166,6 +177,14 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </div>
 
 <script>
+// ترجمات الشاشة الأولى
+const welcomeTranslations = {
+    ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "29 أغسطس 2026" },
+    en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 29, 2026" },
+    sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "Öppna Inbjudan", date: "29 augusti 2026" }
+};
+
+// ترجمات صفحة الآية والدعاء
 const prayerTranslations = {
     ar: {
         ayah: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
@@ -190,6 +209,7 @@ const prayerTranslations = {
     }
 };
 
+// ترجمات الصفحة الرئيسية
 const mainTranslations = {
     ar: {
         title: "Nebras & Zena",
@@ -242,6 +262,56 @@ let currentLang = 'ar';
 let timerInterval;
 let secondsLeft = 15;
 
+// دوال تغيير اللغة
+function changeWelcomeLanguage(lang) {
+    document.getElementById('welcomeNames').innerHTML = welcomeTranslations[lang].names;
+    document.getElementById('welcomeSub').innerHTML = welcomeTranslations[lang].sub;
+    document.getElementById('welcomeText1').innerHTML = welcomeTranslations[lang].text1;
+    document.getElementById('welcomeText2').innerHTML = welcomeTranslations[lang].text2;
+    document.getElementById('welcomeBtn').innerHTML = welcomeTranslations[lang].btn;
+    document.getElementById('welcomeDate').innerHTML = welcomeTranslations[lang].date;
+}
+
+function changePrayerLanguage(lang) {
+    document.getElementById('ayahText').innerHTML = prayerTranslations[lang].ayah;
+    document.getElementById('ayahTrans').innerHTML = prayerTranslations[lang].ayahTrans;
+    document.getElementById('duaText').innerHTML = prayerTranslations[lang].dua;
+    document.getElementById('duaTrans').innerHTML = prayerTranslations[lang].duaTrans;
+    document.getElementById('waitingText').innerHTML = prayerTranslations[lang].waiting;
+}
+
+function changeMainLanguage(lang) {
+    document.getElementById('mainTitle').innerHTML = mainTranslations[lang].title;
+    document.getElementById('mainSub').innerHTML = mainTranslations[lang].sub;
+    document.getElementById('quoteText').innerHTML = mainTranslations[lang].quote;
+    document.getElementById('inviteText1').innerHTML = mainTranslations[lang].invite1;
+    document.getElementById('inviteText2').innerHTML = mainTranslations[lang].invite2;
+    document.getElementById('countdownTitle').innerHTML = mainTranslations[lang].countdown;
+    document.getElementById('daysLabel').innerHTML = mainTranslations[lang].days;
+    document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
+    document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
+    document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
+    document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
+    document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
+    document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
+}
+
+// أحداث أزرار اللغة
+document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
+    btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
+});
+document.querySelectorAll('[data-lang-prayer]').forEach(btn => {
+    btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang-prayer')));
+});
+document.querySelectorAll('[data-lang-main]').forEach(btn => {
+    btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
+});
+
+// تعيين اللغة الافتراضية
+changeWelcomeLanguage('ar');
+changePrayerLanguage('ar');
+changeMainLanguage('ar');
+
 function openPrayerPage() {
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('prayerScreen').style.display = 'flex';
@@ -264,52 +334,7 @@ function startTimer() {
     }, 1000);
 }
 
-function changePrayerLanguage(lang) {
-    currentLang = lang;
-    document.getElementById('ayahText').innerHTML = prayerTranslations[lang].ayah;
-    document.getElementById('ayahTrans').innerHTML = prayerTranslations[lang].ayahTrans;
-    document.getElementById('duaText').innerHTML = prayerTranslations[lang].dua;
-    document.getElementById('duaTrans').innerHTML = prayerTranslations[lang].duaTrans;
-    document.getElementById('waitingText').innerHTML = prayerTranslations[lang].waiting;
-    
-    document.querySelectorAll('.prayer-screen .lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-        else btn.classList.remove('active');
-    });
-}
-
-function changeMainLanguage(lang) {
-    document.getElementById('mainTitle').innerHTML = mainTranslations[lang].title;
-    document.getElementById('mainSub').innerHTML = mainTranslations[lang].sub;
-    document.getElementById('quoteText').innerHTML = mainTranslations[lang].quote;
-    document.getElementById('inviteText1').innerHTML = mainTranslations[lang].invite1;
-    document.getElementById('inviteText2').innerHTML = mainTranslations[lang].invite2;
-    document.getElementById('countdownTitle').innerHTML = mainTranslations[lang].countdown;
-    document.getElementById('daysLabel').innerHTML = mainTranslations[lang].days;
-    document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
-    document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
-    document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
-    document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
-    document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
-    document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
-    
-    document.querySelectorAll('.main-lang .lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang-main') === lang) btn.classList.add('active');
-        else btn.classList.remove('active');
-    });
-}
-
-document.querySelectorAll('.prayer-screen .lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang')));
-});
-
-document.querySelectorAll('.main-lang .lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
-});
-
-changePrayerLanguage('ar');
-changeMainLanguage('ar');
-
+// الردود
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
 function saveRSVP() {
@@ -338,7 +363,7 @@ function showAdminPanel() {
 function loadResponsesTable() {
     let tbody = document.getElementById('responsesBody');
     tbody.innerHTML = "";
-    if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></td>"; return; }
+    if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>"; return; }
     for (let i = 0; i < responses.length; i++) {
         let r = responses[i];
         let row = tbody.insertRow();
