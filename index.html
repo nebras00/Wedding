@@ -27,10 +27,10 @@ body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a}
 .date-bottom{font-size:14px;color:#b89a2a;margin-top:30px}
 
 .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);position:relative;display:none}
-.prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.9);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
-.ayah-text{font-size:24px;line-height:1.8;color:#6b5a44;margin:20px 0;font-family:'Amiri',serif}
-.ayah-trans{font-size:16px;color:#b89a2a;margin:10px 0;font-style:italic}
-.dua-text{font-size:20px;line-height:1.8;color:#6b5a44;margin:30px 0 20px;font-family:'Amiri',serif}
+.prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
+.ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif}
+.ayah-trans{font-size:16px;margin:10px 0;font-style:italic}
+.dua-text{font-size:20px;line-height:1.8;margin:30px 0 20px;font-family:'Amiri',serif}
 .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0}
 
 #main{display:none}
@@ -100,10 +100,14 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
         <button class="lang-btn" data-lang-prayer="sv">🇸🇪 Svenska</button>
     </div>
     <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
-        <div id="ayahText" class="ayah-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
-        <div id="ayahTrans" class="ayah-trans">"And among His signs is that He created for you spouses from yourselves..."</div>
-        <div id="duaText" class="dua-text">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
-        <div id="duaTrans" class="ayah-trans">"O Allah, bless them and their union, and bring them together in goodness..."</div>
+        <!-- الآية القرآنية مرة واحدة بالأسود -->
+        <div id="ayahText" class="ayah-text" style="color: #2c2c2c; font-weight: normal;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+        <div id="ayahTrans" class="ayah-trans" style="color: #6b5a44;">"And among His signs is that He created for you spouses from yourselves..."</div>
+
+        <!-- الدعاء مرة واحدة بالأسود -->
+        <div id="duaText" class="dua-text" style="color: #2c2c2c; font-weight: normal;">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
+        <div id="duaTrans" class="ayah-trans" style="color: #6b5a44;">"O Allah, bless them and their union, and bring them together in goodness..."</div>
+
         <div class="timer" id="timer">15</div>
         <div id="waitingText" class="ayah-trans">سيتم نقلك للدعوة بعد...</div>
     </div>
@@ -121,7 +125,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     </div>
 
     <div class="merged-gallery" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-        <img class="merged-photo" src="IMG_9826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+&+Zena'">
+        <img class="merged-photo" src="couple-symbol.jpg" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+&+Zena'">
     </div>
 
     <div class="invitation-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
@@ -172,6 +176,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 <script>
 AOS.init({ duration: 800, once: true, offset: 100 });
 
+// Translations remain exactly as you had them — no changes needed
 const welcomeTranslations = {
     ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "29 أغسطس 2026" },
     en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 29, 2026" },
@@ -322,13 +327,4 @@ function startCountdown() {
         const now = new Date().getTime();
         const diff = target - now;
         if (diff > 0) {
-            document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-        }
-    }, 1000);
-}
-</script>
-</body>
-</html>
+            document.getElementById('
