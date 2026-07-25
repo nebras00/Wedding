@@ -70,7 +70,7 @@ body {
     text-shadow: 0 0 15px #d4af37;
 }
 
-/* ====== الشاشة الترحيبية (كل شيء في المنتصف مباشرة) ====== */
+/* ====== الشاشة الترحيبية ====== */
 .welcome-screen {
     min-height: 100vh;
     display: flex;
@@ -150,7 +150,7 @@ body {
     line-height: 1.6;
 }
 
-/* الزر يظهر مباشرة */
+/* زر فتح الدعوة */
 .btn-open {
     background: #d4af37;
     border: 2px solid #d4af37;
@@ -184,7 +184,7 @@ body {
     margin-top: 8px;
 }
 
-/* ====== باقي الأنماط ====== */
+/* ====== صفحة القرآن والدعاء ====== */
 .prayer-screen {
     min-height: 100vh;
     display: flex;
@@ -232,6 +232,7 @@ body {
     cursor: pointer;
 }
 
+/* ====== الصفحة الرئيسية ====== */
 #main {
     display: none;
 }
@@ -530,7 +531,7 @@ footer {
         <p class="welcome-text" id="welcomeText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
         <p class="welcome-text" id="welcomeText2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">لتكونوا جزءاً من أجمل أيام حياتنا</p>
         <button class="btn-open pulse-btn" id="welcomeBtn" onclick="openPrayerPage()" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="600">👇 اضغط لفتح الدعوة</button>
-        <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">28 August 2026</div>
+        <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
     <!-- صفحة القرآن والدعاء -->
@@ -584,7 +585,7 @@ footer {
         </div>
 
         <div class="details-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="100"><div class="detail-icon">📅</div><div class="detail-title" id="dateTitle">التاريخ</div><div class="detail-text">28 August 2026</div></div>
+            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="100"><div class="detail-icon">📅</div><div class="detail-title" id="dateTitle">التاريخ</div><div class="detail-text">29 August 2026</div></div>
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200"><div class="detail-icon">🕕</div><div class="detail-title" id="timeTitle">الوقت</div><div class="detail-text">الساعة 18:00</div></div>
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
@@ -620,7 +621,7 @@ footer {
             <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
         </div>
 
-        <footer data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Nebras & Zena ♥ 28.08.2026</footer>
+        <footer data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Nebras & Zena ♥ 29.08.2026</footer>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -629,9 +630,9 @@ footer {
 
         // ========== ترجمات ==========
         const welcomeTranslations = {
-            ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "28 August 2026" },
-            en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 28, 2026" },
-            sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "👇 Klicka för att öppna inbjudan", date: "28 augusti 2026" }
+            ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
+            en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
+            sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "👇 Klicka för att öppna inbjudan", date: "29 augusti 2026" }
         };
 
         const prayerTranslations = {
@@ -789,7 +790,7 @@ footer {
         }
 
         function startCountdown() {
-            const target = new Date('2026-08-28T18:00:00').getTime();
+            const target = new Date('2026-08-29T18:00:00').getTime();
             setInterval(() => {
                 const now = new Date().getTime();
                 const diff = target - now;
