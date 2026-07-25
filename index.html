@@ -100,6 +100,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 </head>
 <body>
 
+<!-- الصفحة الترحيبية -->
 <div class="welcome-screen" id="welcomeScreen">
     <div class="welcome-lang">
         <button class="lang-btn" data-lang-welcome="ar">🇸🇦 عربي</button>
@@ -118,6 +119,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">28 August 2026</div>
 </div>
 
+<!-- صفحة الآية والدعاء -->
 <div class="prayer-screen" id="prayerScreen">
     <div class="welcome-lang">
         <button class="lang-btn" data-lang-prayer="ar">🇸🇦 عربي</button>
@@ -134,6 +136,7 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
     </div>
 </div>
 
+<!-- الصفحة الرئيسية -->
 <div id="main">
     <div class="main-lang">
         <button class="lang-btn" data-lang-main="ar">🇸🇦 عربي</button>
@@ -197,6 +200,94 @@ footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
 <script>
 AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
 
+// ========== ترجمات كل الصفحات ==========
+const welcomeTranslations = {
+    ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "28 August 2026" },
+    en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 28, 2026" },
+    sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "Öppna Inbjudan", date: "28 augusti 2026" }
+};
+
+const prayerTranslations = {
+    ar: {
+        ayah: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
+        ayahTrans: "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة",
+        dua: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية",
+        duaTrans: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير 🤲",
+        waiting: "سيتم نقلك للدعوة بعد..."
+    },
+    en: {
+        ayah: "And among His signs is that He created for you spouses from yourselves to find tranquility in them, and He placed between you affection and mercy",
+        ayahTrans: "– Quran, Surah Ar-Rum, 30:21",
+        dua: "O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.",
+        duaTrans: "O Allah, bless them and bring them together in goodness 🤲",
+        waiting: "You will be redirected to the invitation after..."
+    },
+    sv: {
+        ayah: "Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet",
+        ayahTrans: "– Koranen, Ar-Rum, 30:21",
+        dua: "Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv.",
+        duaTrans: "Åh Allah, välsigna dem och sammanför dem i godhet 🤲",
+        waiting: "Du kommer att omdirigeras till inbjudan efter..."
+    }
+};
+
+const mainTranslations = {
+    ar: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى", countdown: "العد التنازلي لزفافنا", days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني", date: "التاريخ", time: "الوقت", location: "المكان" },
+    en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", date: "Date", time: "Time", location: "Location" },
+    sv: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne", countdown: "Nedräkning till vårt bröllop", days: "Dagar", hours: "Timmar", minutes: "Minuter", seconds: "Sekunder", date: "Datum", time: "Tid", location: "Plats" }
+};
+
+// ========== دوال تغيير اللغة ==========
+function changeWelcomeLanguage(lang) {
+    document.getElementById('welcomeNames').innerHTML = welcomeTranslations[lang].names;
+    document.getElementById('welcomeSub').innerHTML = welcomeTranslations[lang].sub;
+    document.getElementById('welcomeText1').innerHTML = welcomeTranslations[lang].text1;
+    document.getElementById('welcomeText2').innerHTML = welcomeTranslations[lang].text2;
+    document.getElementById('welcomeBtn').innerHTML = welcomeTranslations[lang].btn;
+    document.getElementById('welcomeDate').innerHTML = welcomeTranslations[lang].date;
+}
+
+function changePrayerLanguage(lang) {
+    document.getElementById('ayahText').innerHTML = prayerTranslations[lang].ayah;
+    document.getElementById('ayahTrans').innerHTML = prayerTranslations[lang].ayahTrans;
+    document.getElementById('duaText').innerHTML = prayerTranslations[lang].dua;
+    document.getElementById('duaTrans').innerHTML = prayerTranslations[lang].duaTrans;
+    document.getElementById('waitingText').innerHTML = prayerTranslations[lang].waiting;
+}
+
+function changeMainLanguage(lang) {
+    document.getElementById('mainTitle').innerHTML = mainTranslations[lang].title;
+    document.getElementById('mainSub').innerHTML = mainTranslations[lang].sub;
+    document.getElementById('quoteText').innerHTML = mainTranslations[lang].quote;
+    document.getElementById('inviteText1').innerHTML = mainTranslations[lang].invite1;
+    document.getElementById('inviteText2').innerHTML = mainTranslations[lang].invite2;
+    document.getElementById('countdownTitle').innerHTML = mainTranslations[lang].countdown;
+    document.getElementById('daysLabel').innerHTML = mainTranslations[lang].days;
+    document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
+    document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
+    document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
+    document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
+    document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
+    document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
+}
+
+// ========== ربط أزرار اللغة ==========
+document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
+    btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
+});
+document.querySelectorAll('[data-lang-prayer]').forEach(btn => {
+    btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang-prayer')));
+});
+document.querySelectorAll('[data-lang-main]').forEach(btn => {
+    btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
+});
+
+// تعيين اللغة الافتراضية
+changeWelcomeLanguage('ar');
+changePrayerLanguage('ar');
+changeMainLanguage('ar');
+
+// ========== الردود ==========
 let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
 
 function saveRSVP() {
@@ -249,6 +340,7 @@ function exportToCSV() {
     link.click();
 }
 
+// ========== صفحات الدعوة ==========
 function openPrayerPage() {
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('prayerScreen').style.display = 'flex';
@@ -285,47 +377,6 @@ function startCountdown() {
         }
     }, 1000);
 }
-
-const welcomeTranslations = {
-    ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "فتح الدعوة", date: "28 August 2026" },
-    en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "Open Invitation", date: "August 28, 2026" },
-    sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "Öppna Inbjudan", date: "28 augusti 2026" }
-};
-
-const mainTranslations = {
-    ar: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "بكل فرحة وسعادة،<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى", countdown: "العد التنازلي لزفافنا", days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني", date: "التاريخ", time: "الوقت", location: "المكان" },
-    en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", date: "Date", time: "Time", location: "Location" },
-    sv: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne", countdown: "Nedräkning till vårt bröllop", days: "Dagar", hours: "Timmar", minutes: "Minuter", seconds: "Sekunder", date: "Datum", time: "Tid", location: "Plats" }
-};
-
-function changeWelcomeLanguage(lang) {
-    document.getElementById('welcomeNames').innerHTML = welcomeTranslations[lang].names;
-    document.getElementById('welcomeSub').innerHTML = welcomeTranslations[lang].sub;
-    document.getElementById('welcomeText1').innerHTML = welcomeTranslations[lang].text1;
-    document.getElementById('welcomeText2').innerHTML = welcomeTranslations[lang].text2;
-    document.getElementById('welcomeBtn').innerHTML = welcomeTranslations[lang].btn;
-    document.getElementById('welcomeDate').innerHTML = welcomeTranslations[lang].date;
-}
-
-function changePrayerLanguage(lang) {
-    // الترجمة موجودة في الـ HTML مباشرة مع النصوص
-    // سنقوم بتحديث النصوص يدوياً عند تغيير اللغة
-    const prayerTexts = {
-        ar: {
-            ayah: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
-            ayahTrans: "ومن آياته أن خلق لكم من أنفسكم أزواجاً لتسكنوا إليها وجعل بينكم مودة ورحمة",
-            dua: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية",
-            duaTrans: "اللهم بارك لهما وبارك عليهما واجمع بينهما في خير 🤲",
-            waiting: "سيتم نقلك للدعوة بعد..."
-        },
-        en: {
-            ayah: "And among His signs is that He created for you spouses from yourselves to find tranquility in them, and He placed between you affection and mercy",
-            ayahTrans: "– Quran, Surah Ar-Rum, 30:21",
-            dua: "O Allah, bless them and their union, and bring them together in goodness. Make this marriage the beginning of endless happiness, love that unites their hearts, and mercy that fills their days. Grant them righteous offspring and a blessed life.",
-            duaTrans: "O Allah, bless them and bring them together in goodness 🤲",
-            waiting: "You will be redirected to the invitation after..."
-        },
-        sv: {
-            ayah: "Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet",
-            ayahTrans: "– Koranen, Ar-Rum, 30:21",
-            dua: "Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka,
+</script>
+</body>
+</html>
