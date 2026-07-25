@@ -70,7 +70,7 @@ body {
     text-shadow: 0 0 15px #d4af37;
 }
 
-/* الشاشة الترحيبية */
+/* ====== الشاشة الترحيبية (كل شيء في المنتصف مباشرة) ====== */
 .welcome-screen {
     min-height: 100vh;
     display: flex;
@@ -78,27 +78,27 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     background: linear-gradient(135deg, #fff 0%, #faf7f0 100%);
     position: relative;
 }
 .welcome-lang {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     z-index: 100;
 }
 .lang-btn {
     background: transparent;
     border: 1px solid #d4af37;
-    padding: 6px 12px;
+    padding: 5px 10px;
     border-radius: 30px;
     color: #c9a227;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 12px;
+    font-size: 11px;
 }
 .lang-btn:hover,
 .lang-btn.active {
@@ -109,10 +109,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 .ring-icon {
-    font-size: 80px;
+    font-size: 60px;
     animation: floatRing 3s ease-in-out infinite;
 }
 .mens-ring {
@@ -120,53 +120,48 @@ body {
     text-shadow: 0 0 8px #e8e8e8;
 }
 @keyframes floatRing {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-12px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 .names-arabic {
     font-family: 'Great Vibes', cursive;
-    font-size: 65px;
+    font-size: 50px;
     color: #c9a227;
-    margin: 15px 0;
+    margin: 8px 0;
     line-height: 1.2;
 }
 .names-english {
-    font-size: 22px;
+    font-size: 18px;
     letter-spacing: 4px;
     color: #b89a2a;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 .divider {
-    width: 120px;
+    width: 100px;
     height: 2px;
     background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    margin: 20px auto;
+    margin: 10px auto;
 }
 .welcome-text {
-    font-size: 15px;
+    font-size: 14px;
     color: #9e8b6f;
-    max-width: 400px;
-    margin: 20px auto;
-    line-height: 1.8;
+    max-width: 380px;
+    margin: 8px auto;
+    line-height: 1.6;
 }
 
-/* زر كبير وبارز مع وميض */
+/* الزر يظهر مباشرة */
 .btn-open {
     background: #d4af37;
     border: 2px solid #d4af37;
-    padding: 18px 50px;
+    padding: 16px 40px;
     border-radius: 50px;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
-    margin: 25px 0 10px;
+    margin: 12px 0 5px;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
     letter-spacing: 1px;
 }
@@ -179,22 +174,17 @@ body {
     animation: pulseGlow 2s ease-in-out infinite;
 }
 @keyframes pulseGlow {
-    0%,
-    100% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 30px 15px rgba(212, 175, 55, 0.25);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+    50% { box-shadow: 0 0 30px 15px rgba(212, 175, 55, 0.25); }
 }
 
 .date-bottom {
     font-size: 14px;
     color: #b89a2a;
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
-/* صفحة الآية والدعاء */
+/* ====== باقي الأنماط ====== */
 .prayer-screen {
     min-height: 100vh;
     display: flex;
@@ -242,7 +232,6 @@ body {
     cursor: pointer;
 }
 
-/* الصفحة الرئيسية */
 #main {
     display: none;
 }
@@ -480,7 +469,7 @@ footer {
 
 @media (max-width: 600px) {
     .names-arabic {
-        font-size: 48px;
+        font-size: 40px;
     }
     .hero-title {
         font-size: 52px;
@@ -510,6 +499,15 @@ footer {
     .btn-open {
         padding: 14px 30px;
         font-size: 16px;
+    }
+    .ring-icon {
+        font-size: 50px;
+    }
+    .names-arabic {
+        font-size: 40px;
+    }
+    .welcome-text {
+        font-size: 13px;
     }
 }
 </style>
