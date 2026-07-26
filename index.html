@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* ====== RESET & BASE ====== */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* ====== ANIMATIONS ====== */
         [data-aos] {
             opacity: 0;
             transition: all 0.8s cubic-bezier(0.25, 0.95, 0.4, 1.1);
@@ -29,16 +27,29 @@
             opacity: 1;
             transform: translateY(0) !important;
         }
-        [data-aos="fade-up"] { transform: translateY(50px); }
-        [data-aos="fade-down"] { transform: translateY(-50px); }
-        [data-aos="zoom-in"] { transform: scale(0.85); }
-        [data-aos="zoom-in-up"] { transform: scale(0.85) translateY(40px); }
+        [data-aos="fade-up"] {
+            transform: translateY(50px);
+        }
+        [data-aos="fade-down"] {
+            transform: translateY(-50px);
+        }
+        [data-aos="zoom-in"] {
+            transform: scale(0.85);
+        }
+        [data-aos="zoom-in-up"] {
+            transform: scale(0.85) translateY(40px);
+        }
         [data-aos].aos-animate.zoom-in,
-        [data-aos].aos-animate.zoom-in-up { transform: scale(1) translateY(0); }
-        [data-aos="flip-left"] { transform: perspective(400px) rotateY(-25deg); }
-        [data-aos].aos-animate.flip-left { transform: perspective(400px) rotateY(0); }
+        [data-aos].aos-animate.zoom-in-up {
+            transform: scale(1) translateY(0);
+        }
+        [data-aos="flip-left"] {
+            transform: perspective(400px) rotateY(-25deg);
+        }
+        [data-aos].aos-animate.flip-left {
+            transform: perspective(400px) rotateY(0);
+        }
 
-        /* ====== ICONS ====== */
         .detail-icon,
         .ring-icon,
         .heart-icon,
@@ -57,7 +68,7 @@
             text-shadow: 0 0 15px #d4af37;
         }
 
-        /* ====== WELCOME SCREEN ====== */
+        /* WELCOME SCREEN */
         .welcome-screen {
             min-height: 100vh;
             display: flex;
@@ -107,8 +118,13 @@
             text-shadow: 0 0 8px #e8e8e8;
         }
         @keyframes floatRing {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
         .names-arabic {
             font-family: 'Great Vibes', cursive;
@@ -137,7 +153,6 @@
             line-height: 1.6;
         }
 
-        /* ====== BUTTON ====== */
         .btn-open {
             background: #d4af37;
             border: 2px solid #d4af37;
@@ -161,8 +176,13 @@
             animation: pulseGlow 2s ease-in-out infinite;
         }
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
-            50% { box-shadow: 0 0 30px 15px rgba(212, 175, 55, 0.25); }
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 30px 15px rgba(212, 175, 55, 0.25);
+            }
         }
         .date-bottom {
             font-size: 14px;
@@ -170,7 +190,7 @@
             margin-top: 8px;
         }
 
-        /* ====== PRAYER SCREEN ====== */
+        /* PRAYER SCREEN */
         .prayer-screen {
             min-height: 100vh;
             display: flex;
@@ -218,7 +238,7 @@
             cursor: pointer;
         }
 
-        /* ====== MAIN CONTENT ====== */
+        /* MAIN CONTENT */
         #main {
             display: none;
         }
@@ -375,7 +395,7 @@
             border-bottom: 1px dashed #d4af37;
         }
 
-        /* ====== RSVP ====== */
+        /* RSVP - FORM INSIDE PAGE */
         .rsvp-section {
             background: #fefcf8;
             padding: 60px 20px;
@@ -389,6 +409,27 @@
             padding: 40px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
         }
+        .input-group {
+            width: 100%;
+            margin: 12px 0;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e0d6c8;
+            border-radius: 50px;
+            font-family: inherit;
+            background: #fefcf8;
+            font-size: 14px;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
         .btn-send {
             background: #d4af37;
             color: white;
@@ -399,15 +440,52 @@
             cursor: pointer;
             margin-top: 15px;
             transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            font-size: 16px;
         }
         .btn-send:hover {
             background: #b38f1f;
             transform: scale(1.02);
         }
 
-        /* ====== FOOTER ====== */
+        /* Admin Panel */
+        .btn-view {
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #c9a227;
+            padding: 10px 20px;
+            border-radius: 40px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-view:hover {
+            background: #d4af37;
+            color: white;
+        }
+        .admin-panel {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+            display: none;
+        }
+        .admin-panel table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .admin-panel th,
+        .admin-panel td {
+            border: 1px solid #e0d6c8;
+            padding: 10px;
+            text-align: right;
+        }
+        .admin-panel th {
+            background: #d4af37;
+            color: white;
+        }
+
         footer {
             padding: 30px;
             text-align: center;
@@ -415,76 +493,87 @@
             color: #b89a2a;
         }
 
-        /* ====== RESPONSIVE ====== */
         @media (max-width: 600px) {
-            .names-arabic { font-size: 40px; }
-            .hero-title { font-size: 52px; }
-            .time-card { width: 75px; height: 75px; }
-            .time-number { font-size: 24px; }
-            .ayah-text { font-size: 18px; }
-            .dua-text { font-size: 16px; }
-            .timer { font-size: 36px; }
-            .merged-gallery { max-width: 280px; }
-            .detail-icon { font-size: 45px; }
-            .btn-open { padding: 14px 30px; font-size: 16px; }
-            .ring-icon { font-size: 50px; }
-            .welcome-text { font-size: 13px; }
+            .names-arabic {
+                font-size: 40px;
+            }
+            .hero-title {
+                font-size: 52px;
+            }
+            .time-card {
+                width: 75px;
+                height: 75px;
+            }
+            .time-number {
+                font-size: 24px;
+            }
+            .ayah-text {
+                font-size: 18px;
+            }
+            .dua-text {
+                font-size: 16px;
+            }
+            .timer {
+                font-size: 36px;
+            }
+            .merged-gallery {
+                max-width: 280px;
+            }
+            .detail-icon {
+                font-size: 45px;
+            }
+            .btn-open {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
+            .ring-icon {
+                font-size: 50px;
+            }
+            .welcome-text {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================================================ -->
     <!-- WELCOME SCREEN -->
-    <!-- ============================================================ -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang-welcome="ar">🇸🇦 عربي</button>
             <button class="lang-btn" data-lang-welcome="en">🇬🇧 English</button>
             <button class="lang-btn" data-lang-welcome="sv">🇸🇪 Svenska</button>
         </div>
-
         <div class="rings" data-aos="zoom-in" data-aos-duration="800">
             <div class="ring-icon mens-ring">💍</div>
         </div>
-
         <div class="names-arabic" id="welcomeNames" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Nebras & Zena</div>
         <div class="names-english" id="welcomeSub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">ALSHAREF & YOUSEF</div>
         <div class="divider" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"></div>
-
         <p class="welcome-text" id="welcomeText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
         <p class="welcome-text" id="welcomeText2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-
         <button class="btn-open pulse-btn" id="welcomeBtn" onclick="openPrayerPage()" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="600">👇 اضغط لفتح الدعوة</button>
-
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- ============================================================ -->
     <!-- PRAYER SCREEN -->
-    <!-- ============================================================ -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang-prayer="ar">🇸🇦 عربي</button>
             <button class="lang-btn" data-lang-prayer="en">🇬🇧 English</button>
             <button class="lang-btn" data-lang-prayer="sv">🇸🇪 Svenska</button>
         </div>
-
         <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
             <div id="ayahText" class="ayah-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
             <div id="ayahTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet</div>
-
             <div id="duaText" class="dua-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
             <div id="duaTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv</div>
-
             <div class="timer" id="timer" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">10</div>
             <div id="waitingText" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">سيتم نقلك للدعوة بعد...</div>
         </div>
     </div>
 
-    <!-- ============================================================ -->
     <!-- MAIN CONTENT -->
-    <!-- ============================================================ -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" data-lang-main="ar">🇸🇦 عربي</button>
@@ -538,34 +627,57 @@
             </div>
         </div>
 
-        <!-- ====== RSVP - Google Forms ====== -->
+        <!-- RSVP - Form inside page -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
-                <p style="color:#6b5a44; margin-bottom:20px; line-height:1.8;">
-                    لتأكيد حضورك، يرجى تعبئة النموذج التالي:
-                </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpTFq94xhxtvOYRFbGVcnbSLrmBTiwZQLyk8ZjP0CMaNYqow/viewform?usp=header" target="_blank" class="btn-send" style="display:inline-block; text-decoration:none; text-align:center;">
-                    📝 اذهب للنموذج
-                </a>
-                <br><br>
-                <p style="font-size:14px; color:#b89a2a;">
-                    سيتم حفظ ردك في جدول الردود
-                </p>
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="الاسم الكامل *">
+                </div>
+                <div class="input-group">
+                    <input type="number" id="count" placeholder="عدد الأشخاص">
+                </div>
+                <div class="input-group">
+                    <select id="status">
+                        <option value="سأحضر">✅ سأحضر</option>
+                        <option value="لن أحضر">❌ لن أحضر</option>
+                        <option value="متردد">🤔 متردد</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <textarea id="notes" rows="3" placeholder="ملاحظة أو رسالة (اختياري)"></textarea>
+                </div>
+                <button class="btn-send" onclick="saveRSVP()">إرسال التأكيد</button>
+                <button class="btn-view" onclick="showAdminPanel()">📋 عرض الردود</button>
             </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="adminPanel">
+            <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
+            <div style="overflow-x:auto">
+                <table id="responsesTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>الاسم</th>
+                            <th>عدد الأشخاص</th>
+                            <th>الحضور</th>
+                            <th>الملاحظة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="responsesBody"></tbody>
+                </table>
+            </div>
+            <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
         </div>
 
         <footer data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Nebras & Zena ♥ 29.08.2026</footer>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS -->
-    <!-- ============================================================ -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // ============================================================
-        // AOS INIT
-        // ============================================================
         AOS.init({
             duration: 800,
             once: true,
@@ -573,9 +685,7 @@
             easing: 'ease-out-quad'
         });
 
-        // ============================================================
-        // TRANSLATIONS
-        // ============================================================
+        // ========== TRANSLATIONS ==========
         const welcomeTranslations = {
             ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
             en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
@@ -608,109 +718,4 @@
 
         const mainTranslations = {
             ar: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى", countdown: "العد التنازلي لزفافنا", days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني", date: "التاريخ", time: "الوقت", location: "المكان" },
-            en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", date: "Date", time: "Time", location: "Location" },
-            sv: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne", countdown: "Nedräkning till vårt bröllop", days: "Dagar", hours: "Timmar", minutes: "Minuter", seconds: "Sekunder", date: "Datum", time: "Tid", location: "Plats" }
-        };
-
-        // ============================================================
-        // LANGUAGE SWITCH FUNCTIONS
-        // ============================================================
-        function changeWelcomeLanguage(lang) {
-            document.getElementById('welcomeNames').innerHTML = welcomeTranslations[lang].names;
-            document.getElementById('welcomeSub').innerHTML = welcomeTranslations[lang].sub;
-            document.getElementById('welcomeText1').innerHTML = welcomeTranslations[lang].text1;
-            document.getElementById('welcomeText2').innerHTML = welcomeTranslations[lang].text2;
-            document.getElementById('welcomeBtn').innerHTML = welcomeTranslations[lang].btn;
-            document.getElementById('welcomeDate').innerHTML = welcomeTranslations[lang].date;
-        }
-
-        function changePrayerLanguage(lang) {
-            document.getElementById('ayahText').innerHTML = prayerTranslations[lang].ayah;
-            document.getElementById('ayahTrans').innerHTML = prayerTranslations[lang].ayahTrans;
-            document.getElementById('duaText').innerHTML = prayerTranslations[lang].dua;
-            document.getElementById('duaTrans').innerHTML = prayerTranslations[lang].duaTrans;
-            document.getElementById('waitingText').innerHTML = prayerTranslations[lang].waiting;
-        }
-
-        function changeMainLanguage(lang) {
-            document.getElementById('mainTitle').innerHTML = mainTranslations[lang].title;
-            document.getElementById('mainSub').innerHTML = mainTranslations[lang].sub;
-            document.getElementById('quoteText').innerHTML = mainTranslations[lang].quote;
-            document.getElementById('inviteText1').innerHTML = mainTranslations[lang].invite1;
-            document.getElementById('inviteText2').innerHTML = mainTranslations[lang].invite2;
-            document.getElementById('countdownTitle').innerHTML = mainTranslations[lang].countdown;
-            document.getElementById('daysLabel').innerHTML = mainTranslations[lang].days;
-            document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
-            document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
-            document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
-            document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
-            document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
-            document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
-        }
-
-        // ============================================================
-        // LANGUAGE BUTTONS
-        // ============================================================
-        document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
-            btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
-        });
-        document.querySelectorAll('[data-lang-prayer]').forEach(btn => {
-            btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang-prayer')));
-        });
-        document.querySelectorAll('[data-lang-main]').forEach(btn => {
-            btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
-        });
-
-        // ============================================================
-        // DEFAULT LANGUAGE
-        // ============================================================
-        changeWelcomeLanguage('ar');
-        changePrayerLanguage('ar');
-        changeMainLanguage('ar');
-
-        // ============================================================
-        // PAGE NAVIGATION
-        // ============================================================
-        function openPrayerPage() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('prayerScreen').style.display = 'flex';
-            startTimer();
-        }
-
-        function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+            en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "
