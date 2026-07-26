@@ -1,94 +1,521 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nebras & Zena | دعوة زفاف</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a;overflow-x:hidden}
-        [data-aos]{opacity:0;transition:all 0.8s cubic-bezier(0.25,0.95,0.4,1.1)}
-        [data-aos].aos-animate{opacity:1;transform:translateY(0)!important}
-        [data-aos="fade-up"]{transform:translateY(50px)}
-        [data-aos="fade-down"]{transform:translateY(-50px)}
-        [data-aos="zoom-in"]{transform:scale(0.85)}
-        [data-aos="zoom-in-up"]{transform:scale(0.85) translateY(40px)}
-        [data-aos].aos-animate.zoom-in,[data-aos].aos-animate.zoom-in-up{transform:scale(1) translateY(0)}
-        [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
-        [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
-        .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
-        .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
-        .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
-        .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
-        .welcome-lang{position:absolute;top:15px;right:15px;display:flex;gap:8px;z-index:100}
-        .lang-btn{background:transparent;border:1px solid #d4af37;padding:5px 10px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:11px}
-        .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
-        .rings{display:flex;justify-content:center;align-items:center;margin-bottom:8px}
-        .ring-icon{font-size:60px;animation:floatRing 3s ease-in-out infinite}
-        .mens-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8}
-        @keyframes floatRing{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .names-arabic{font-family:'Great Vibes',cursive;font-size:50px;color:#c9a227;margin:8px 0;line-height:1.2}
-        .names-english{font-size:18px;letter-spacing:4px;color:#b89a2a;margin-bottom:8px}
-        .divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:10px auto}
-        .welcome-text{font-size:14px;color:#9e8b6f;max-width:380px;margin:8px auto;line-height:1.6}
-        .btn-open{background:#d4af37;border:2px solid #d4af37;padding:16px 40px;border-radius:50px;color:#fff;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;margin:12px 0 5px;box-shadow:0 4px 15px rgba(212,175,55,0.4);letter-spacing:1px}
-        .btn-open:hover{background:#b89a2a;transform:scale(1.02);box-shadow:0 6px 25px rgba(212,175,55,0.6)}
-        .pulse-btn{animation:pulseGlow 2s ease-in-out infinite}
-        @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.5)}50%{box-shadow:0 0 30px 15px rgba(212,175,55,0.25)}}
-        .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
-        .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
-        .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
-        .ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif;color:#2c2c2c}
-        .ayah-trans{font-size:16px;margin:10px 0;font-style:italic;color:#6b5a44}
-        .dua-text{font-size:20px;line-height:1.8;margin:30px 0 20px;font-family:'Amiri',serif;color:#2c2c2c}
-        .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0;cursor:pointer}
-        #main{display:none}
-        .main-lang{display:flex;justify-content:flex-end;gap:10px;padding:15px 20px}
-        .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:40px 20px 30px;text-align:center}
-        .hero-title{font-family:'Great Vibes',cursive;font-size:75px;color:#c9a227;margin-bottom:15px}
-        .hero-sub{font-size:14px;letter-spacing:5px;color:#b89a2a}
-        .merged-gallery{display:flex;justify-content:center;align-items:center;margin:40px auto;padding:0;max-width:500px}
-        .merged-photo{width:100%;height:auto;display:block;margin:0;padding:0;border:none;box-shadow:none;border-radius:0;mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 98%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 65%,rgba(0,0,0,0) 98%);transition:all 0.4s ease}
-        .merged-photo:hover{mask-image:none;-webkit-mask-image:none;transform:scale(1.01)}
-        .invitation-text{max-width:700px;margin:30px auto;background:white;padding:40px 30px;border-radius:25px;box-shadow:0 12px 30px rgba(0,0,0,0.05);text-align:center}
-        .invitation-text p{font-size:18px;line-height:1.8;color:#6b5a44;margin:15px 0}
-        .quote{font-family:'Great Vibes',cursive;font-size:28px;color:#c9a227;margin:20px 0}
-        .countdown-section{padding:50px 20px;background:#fefcf8;text-align:center}
-        .countdown-title{font-size:28px;color:#c9a227;margin-bottom:35px}
-        .countdown-box{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-        .time-card{background:white;width:110px;height:110px;border-radius:50%;border:2px solid #d4af37;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
-        .time-card:hover{transform:translateY(-8px)}
-        .time-number{font-size:38px;font-weight:700;color:#d4af37}
-        .time-label{font-size:12px;color:#b89a2a;letter-spacing:1px}
-        .details-section{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:50px 20px;max-width:1000px;margin:auto}
-        .detail-card{background:white;border-radius:25px;padding:30px;width:280px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s}
-        .detail-card:hover{transform:translateY(-5px)}
-        .detail-icon{font-size:55px;margin-bottom:15px;display:inline-block;cursor:pointer}
-        .detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
-        .detail-text{color:#7d6b52;line-height:1.6}
-        .map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37}
-        .rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
-        .rsvp-card{max-width:600px;margin:auto;background:white;border-radius:30px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.05)}
-        .input-group{width:100%;margin:12px 0}
-        .input-group input,.input-group select,.input-group textarea{width:100%;padding:14px 18px;border:1px solid #e0d6c8;border-radius:50px;font-family:inherit;background:#fefcf8;font-size:14px}
-        .input-group input:focus,.input-group select:focus,.input-group textarea:focus{outline:none;border-color:#d4af37}
-        .btn-send{background:#d4af37;color:white;border:none;padding:14px 35px;border-radius:50px;font-weight:bold;cursor:pointer;margin-top:15px;transition:0.3s;font-size:16px}
-        .btn-send:hover{background:#b38f1f;transform:scale(1.02)}
-        .btn-view{background:transparent;border:2px solid #d4af37;color:#c9a227;padding:10px 20px;border-radius:40px;margin-top:10px;cursor:pointer;font-size:14px;transition:0.3s}
-        .btn-view:hover{background:#d4af37;color:white}
-        .admin-panel{background:#fff;border-radius:20px;padding:20px;margin-top:30px;text-align:left;display:none;overflow-x:auto}
-        .admin-panel table{width:100%;border-collapse:collapse}
-        .admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right;font-size:14px}
-        .admin-panel th{background:#d4af37;color:white}
-        footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
-        @media(max-width:600px){.names-arabic{font-size:40px}.hero-title{font-size:52px}.time-card{width:75px;height:75px}.time-number{font-size:24px}.ayah-text{font-size:18px}.dua-text{font-size:16px}.timer{font-size:36px}.merged-gallery{max-width:280px}.detail-icon{font-size:45px}.btn-open{padding:14px 30px;font-size:16px}.ring-icon{font-size:50px}.welcome-text{font-size:13px}}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebras & Zena | دعوة زفاف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #faf8f5;
+    font-family: 'Cinzel', serif;
+    color: #4a4a4a;
+    overflow-x: hidden;
+}
+
+/* أنيميشن التمرير */
+[data-aos] {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.95, 0.4, 1.1);
+}
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+[data-aos="fade-up"] {
+    transform: translateY(50px);
+}
+[data-aos="fade-down"] {
+    transform: translateY(-50px);
+}
+[data-aos="zoom-in"] {
+    transform: scale(0.85);
+}
+[data-aos="zoom-in-up"] {
+    transform: scale(0.85) translateY(40px);
+}
+[data-aos].aos-animate.zoom-in,
+[data-aos].aos-animate.zoom-in-up {
+    transform: scale(1) translateY(0);
+}
+[data-aos="flip-left"] {
+    transform: perspective(400px) rotateY(-25deg);
+}
+[data-aos].aos-animate.flip-left {
+    transform: perspective(400px) rotateY(0);
+}
+
+/* أيقونات بارزة */
+.detail-icon,
+.ring-icon,
+.heart-icon,
+.timer {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
+}
+.detail-icon:hover,
+.ring-icon:hover,
+.heart-icon:hover {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+}
+.timer:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px #d4af37;
+}
+
+/* ====== الشاشة الترحيبية ====== */
+.welcome-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff 0%, #faf7f0 100%);
+    position: relative;
+}
+.welcome-lang {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+}
+.lang-btn {
+    background: transparent;
+    border: 1px solid #d4af37;
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: #c9a227;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 11px;
+}
+.lang-btn:hover,
+.lang-btn.active {
+    background: #d4af37;
+    color: white;
+}
+.rings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.ring-icon {
+    font-size: 60px;
+    animation: floatRing 3s ease-in-out infinite;
+}
+.mens-ring {
+    color: #c0c0c0;
+    text-shadow: 0 0 8px #e8e8e8;
+}
+@keyframes floatRing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.names-arabic {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: #c9a227;
+    margin: 8px 0;
+    line-height: 1.2;
+}
+.names-english {
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #b89a2a;
+    margin-bottom: 8px;
+}
+.divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 10px auto;
+}
+.welcome-text {
+    font-size: 14px;
+    color: #9e8b6f;
+    max-width: 380px;
+    margin: 8px auto;
+    line-height: 1.6;
+}
+
+/* زر فتح الدعوة */
+.btn-open {
+    background: #d4af37;
+    border: 2px solid #d4af37;
+    padding: 16px 40px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 12px 0 5px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    letter-spacing: 1px;
+}
+.btn-open:hover {
+    background: #b89a2a;
+    transform: scale(1.02);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+}
+.pulse-btn {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+    50% { box-shadow: 0 0 30px 15px rgba(212, 175, 55, 0.25); }
+}
+
+.date-bottom {
+    font-size: 14px;
+    color: #b89a2a;
+    margin-top: 8px;
+}
+
+/* ====== صفحة القرآن والدعاء ====== */
+.prayer-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #fef7e8, #fff6e5);
+    display: none;
+}
+.prayer-card {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 60px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+.ayah-text {
+    font-size: 24px;
+    line-height: 1.8;
+    margin: 20px 0;
+    font-family: 'Amiri', serif;
+    color: #2c2c2c;
+}
+.ayah-trans {
+    font-size: 16px;
+    margin: 10px 0;
+    font-style: italic;
+    color: #6b5a44;
+}
+.dua-text {
+    font-size: 20px;
+    line-height: 1.8;
+    margin: 30px 0 20px;
+    font-family: 'Amiri', serif;
+    color: #2c2c2c;
+}
+.timer {
+    font-size: 48px;
+    color: #d4af37;
+    font-weight: bold;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+/* ====== الصفحة الرئيسية ====== */
+#main {
+    display: none;
+}
+.main-lang {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 20px;
+}
+.hero-section {
+    background: linear-gradient(135deg, #fff 0%, #faf7f0 100%);
+    padding: 40px 20px 30px;
+    text-align: center;
+}
+.hero-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 75px;
+    color: #c9a227;
+    margin-bottom: 15px;
+}
+.hero-sub {
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: #b89a2a;
+}
+.merged-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    padding: 0;
+    max-width: 500px;
+}
+.merged-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 98%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 98%);
+    transition: all 0.4s ease;
+}
+.merged-photo:hover {
+    mask-image: none;
+    -webkit-mask-image: none;
+    transform: scale(1.01);
+}
+.invitation-text {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+.invitation-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #6b5a44;
+    margin: 15px 0;
+}
+.quote {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #c9a227;
+    margin: 20px 0;
+}
+.countdown-section {
+    padding: 50px 20px;
+    background: #fefcf8;
+    text-align: center;
+}
+.countdown-title {
+    font-size: 28px;
+    color: #c9a227;
+    margin-bottom: 35px;
+}
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.time-card {
+    background: white;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+.time-card:hover {
+    transform: translateY(-8px);
+}
+.time-number {
+    font-size: 38px;
+    font-weight: 700;
+    color: #d4af37;
+}
+.time-label {
+    font-size: 12px;
+    color: #b89a2a;
+    letter-spacing: 1px;
+}
+.details-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+.detail-card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+.detail-card:hover {
+    transform: translateY(-5px);
+}
+.detail-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+    display: inline-block;
+    cursor: pointer;
+}
+.detail-title {
+    font-size: 20px;
+    color: #c9a227;
+    margin-bottom: 10px;
+}
+.detail-text {
+    color: #7d6b52;
+    line-height: 1.6;
+}
+.map-link {
+    color: #c9a227;
+    text-decoration: none;
+    border-bottom: 1px dashed #d4af37;
+}
+.rsvp-section {
+    background: #fefcf8;
+    padding: 60px 20px;
+    text-align: center;
+}
+.rsvp-card {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+.input-group {
+    width: 100%;
+    margin: 12px 0;
+}
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e0d6c8;
+    border-radius: 50px;
+    font-family: inherit;
+    background: #fefcf8;
+}
+.btn-send {
+    background: #d4af37;
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.btn-send:hover {
+    background: #b38f1f;
+    transform: scale(1.02);
+}
+.btn-view {
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: #c9a227;
+    padding: 10px 20px;
+    border-radius: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.admin-panel {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: left;
+    display: none;
+}
+.admin-panel table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-panel th,
+.admin-panel td {
+    border: 1px solid #e0d6c8;
+    padding: 10px;
+    text-align: right;
+}
+.admin-panel th {
+    background: #d4af37;
+    color: white;
+}
+footer {
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #b89a2a;
+}
+
+@media (max-width: 600px) {
+    .names-arabic {
+        font-size: 40px;
+    }
+    .hero-title {
+        font-size: 52px;
+    }
+    .time-card {
+        width: 75px;
+        height: 75px;
+    }
+    .time-number {
+        font-size: 24px;
+    }
+    .ayah-text {
+        font-size: 18px;
+    }
+    .dua-text {
+        font-size: 16px;
+    }
+    .timer {
+        font-size: 36px;
+    }
+    .merged-gallery {
+        max-width: 280px;
+    }
+    .detail-icon {
+        font-size: 45px;
+    }
+    .btn-open {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+    .ring-icon {
+        font-size: 50px;
+    }
+    .names-arabic {
+        font-size: 40px;
+    }
+    .welcome-text {
+        font-size: 13px;
+    }
+}
+</style>
 </head>
 <body>
 
-    <!-- WELCOME SCREEN -->
+    <!-- الشاشة الترحيبية -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang-welcome="ar">🇸🇦 عربي</button>
@@ -107,7 +534,7 @@
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- PRAYER SCREEN -->
+    <!-- صفحة القرآن والدعاء -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang-prayer="ar">🇸🇦 عربي</button>
@@ -124,14 +551,13 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- الصفحة الرئيسية -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" data-lang-main="ar">🇸🇦 عربي</button>
             <button class="lang-btn" data-lang-main="en">🇬🇧 English</button>
             <button class="lang-btn" data-lang-main="sv">🇸🇪 Svenska</button>
         </div>
-
         <div class="hero-section" data-aos="fade-down" data-aos-duration="800">
             <div class="hero-title" id="mainTitle" data-aos="fade-down" data-aos-duration="800" data-aos-delay="100">Nebras & Zena</div>
             <div class="hero-sub" id="mainSub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Together With Their Families</div>
@@ -159,35 +585,16 @@
         </div>
 
         <div class="details-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="100">
-                <div class="detail-icon">📅</div>
-                <div class="detail-title" id="dateTitle">التاريخ</div>
-                <div class="detail-text">29 August 2026</div>
-            </div>
-            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200">
-                <div class="detail-icon">🕕</div>
-                <div class="detail-title" id="timeTitle">الوقت</div>
-                <div class="detail-text">الساعة 18:00</div>
-            </div>
-            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300">
-                <div class="detail-icon">📍</div>
-                <div class="detail-title" id="locationTitle">المكان</div>
-                <div class="detail-text">
-                    <a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a>
-                </div>
-            </div>
+            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="100"><div class="detail-icon">📅</div><div class="detail-title" id="dateTitle">التاريخ</div><div class="detail-text">29 August 2026</div></div>
+            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="200"><div class="detail-icon">🕕</div><div class="detail-title" id="timeTitle">الوقت</div><div class="detail-text">الساعة 18:00</div></div>
+            <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
-        <!-- RSVP -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
-                <div class="input-group">
-                    <input type="text" id="name" placeholder="الاسم الكامل *">
-                </div>
-                <div class="input-group">
-                    <input type="number" id="count" placeholder="عدد الأشخاص">
-                </div>
+                <div class="input-group"><input type="text" id="name" placeholder="الاسم الكامل *"></div>
+                <div class="input-group"><input type="number" id="count" placeholder="عدد الأشخاص"></div>
                 <div class="input-group">
                     <select id="status">
                         <option value="سأحضر">✅ سأحضر</option>
@@ -195,15 +602,12 @@
                         <option value="متردد">🤔 متردد</option>
                     </select>
                 </div>
-                <div class="input-group">
-                    <textarea id="notes" rows="3" placeholder="ملاحظة أو رسالة (اختياري)"></textarea>
-                </div>
+                <div class="input-group"><textarea id="notes" rows="3" placeholder="ملاحظة أو رسالة (اختياري)"></textarea></div>
                 <button class="btn-send" onclick="saveRSVP()">إرسال التأكيد</button>
                 <button class="btn-view" onclick="showAdminPanel()">📋 عرض الردود</button>
             </div>
         </div>
 
-        <!-- Admin Panel -->
         <div class="admin-panel" id="adminPanel">
             <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
             <div style="overflow-x:auto">
@@ -224,7 +628,7 @@
     <script>
         AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
 
-        // ========== TRANSLATIONS ==========
+        // ========== ترجمات ==========
         const welcomeTranslations = {
             ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
             en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
@@ -308,7 +712,60 @@
         changePrayerLanguage('ar');
         changeMainLanguage('ar');
 
-        // ========== PAGE FUNCTIONS ==========
+        // ========== الردود ==========
+        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+        function saveRSVP() {
+            let name = document.getElementById('name').value.trim();
+            let count = document.getElementById('count').value;
+            let status = document.getElementById('status').value;
+            let notes = document.getElementById('notes').value;
+            if (name === "") { alert("❌ الرجاء إدخال اسمك"); return; }
+            let newResponse = { id: Date.now(), name: name, count: count || "غير محدد", status: status, notes: notes || "لا يوجد", date: new Date().toLocaleString('ar-EG') };
+            responses.push(newResponse);
+            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+            document.getElementById('name').value = "";
+            document.getElementById('count').value = "";
+            document.getElementById('notes').value = "";
+            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+            let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A👤 *الاسم:* ${name}%0A👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A✅ *الحضور:* ${status}%0A${notes ? `📝 *ملاحظة:* ${notes}` : ''}`;
+            window.open(`https://wa.me/46760801562?text=${message}`, '_blank');
+        }
+
+        function showAdminPanel() {
+            let panel = document.getElementById('adminPanel');
+            if (panel.style.display === 'none' || panel.style.display === '') { loadResponsesTable();
+                panel.style.display = 'block'; } else panel.style.display = 'none';
+        }
+
+        function loadResponsesTable() {
+            let tbody = document.getElementById('responsesBody');
+            tbody.innerHTML = "";
+            if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>"; return; }
+            for (let i = 0; i < responses.length; i++) {
+                let r = responses[i];
+                let row = tbody.insertRow();
+                row.insertCell(0).innerHTML = i + 1;
+                row.insertCell(1).innerHTML = r.name;
+                row.insertCell(2).innerHTML = r.count;
+                row.insertCell(3).innerHTML = r.status;
+                row.insertCell(4).innerHTML = r.notes;
+                row.insertCell(5).innerHTML = r.date;
+            }
+        }
+
+        function exportToCSV() {
+            if (responses.length === 0) { alert("لا توجد ردود للتصدير"); return; }
+            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+            for (let r of responses) csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+
+        // ========== الانتقال بين الصفحات ==========
         function openPrayerPage() {
             document.getElementById('welcomeScreen').style.display = 'none';
             document.getElementById('prayerScreen').style.display = 'flex';
@@ -344,84 +801,6 @@
                     document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
                 }
             }, 1000);
-        }
-
-        // ========== RSVP ==========
-        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
-
-        function saveRSVP() {
-            let name = document.getElementById('name').value.trim();
-            let count = document.getElementById('count').value;
-            let status = document.getElementById('status').value;
-            let notes = document.getElementById('notes').value;
-
-            if (name === "") {
-                alert("❌ الرجاء إدخال اسمك");
-                return;
-            }
-
-            let newResponse = {
-                id: Date.now(),
-                name: name,
-                count: count || "غير محدد",
-                status: status,
-                notes: notes || "لا يوجد",
-                date: new Date().toLocaleString('ar-EG')
-            };
-
-            responses.push(newResponse);
-            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
-
-            document.getElementById('name').value = "";
-            document.getElementById('count').value = "";
-            document.getElementById('notes').value = "";
-
-            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
-        }
-
-        function showAdminPanel() {
-            let panel = document.getElementById('adminPanel');
-            if (panel.style.display === 'none' || panel.style.display === '') {
-                loadResponsesTable();
-                panel.style.display = 'block';
-            } else {
-                panel.style.display = 'none';
-            }
-        }
-
-        function loadResponsesTable() {
-            let tbody = document.getElementById('responsesBody');
-            tbody.innerHTML = "";
-            if (responses.length === 0) {
-                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
-                return;
-            }
-            for (let i = 0; i < responses.length; i++) {
-                let r = responses[i];
-                let row = tbody.insertRow();
-                row.insertCell(0).innerHTML = i + 1;
-                row.insertCell(1).innerHTML = r.name;
-                row.insertCell(2).innerHTML = r.count;
-                row.insertCell(3).innerHTML = r.status;
-                row.insertCell(4).innerHTML = r.notes;
-                row.insertCell(5).innerHTML = r.date;
-            }
-        }
-
-        function exportToCSV() {
-            if (responses.length === 0) {
-                alert("لا توجد ردود للتصدير");
-                return;
-            }
-            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
-            for (let r of responses) {
-                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
-            }
-            let blob = new Blob([csv], { type: 'text/csv' });
-            let link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
-            link.click();
         }
     </script>
 </body>
