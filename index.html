@@ -68,7 +68,6 @@ body {
     text-shadow: 0 0 15px #d4af37;
 }
 
-/* ====== الشاشة الترحيبية ====== */
 .welcome-screen {
     min-height: 100vh;
     display: flex;
@@ -181,7 +180,6 @@ body {
     margin-top: 8px;
 }
 
-/* ====== صفحة القرآن والدعاء ====== */
 .prayer-screen {
     min-height: 100vh;
     display: flex;
@@ -229,7 +227,6 @@ body {
     cursor: pointer;
 }
 
-/* ====== الصفحة الرئيسية ====== */
 #main {
     display: none;
 }
@@ -524,7 +521,7 @@ footer {
                 <p style="color:#6b5a44; margin-bottom:20px; line-height:1.8">
                     لتأكيد حضورك، يرجى تعبئة النموذج التالي:
                 </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWECsJb8muD5OryqYuh3G52zUqoHg6qySHH78XF3dMRqfjdA/viewform?usp=header" target="_blank" class="btn-send" style="display:inline-block; text-decoration:none; text-align:center;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpTFq94xhxtvOYRFbGVcnbSLrmBTiwZQLyk8ZjP0CMaNYqow/viewform?usp=header" target="_blank" class="btn-send" style="display:inline-block; text-decoration:none; text-align:center;">
                     📝 اذهب للنموذج
                 </a>
                 <br><br>
@@ -635,33 +632,4 @@ footer {
         function startTimer() {
             let secondsLeft = 10;
             let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+            timerEl.innerText =
