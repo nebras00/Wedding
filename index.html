@@ -19,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* أنيميشن التمرير */
 [data-aos] {
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.25, 0.95, 0.4, 1.1);
@@ -51,7 +50,6 @@ body {
     transform: perspective(400px) rotateY(0);
 }
 
-/* أيقونات بارزة */
 .detail-icon,
 .ring-icon,
 .heart-icon,
@@ -150,7 +148,6 @@ body {
     line-height: 1.6;
 }
 
-/* زر فتح الدعوة */
 .btn-open {
     background: #d4af37;
     border: 2px solid #d4af37;
@@ -388,6 +385,8 @@ body {
     text-decoration: none;
     border-bottom: 1px dashed #d4af37;
 }
+
+/* ====== نموذج Google Forms ====== */
 .rsvp-section {
     background: #fefcf8;
     padding: 60px 20px;
@@ -401,21 +400,7 @@ body {
     padding: 40px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
 }
-.input-group {
-    width: 100%;
-    margin: 12px 0;
-}
-.input-group input,
-.input-group select,
-.input-group textarea {
-    width: 100%;
-    padding: 14px 18px;
-    border: 1px solid #e0d6c8;
-    border-radius: 50px;
-    font-family: inherit;
-    background: #fefcf8;
-}
-.btn-send {
+.rsvp-card .btn-send {
     background: #d4af37;
     color: white;
     border: none;
@@ -425,41 +410,12 @@ body {
     cursor: pointer;
     margin-top: 15px;
     transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
-.btn-send:hover {
+.rsvp-card .btn-send:hover {
     background: #b38f1f;
     transform: scale(1.02);
-}
-.btn-view {
-    background: transparent;
-    border: 2px solid #d4af37;
-    color: #c9a227;
-    padding: 10px 20px;
-    border-radius: 40px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.admin-panel {
-    background: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 30px;
-    text-align: left;
-    display: none;
-}
-.admin-panel table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.admin-panel th,
-.admin-panel td {
-    border: 1px solid #e0d6c8;
-    padding: 10px;
-    text-align: right;
-}
-.admin-panel th {
-    background: #d4af37;
-    color: white;
 }
 footer {
     padding: 30px;
@@ -469,47 +425,18 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .names-arabic {
-        font-size: 40px;
-    }
-    .hero-title {
-        font-size: 52px;
-    }
-    .time-card {
-        width: 75px;
-        height: 75px;
-    }
-    .time-number {
-        font-size: 24px;
-    }
-    .ayah-text {
-        font-size: 18px;
-    }
-    .dua-text {
-        font-size: 16px;
-    }
-    .timer {
-        font-size: 36px;
-    }
-    .merged-gallery {
-        max-width: 280px;
-    }
-    .detail-icon {
-        font-size: 45px;
-    }
-    .btn-open {
-        padding: 14px 30px;
-        font-size: 16px;
-    }
-    .ring-icon {
-        font-size: 50px;
-    }
-    .names-arabic {
-        font-size: 40px;
-    }
-    .welcome-text {
-        font-size: 13px;
-    }
+    .names-arabic { font-size: 40px; }
+    .hero-title { font-size: 52px; }
+    .time-card { width: 75px; height: 75px; }
+    .time-number { font-size: 24px; }
+    .ayah-text { font-size: 18px; }
+    .dua-text { font-size: 16px; }
+    .timer { font-size: 36px; }
+    .merged-gallery { max-width: 280px; }
+    .detail-icon { font-size: 45px; }
+    .btn-open { padding: 14px 30px; font-size: 16px; }
+    .ring-icon { font-size: 50px; }
+    .welcome-text { font-size: 13px; }
 }
 </style>
 </head>
@@ -590,35 +517,21 @@ footer {
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
+        <!-- نموذج Google Forms -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
-                <div class="input-group"><input type="text" id="name" placeholder="الاسم الكامل *"></div>
-                <div class="input-group"><input type="number" id="count" placeholder="عدد الأشخاص"></div>
-                <div class="input-group">
-                    <select id="status">
-                        <option value="سأحضر">✅ سأحضر</option>
-                        <option value="لن أحضر">❌ لن أحضر</option>
-                        <option value="متردد">🤔 متردد</option>
-                    </select>
-                </div>
-                <div class="input-group"><textarea id="notes" rows="3" placeholder="ملاحظة أو رسالة (اختياري)"></textarea></div>
-                <button class="btn-send" onclick="saveRSVP()">إرسال التأكيد</button>
-                <button class="btn-view" onclick="showAdminPanel()">📋 عرض الردود</button>
+                <p style="color:#6b5a44; margin-bottom:20px; line-height:1.8">
+                    لتأكيد حضورك، يرجى تعبئة النموذج التالي:
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWECsJb8muD5OryqYuh3G52zUqoHg6qySHH78XF3dMRqfjdA/viewform?usp=header" target="_blank" class="btn-send" style="display:inline-block; text-decoration:none; text-align:center;">
+                    📝 اذهب للنموذج
+                </a>
+                <br><br>
+                <p style="font-size:14px; color:#b89a2a;">
+                    سيتم حفظ ردك في جدول الردود
+                </p>
             </div>
-        </div>
-
-        <div class="admin-panel" id="adminPanel">
-            <h3 style="color:#c9a227; text-align:center">📋 الردود المسجلة</h3>
-            <div style="overflow-x:auto">
-                <table id="responsesTable">
-                    <thead>
-                        <tr><th>#</th><th>الاسم</th><th>عدد الأشخاص</th><th>الحضور</th><th>الملاحظة</th><th>التاريخ</th></tr>
-                    </thead>
-                    <tbody id="responsesBody"></tbody>
-                </table>
-            </div>
-            <button class="btn-view" style="margin-top:15px" onclick="exportToCSV()">📥 تحميل كـ Excel</button>
         </div>
 
         <footer data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Nebras & Zena ♥ 29.08.2026</footer>
@@ -711,59 +624,6 @@ footer {
         changeWelcomeLanguage('ar');
         changePrayerLanguage('ar');
         changeMainLanguage('ar');
-
-        // ========== الردود ==========
-        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
-
-        function saveRSVP() {
-            let name = document.getElementById('name').value.trim();
-            let count = document.getElementById('count').value;
-            let status = document.getElementById('status').value;
-            let notes = document.getElementById('notes').value;
-            if (name === "") { alert("❌ الرجاء إدخال اسمك"); return; }
-            let newResponse = { id: Date.now(), name: name, count: count || "غير محدد", status: status, notes: notes || "لا يوجد", date: new Date().toLocaleString('ar-EG') };
-            responses.push(newResponse);
-            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
-            document.getElementById('name').value = "";
-            document.getElementById('count').value = "";
-            document.getElementById('notes').value = "";
-            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
-            let message = `🎊 *تأكيد حضور زفاف Nebras & Zena* 🎊%0A%0A👤 *الاسم:* ${name}%0A👥 *عدد الأشخاص:* ${count || "غير محدد"}%0A✅ *الحضور:* ${status}%0A${notes ? `📝 *ملاحظة:* ${notes}` : ''}`;
-            window.open(`https://wa.me/46760801562?text=${message}`, '_blank');
-        }
-
-        function showAdminPanel() {
-            let panel = document.getElementById('adminPanel');
-            if (panel.style.display === 'none' || panel.style.display === '') { loadResponsesTable();
-                panel.style.display = 'block'; } else panel.style.display = 'none';
-        }
-
-        function loadResponsesTable() {
-            let tbody = document.getElementById('responsesBody');
-            tbody.innerHTML = "";
-            if (responses.length === 0) { tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>"; return; }
-            for (let i = 0; i < responses.length; i++) {
-                let r = responses[i];
-                let row = tbody.insertRow();
-                row.insertCell(0).innerHTML = i + 1;
-                row.insertCell(1).innerHTML = r.name;
-                row.insertCell(2).innerHTML = r.count;
-                row.insertCell(3).innerHTML = r.status;
-                row.insertCell(4).innerHTML = r.notes;
-                row.insertCell(5).innerHTML = r.date;
-            }
-        }
-
-        function exportToCSV() {
-            if (responses.length === 0) { alert("لا توجد ردود للتصدير"); return; }
-            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
-            for (let r of responses) csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
-            let blob = new Blob([csv], { type: 'text/csv' });
-            let link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
-            link.click();
-        }
 
         // ========== الانتقال بين الصفحات ==========
         function openPrayerPage() {
