@@ -178,7 +178,7 @@
             </div>
         </div>
 
-        <!-- RSVP - Form inside page -->
+        <!-- RSVP -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
@@ -301,4 +301,128 @@
             btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang-prayer')));
         });
         document.querySelectorAll('[data-lang-main]').forEach(btn => {
-            btn.addEventListener('click', () => changeMainLanguage(btn.get
+            btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
+        });
+
+        changeWelcomeLanguage('ar');
+        changePrayerLanguage('ar');
+        changeMainLanguage('ar');
+
+        // ========== PAGE FUNCTIONS ==========
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
+
+        // ========== RSVP ==========
+        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+        function saveRSVP() {
+            let name = document.getElementById('name').value.trim();
+            let count = document.getElementById('count').value;
+            let status = document.getElementById('status').value;
+            let notes = document.getElementById('notes').value;
+
+            if (name === "") {
+                alert("❌ الرجاء إدخال اسمك");
+                return;
+            }
+
+            let newResponse = {
+                id: Date.now(),
+                name: name,
+                count: count || "غير محدد",
+                status: status,
+                notes: notes || "لا يوجد",
+                date: new Date().toLocaleString('ar-EG')
+            };
+
+            responses.push(newResponse);
+            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+
+            document.getElementById('name').value = "";
+            document.getElementById('count').value = "";
+            document.getElementById('notes').value = "";
+
+            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+        }
+
+        function showAdminPanel() {
+            let panel = document.getElementById('adminPanel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                loadResponsesTable();
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function loadResponsesTable() {
+            let tbody = document.getElementById('responsesBody');
+            tbody.innerHTML = "";
+            if (responses.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+                return;
+            }
+            for (let i = 0; i < responses.length; i++) {
+                let r = responses[i];
+                let row = tbody.insertRow();
+                row.insertCell(0).innerHTML = i + 1;
+                row.insertCell(1).innerHTML = r.name;
+                row.insertCell(2).innerHTML = r.count;
+                row.insertCell(3).innerHTML = r.status;
+                row.insertCell(4).innerHTML = r.notes;
+                row.insertCell(5).innerHTML = r.date;
+            }
+        }
+
+        function exportToCSV() {
+            if (responses.length === 0) {
+                alert("لا توجد ردود للتصدير");
+                return;
+            }
+            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+            for (let r of responses) {
+                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+            }
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+    </script>
+</body>
+</html>
