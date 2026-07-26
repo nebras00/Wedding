@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -637,5 +636,81 @@
             document.getElementById('mainTitle').innerHTML = mainTranslations[lang].title;
             document.getElementById('mainSub').innerHTML = mainTranslations[lang].sub;
             document.getElementById('quoteText').innerHTML = mainTranslations[lang].quote;
-            document.getElementById('inv
-```
+            document.getElementById('inviteText1').innerHTML = mainTranslations[lang].invite1;
+            document.getElementById('inviteText2').innerHTML = mainTranslations[lang].invite2;
+            document.getElementById('countdownTitle').innerHTML = mainTranslations[lang].countdown;
+            document.getElementById('daysLabel').innerHTML = mainTranslations[lang].days;
+            document.getElementById('hoursLabel').innerHTML = mainTranslations[lang].hours;
+            document.getElementById('minutesLabel').innerHTML = mainTranslations[lang].minutes;
+            document.getElementById('secondsLabel').innerHTML = mainTranslations[lang].seconds;
+            document.getElementById('dateTitle').innerHTML = mainTranslations[lang].date;
+            document.getElementById('timeTitle').innerHTML = mainTranslations[lang].time;
+            document.getElementById('locationTitle').innerHTML = mainTranslations[lang].location;
+        }
+
+        // ============================================================
+        // LANGUAGE BUTTONS
+        // ============================================================
+        document.querySelectorAll('[data-lang-welcome]').forEach(btn => {
+            btn.addEventListener('click', () => changeWelcomeLanguage(btn.getAttribute('data-lang-welcome')));
+        });
+        document.querySelectorAll('[data-lang-prayer]').forEach(btn => {
+            btn.addEventListener('click', () => changePrayerLanguage(btn.getAttribute('data-lang-prayer')));
+        });
+        document.querySelectorAll('[data-lang-main]').forEach(btn => {
+            btn.addEventListener('click', () => changeMainLanguage(btn.getAttribute('data-lang-main')));
+        });
+
+        // ============================================================
+        // DEFAULT LANGUAGE
+        // ============================================================
+        changeWelcomeLanguage('ar');
+        changePrayerLanguage('ar');
+        changeMainLanguage('ar');
+
+        // ============================================================
+        // PAGE NAVIGATION
+        // ============================================================
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
