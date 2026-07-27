@@ -136,25 +136,26 @@
     </div>
 
     <!-- ===== PRAYER SCREEN (بدون تكرار) ===== -->
-    <div class="prayer-screen" id="prayerScreen">
-        <div class="welcome-lang">
-            <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
-            <button class="lang-btn" onclick="changeLang('prayer','en')">🇬🇧 English</button>
-            <button class="lang-btn" onclick="changeLang('prayer','sv')">🇸🇪 Svenska</button>
-        </div>
-        <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
-            <!-- الآية القرآنية -->
-            <div id="ayahText" class="ayah-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
-            <div id="ayahTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet</div>
-
-            <!-- الدعاء (مرة واحدة فقط) -->
-            <div id="duaText" class="dua-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
-            <div id="duaTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv</div>
-
-            <div class="timer" id="timer" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">10</div>
-            <div id="waitingText" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">سيتم نقلك للدعوة بعد...</div>
-        </div>
+    <!-- صفحة القرآن والدعاء (بدون تكرار) -->
+<div class="prayer-screen" id="prayerScreen">
+    <div class="welcome-lang">
+        <button class="lang-btn" data-lang="prayer-ar">🇸🇦 عربي</button>
+        <button class="lang-btn" data-lang="prayer-en">🇬🇧 English</button>
+        <button class="lang-btn" data-lang="prayer-sv">🇸🇪 Svenska</button>
     </div>
+    <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
+        <!-- الآية القرآنية -->
+        <div id="ayahText" class="ayah-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+        <div id="ayahTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet</div>
+
+        <!-- الدعاء (مرة واحدة فقط، بدون تكرار) -->
+        <div id="duaText" class="dua-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
+        <div id="duaTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv</div>
+
+        <div class="timer" id="timer" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">10</div>
+        <div id="waitingText" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">سيتم نقلك للدعوة بعد...</div>
+    </div>
+</div>
 
     <!-- ===== MAIN CONTENT ===== -->
     <div id="main">
