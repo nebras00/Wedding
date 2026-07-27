@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <!-- WELCOME SCREEN -->
+    <!-- ===== WELCOME SCREEN ===== -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('welcome','ar')">🇸🇦 عربي</button>
@@ -107,7 +107,7 @@
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- PRAYER SCREEN -->
+    <!-- ===== PRAYER SCREEN ===== -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" onclick="changeLang('main','ar')">🇸🇦 عربي</button>
@@ -141,7 +141,6 @@
             <img class="merged-photo" src="IMG_9826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
         </div>
 
-        <!-- النص الترحيبي الجديد -->
         <div class="invitation-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <div class="quote" id="quoteText" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">"Your presence is our greatest gift"</div>
             <p id="inviteText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
@@ -165,7 +164,7 @@
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
-        <!-- RSVP -->
+        <!-- ===== RSVP ===== -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
@@ -292,4 +291,43 @@
                 document.getElementById('welcomeDate').innerHTML = translations.welcome[lang].date;
             } else if (section === 'prayer') {
                 document.getElementById('ayahText').innerHTML = translations.prayer[lang].ayah;
-                document.getElementById('ayahTrans').innerHTML = translations.prayer[lang].ayah
+                document.getElementById('ayahTrans').innerHTML = translations.prayer[lang].ayahTrans;
+                document.getElementById('duaText').innerHTML = translations.prayer[lang].dua;
+                document.getElementById('duaTrans').innerHTML = translations.prayer[lang].duaTrans;
+                document.getElementById('waitingText').innerHTML = translations.prayer[lang].waiting;
+            } else if (section === 'main') {
+                document.getElementById('mainTitle').innerHTML = translations.main[lang].title;
+                document.getElementById('mainSub').innerHTML = translations.main[lang].sub;
+                document.getElementById('quoteText').innerHTML = translations.main[lang].quote;
+                document.getElementById('inviteText1').innerHTML = translations.main[lang].invite1;
+                document.getElementById('inviteText2').innerHTML = translations.main[lang].invite2;
+                document.getElementById('countdownTitle').innerHTML = translations.main[lang].countdown;
+                document.getElementById('daysLabel').innerHTML = translations.main[lang].days;
+                document.getElementById('hoursLabel').innerHTML = translations.main[lang].hours;
+                document.getElementById('minutesLabel').innerHTML = translations.main[lang].minutes;
+                document.getElementById('secondsLabel').innerHTML = translations.main[lang].seconds;
+                document.getElementById('dateTitle').innerHTML = translations.main[lang].date;
+                document.getElementById('timeTitle').innerHTML = translations.main[lang].time;
+                document.getElementById('locationTitle').innerHTML = translations.main[lang].location;
+            }
+        }
+
+        // ===== PAGE FUNCTIONS =====
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh
