@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <!-- ===== WELCOME SCREEN ===== -->
+    <!-- WELCOME SCREEN -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang="welcome-ar">🇸🇦 عربي</button>
@@ -107,7 +107,7 @@
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- ===== PRAYER SCREEN ===== -->
+    <!-- PRAYER SCREEN (تم حذف السطر الذهبي المكرر) -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" data-lang="prayer-ar">🇸🇦 عربي</button>
@@ -115,16 +115,21 @@
             <button class="lang-btn" data-lang="prayer-sv">🇸🇪 Svenska</button>
         </div>
         <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
+            <!-- الآية القرآنية باللون الأسود -->
             <div id="ayahText" class="ayah-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
             <div id="ayahTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet</div>
+
+            <!-- الدعاء باللون الأسود (مرة واحدة فقط، بدون السطر الذهبي المكرر) -->
             <div id="duaText" class="dua-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
             <div id="duaTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv</div>
+
+            <!-- المؤقت -->
             <div class="timer" id="timer" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">10</div>
             <div id="waitingText" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">سيتم نقلك للدعوة بعد...</div>
         </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- MAIN CONTENT -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" data-lang="main-ar">🇸🇦 عربي</button>
@@ -164,7 +169,7 @@
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
-        <!-- ===== RSVP ===== -->
+        <!-- RSVP -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
@@ -276,136 +281,4 @@
         document.querySelectorAll('[data-lang]').forEach(btn => {
             btn.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
-                if (lang.startsWith('welcome-')) {
-                    changeWelcomeLanguage(lang.replace('welcome-', ''));
-                } else if (lang.startsWith('prayer-')) {
-                    changePrayerLanguage(lang.replace('prayer-', ''));
-                } else if (lang.startsWith('main-')) {
-                    changeMainLanguage(lang.replace('main-', ''));
-                }
-            });
-        });
-
-        // ===== DEFAULT LANGUAGE =====
-        changeWelcomeLanguage('ar');
-        changePrayerLanguage('ar');
-        changeMainLanguage('ar');
-
-        // ===== PAGE FUNCTIONS =====
-        function openPrayerPage() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('prayerScreen').style.display = 'flex';
-            startTimer();
-        }
-
-        function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
-
-        // ===== RSVP =====
-        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
-
-        function saveRSVP() {
-            let name = document.getElementById('name').value.trim();
-            let count = document.getElementById('count').value;
-            let status = document.getElementById('status').value;
-            let notes = document.getElementById('notes').value;
-
-            if (name === "") {
-                alert("❌ الرجاء إدخال اسمك");
-                return;
-            }
-
-            let newResponse = {
-                id: Date.now(),
-                name: name,
-                count: count || "غير محدد",
-                status: status,
-                notes: notes || "لا يوجد",
-                date: new Date().toLocaleString('ar-EG')
-            };
-
-            responses.push(newResponse);
-            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
-
-            document.getElementById('name').value = "";
-            document.getElementById('count').value = "";
-            document.getElementById('notes').value = "";
-
-            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
-        }
-
-        function showAdminPanel() {
-            let panel = document.getElementById('adminPanel');
-            if (panel.style.display === 'none' || panel.style.display === '') {
-                loadResponsesTable();
-                panel.style.display = 'block';
-            } else {
-                panel.style.display = 'none';
-            }
-        }
-
-        function loadResponsesTable() {
-            let tbody = document.getElementById('responsesBody');
-            tbody.innerHTML = "";
-            if (responses.length === 0) {
-                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
-                return;
-            }
-            for (let i = 0; i < responses.length; i++) {
-                let r = responses[i];
-                let row = tbody.insertRow();
-                row.insertCell(0).innerHTML = i + 1;
-                row.insertCell(1).innerHTML = r.name;
-                row.insertCell(2).innerHTML = r.count;
-                row.insertCell(3).innerHTML = r.status;
-                row.insertCell(4).innerHTML = r.notes;
-                row.insertCell(5).innerHTML = r.date;
-            }
-        }
-
-        function exportToCSV() {
-            if (responses.length === 0) {
-                alert("لا توجد ردود للتصدير");
-                return;
-            }
-            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
-            for (let r of responses) {
-                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
-            }
-            let blob = new Blob([csv], { type: 'text/csv' });
-            let link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
-            link.click();
-        }
-    </script>
-</body>
-</html>
+                if (lang.startsWith('welcome-'))
