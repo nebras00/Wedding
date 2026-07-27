@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <!-- ===== WELCOME SCREEN ===== -->
+    <!-- WELCOME SCREEN -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('welcome','ar')">🇸🇦 عربي</button>
@@ -107,7 +107,7 @@
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- ===== PRAYER SCREEN ===== -->
+    <!-- PRAYER SCREEN -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- MAIN CONTENT -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" onclick="changeLang('main','ar')">🇸🇦 عربي</button>
@@ -164,7 +164,7 @@
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
-        <!-- ===== RSVP ===== -->
+        <!-- RSVP -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
@@ -202,7 +202,7 @@
         AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
 
         // ===== TRANSLATIONS =====
-        const translations = {
+        var translations = {
             welcome: {
                 ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
                 en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
@@ -320,14 +320,16 @@
         }
 
         function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
+            var secondsLeft = 10;
+            var timerEl = document.getElementById('timer');
             timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
+            var timerInterval = setInterval(function() {
                 secondsLeft--;
                 timerEl.innerText = secondsLeft;
                 if (secondsLeft <= 0) {
                     clearInterval(timerInterval);
                     document.getElementById('prayerScreen').style.display = 'none';
                     document.getElementById('main').style.display = 'block';
-                    AOS.refresh
+                    AOS.refresh();
+                    startCountdown();
+                }
