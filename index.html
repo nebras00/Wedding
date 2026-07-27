@@ -7,8 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* ===== RESET ===== */
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a;overflow-x:hidden}
+        
+        /* ===== AOS ===== */
         [data-aos]{opacity:0;transition:all 0.8s cubic-bezier(0.25,0.95,0.4,1.1)}
         [data-aos].aos-animate{opacity:1;transform:translateY(0)!important}
         [data-aos="fade-up"]{transform:translateY(50px)}
@@ -18,9 +21,13 @@
         [data-aos].aos-animate.zoom-in,[data-aos].aos-animate.zoom-in-up{transform:scale(1) translateY(0)}
         [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
         [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
+        
+        /* ===== ICONS ===== */
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
+        
+        /* ===== WELCOME SCREEN ===== */
         .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
         .welcome-lang{position:absolute;top:15px;right:15px;display:flex;gap:8px;z-index:100}
         .lang-btn{background:transparent;border:1px solid #d4af37;padding:5px 10px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:11px}
@@ -38,12 +45,16 @@
         .pulse-btn{animation:pulseGlow 2s ease-in-out infinite}
         @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.5)}50%{box-shadow:0 0 30px 15px rgba(212,175,55,0.25)}}
         .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
+        
+        /* ===== PRAYER SCREEN ===== */
         .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
         .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
         .ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif;color:#2c2c2c}
         .ayah-trans{font-size:16px;margin:10px 0;font-style:italic;color:#6b5a44}
         .dua-text{font-size:20px;line-height:1.8;margin:30px 0 20px;font-family:'Amiri',serif;color:#2c2c2c}
         .timer{font-size:48px;color:#d4af37;font-weight:bold;margin:20px 0;cursor:pointer}
+        
+        /* ===== MAIN CONTENT ===== */
         #main{display:none}
         .main-lang{display:flex;justify-content:flex-end;gap:10px;padding:15px 20px}
         .hero-section{background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);padding:40px 20px 30px;text-align:center}
@@ -69,6 +80,8 @@
         .detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
         .detail-text{color:#7d6b52;line-height:1.6}
         .map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37}
+        
+        /* ===== RSVP ===== */
         .rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
         .rsvp-card{max-width:600px;margin:auto;background:white;border-radius:30px;padding:40px;box-shadow:0 12px 30px rgba(0,0,0,0.05)}
         .input-group{width:100%;margin:12px 0}
@@ -83,12 +96,26 @@
         .admin-panel th,.admin-panel td{border:1px solid #e0d6c8;padding:10px;text-align:right;font-size:14px}
         .admin-panel th{background:#d4af37;color:white}
         footer{padding:30px;text-align:center;font-size:12px;color:#b89a2a}
-        @media(max-width:600px){.names-arabic{font-size:40px}.hero-title{font-size:52px}.time-card{width:75px;height:75px}.time-number{font-size:24px}.ayah-text{font-size:18px}.dua-text{font-size:16px}.timer{font-size:36px}.merged-gallery{max-width:280px}.detail-icon{font-size:45px}.btn-open{padding:14px 30px;font-size:16px}.ring-icon{font-size:50px}.welcome-text{font-size:13px}}
+        
+        @media(max-width:600px){
+            .names-arabic{font-size:40px}
+            .hero-title{font-size:52px}
+            .time-card{width:75px;height:75px}
+            .time-number{font-size:24px}
+            .ayah-text{font-size:18px}
+            .dua-text{font-size:16px}
+            .timer{font-size:36px}
+            .merged-gallery{max-width:280px}
+            .detail-icon{font-size:45px}
+            .btn-open{padding:14px 30px;font-size:16px}
+            .ring-icon{font-size:50px}
+            .welcome-text{font-size:13px}
+        }
     </style>
 </head>
 <body>
 
-    <!-- WELCOME SCREEN -->
+    <!-- ===== WELCOME SCREEN ===== -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('welcome','ar')">🇸🇦 عربي</button>
@@ -107,7 +134,7 @@
         <div class="date-bottom" id="welcomeDate" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">29 August 2026</div>
     </div>
 
-    <!-- PRAYER SCREEN -->
+    <!-- ===== PRAYER SCREEN (بدون تكرار) ===== -->
     <div class="prayer-screen" id="prayerScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
@@ -115,16 +142,20 @@
             <button class="lang-btn" onclick="changeLang('prayer','sv')">🇸🇪 Svenska</button>
         </div>
         <div class="prayer-card" data-aos="fade-up" data-aos-duration="800">
+            <!-- الآية القرآنية -->
             <div id="ayahText" class="ayah-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
             <div id="ayahTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">Och bland Hans tecken är att Han skapade för er makar från er själva för att ni ska finna ro i dem, och Han lade mellan er kärlek och barmhärtighet</div>
+
+            <!-- الدعاء (مرة واحدة فقط) -->
             <div id="duaText" class="dua-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">اللهم بارك لهما وبارك عليهما واجمع بينهما في خير. اللهم اجعل هذا الزواج بداية سعادة لا تنتهي، ومودة تجمع قلوبهما، ورحمة تسع أيامهما. اللهم ارزقهما ذرية صالحة وعيشة هنية</div>
             <div id="duaTrans" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Åh Allah, välsigna dem och deras förening, och sammanför dem i godhet. Gör detta äktenskap till början av oändlig lycka, kärlek som förenar deras hjärtan och barmhärtighet som fyller deras dagar. Ge dem rättfärdiga avkommor och ett välsignat liv</div>
+
             <div class="timer" id="timer" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">10</div>
             <div id="waitingText" class="ayah-trans" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">سيتم نقلك للدعوة بعد...</div>
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div id="main">
         <div class="main-lang">
             <button class="lang-btn" onclick="changeLang('main','ar')">🇸🇦 عربي</button>
@@ -143,8 +174,8 @@
 
         <div class="invitation-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
             <div class="quote" id="quoteText" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">"Your presence is our greatest gift"</div>
-            <p id="inviteText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
-            <p id="inviteText2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">بوجودكم تكتمل فرحتنا</p>
+            <p id="inviteText1" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
+            <p id="inviteText2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى</p>
             <p style="font-size:16px; margin-top:20px" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">Nebras Alsharef & Zena Yousef</p>
         </div>
 
@@ -164,7 +195,7 @@
             <div class="detail-card" data-aos="flip-left" data-aos-duration="800" data-aos-delay="300"><div class="detail-icon">📍</div><div class="detail-title" id="locationTitle">المكان</div><div class="detail-text"><a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a></div></div>
         </div>
 
-        <!-- RSVP -->
+        <!-- ===== RSVP ===== -->
         <div class="rsvp-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <div class="rsvp-card" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
                 <h2 style="color:#c9a227; margin-bottom:20px" id="rsvpTitle">تأكيد الحضور</h2>
@@ -202,7 +233,7 @@
         AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
 
         // ===== TRANSLATIONS =====
-        var translations = {
+        const translations = {
             welcome: {
                 ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
                 en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
@@ -232,51 +263,9 @@
                 }
             },
             main: {
-                ar: { 
-                    title: "Nebras & Zena", 
-                    sub: "Together With Their Families", 
-                    quote: "Your presence is our greatest gift", 
-                    invite1: "نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", 
-                    invite2: "بوجودكم تكتمل فرحتنا", 
-                    countdown: "العد التنازلي لزفافنا", 
-                    days: "أيام", 
-                    hours: "ساعات", 
-                    minutes: "دقائق", 
-                    seconds: "ثواني", 
-                    date: "التاريخ", 
-                    time: "الوقت", 
-                    location: "المكان" 
-                },
-                en: { 
-                    title: "Nebras & Zena", 
-                    sub: "Together With Their Families", 
-                    quote: "Your presence is our greatest gift", 
-                    invite1: "We are honored to invite you to share our wedding joy", 
-                    invite2: "Your presence completes our happiness", 
-                    countdown: "Countdown To Our Wedding", 
-                    days: "Days", 
-                    hours: "Hours", 
-                    minutes: "Minutes", 
-                    seconds: "Seconds", 
-                    date: "Date", 
-                    time: "Time", 
-                    location: "Location" 
-                },
-                sv: { 
-                    title: "Nebras & Zena", 
-                    sub: "Together With Their Families", 
-                    quote: "Your presence is our greatest gift", 
-                    invite1: "Vi har äran att bjuda in dig att dela vår bröllopsglädje", 
-                    invite2: "Er närvaro gör vår lycka komplett", 
-                    countdown: "Nedräkning till vårt bröllop", 
-                    days: "Dagar", 
-                    hours: "Timmar", 
-                    minutes: "Minuter", 
-                    seconds: "Sekunder", 
-                    date: "Datum", 
-                    time: "Tid", 
-                    location: "Plats" 
-                }
+                ar: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", invite2: "نتمنى أن تشاركونا هذه اللحظة الجميلة<br>وتكونوا جزءاً من ذكرى لا تُنسى", countdown: "العد التنازلي لزفافنا", days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني", date: "التاريخ", time: "الوقت", location: "المكان" },
+                en: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", invite2: "We hope you will share this beautiful moment with us<br>and be part of an unforgettable memory", countdown: "Countdown To Our Wedding", days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", date: "Date", time: "Time", location: "Location" },
+                sv: { title: "Nebras & Zena", sub: "Together With Their Families", quote: "Your presence is our greatest gift", invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", invite2: "Vi hoppas att du delar detta vackra ögonblick med oss<br>och bli en del av ett oförglömligt minne", countdown: "Nedräkning till vårt bröllop", days: "Dagar", hours: "Timmar", minutes: "Minuter", seconds: "Sekunder", date: "Datum", time: "Tid", location: "Plats" }
             }
         };
 
@@ -320,10 +309,10 @@
         }
 
         function startTimer() {
-            var secondsLeft = 10;
-            var timerEl = document.getElementById('timer');
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
             timerEl.innerText = secondsLeft;
-            var timerInterval = setInterval(function() {
+            let timerInterval = setInterval(() => {
                 secondsLeft--;
                 timerEl.innerText = secondsLeft;
                 if (secondsLeft <= 0) {
@@ -333,3 +322,100 @@
                     AOS.refresh();
                     startCountdown();
                 }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
+
+        // ===== RSVP =====
+        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+        function saveRSVP() {
+            let name = document.getElementById('name').value.trim();
+            let count = document.getElementById('count').value;
+            let status = document.getElementById('status').value;
+            let notes = document.getElementById('notes').value;
+
+            if (name === "") {
+                alert("❌ الرجاء إدخال اسمك");
+                return;
+            }
+
+            let newResponse = {
+                id: Date.now(),
+                name: name,
+                count: count || "غير محدد",
+                status: status,
+                notes: notes || "لا يوجد",
+                date: new Date().toLocaleString('ar-EG')
+            };
+
+            responses.push(newResponse);
+            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+
+            document.getElementById('name').value = "";
+            document.getElementById('count').value = "";
+            document.getElementById('notes').value = "";
+
+            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+        }
+
+        function showAdminPanel() {
+            let panel = document.getElementById('adminPanel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                loadResponsesTable();
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function loadResponsesTable() {
+            let tbody = document.getElementById('responsesBody');
+            tbody.innerHTML = "";
+            if (responses.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+                return;
+            }
+            for (let i = 0; i < responses.length; i++) {
+                let r = responses[i];
+                let row = tbody.insertRow();
+                row.insertCell(0).innerHTML = i + 1;
+                row.insertCell(1).innerHTML = r.name;
+                row.insertCell(2).innerHTML = r.count;
+                row.insertCell(3).innerHTML = r.status;
+                row.insertCell(4).innerHTML = r.notes;
+                row.insertCell(5).innerHTML = r.date;
+            }
+        }
+
+        function exportToCSV() {
+            if (responses.length === 0) {
+                alert("لا توجد ردود للتصدير");
+                return;
+            }
+            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+            for (let r of responses) {
+                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+            }
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+    </script>
+</body>
+</html>
