@@ -23,7 +23,7 @@
         [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
         [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
         
-        /* ===== FADE SLIDE (للعناصر الأخرى) ===== */
+        /* ===== FADE SLIDE ===== */
         .fade-slide-text {
             opacity: 0;
             transform: translateY(30px);
@@ -40,7 +40,7 @@
         .fade-slide-text.delay-5 { animation-delay: 1.0s; }
         .fade-slide-text.delay-6 { animation-delay: 1.2s; }
 
-        /* ===== 1. SHIMMER (لأسماء العروسين) ===== */
+        /* ===== SHIMMER ===== */
         .shimmer-text {
             background: linear-gradient(90deg, #c9a227 0%, #f5d742 25%, #c9a227 50%, #f5d742 75%, #c9a227 100%);
             background-size: 300% 100%;
@@ -55,7 +55,7 @@
             100% { background-position: 300% 0; }
         }
 
-        /* ===== 2. BOUNCE (للاقتباس) ===== */
+        /* ===== BOUNCE ===== */
         .bounce-text {
             opacity: 0;
             animation: bounceIn 0.9s ease forwards;
@@ -70,7 +70,7 @@
         .bounce-text.delay-1 { animation-delay: 0.2s; }
         .bounce-text.delay-2 { animation-delay: 0.4s; }
 
-        /* ===== 3. BLUR IN (لنص الدعوة) ===== */
+        /* ===== BLUR IN ===== */
         .blur-text {
             opacity: 0;
             filter: blur(8px);
@@ -83,7 +83,7 @@
         .blur-text.delay-1 { animation-delay: 0.3s; }
         .blur-text.delay-2 { animation-delay: 0.5s; }
 
-        /* ===== 4. ELASTIC (للتاريخ وبطاقات التفاصيل) ===== */
+        /* ===== ELASTIC ===== */
         .elastic-text {
             opacity: 0;
             animation: elasticIn 1s ease forwards;
@@ -99,7 +99,7 @@
         .elastic-text.delay-1 { animation-delay: 0.2s; }
         .elastic-text.delay-2 { animation-delay: 0.4s; }
 
-        /* ===== GLOW PULSE (توهج ذهبي للزينة) ===== */
+        /* ===== GLOW PULSE SOFT ===== */
         .glow-pulse-soft {
             animation: glowPulseSoft 3s ease-in-out infinite;
             display: inline-block;
@@ -109,23 +109,45 @@
             50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.15); }
         }
 
-        /* ===== PULSE GLOW للزر (اختياري) ===== */
-        .btn-pulse {
-            animation: btnPulse 2s ease-in-out infinite;
-        }
-        @keyframes btnPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.2); }
-        }
-
         /* ===== REST OF STYLES ===== */
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
         .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
-        .welcome-lang{position:absolute;top:15px;right:15px;display:flex;gap:8px;z-index:100}
-        .lang-btn{background:transparent;border:1px solid #d4af37;padding:5px 10px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:11px}
+        
+        /* حاوية الأزرار العلوية (لغة + موسيقى) */
+        .top-controls {
+            position:absolute;
+            top:15px;
+            right:15px;
+            display:flex;
+            gap:8px;
+            z-index:100;
+            align-items:center;
+            flex-wrap:wrap;
+        }
+        .lang-btn, .music-btn {
+            background:transparent;
+            border:1px solid #d4af37;
+            padding:5px 10px;
+            border-radius:30px;
+            color:#c9a227;
+            cursor:pointer;
+            transition:0.3s;
+            font-size:11px;
+            font-family:'Cinzel',serif;
+        }
         .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
+        .music-btn {
+            background:rgba(212, 175, 55, 0.1);
+            font-size:16px;
+            padding:5px 12px;
+            line-height:1;
+            border-color:rgba(212,175,55,0.5);
+        }
+        .music-btn:hover{background:rgba(212,175,55,0.2);transform:scale(1.05)}
+        .music-btn.playing{background:rgba(212,175,55,0.2);border-color:#d4af37;box-shadow:0 0 15px rgba(212,175,55,0.3)}
+        
         .rings{display:flex;justify-content:center;align-items:center;margin-bottom:8px}
         .ring-icon{font-size:60px;animation:floatRing 3s ease-in-out infinite}
         .mens-ring{color:#c0c0c0;text-shadow:0 0 8px #e8e8e8}
@@ -216,40 +238,48 @@
             .hero-title{font-size:38px}
             .quote{font-size:22px}
             .btn-open{padding:14px 30px;font-size:16px}
+            .top-controls{top:10px;right:10px;gap:4px}
+            .music-btn{font-size:14px;padding:4px 10px}
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== MUSIC AUDIO ELEMENT ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الموسيقى.
+    </audio>
+
     <!-- ===== WELCOME SCREEN ===== -->
     <div class="welcome-screen" id="welcomeScreen">
-        <div class="welcome-lang">
+        <!-- الأزرار العلوية (اللغة + الموسيقى) -->
+        <div class="top-controls">
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','sv')">🇸🇪 Svenska</button>
+            <button class="music-btn" id="musicToggle" onclick="event.stopPropagation(); toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
+
         <div class="rings">
             <div class="ring-icon mens-ring">💍</div>
         </div>
-        <!-- SHIMMER للأسماء -->
         <div class="names-arabic shimmer-text" id="welcomeNames">Nebras & Zena</div>
         <div class="names-english fade-slide-text delay-1 glow-pulse-soft" id="welcomeSub">ALSHAREF & YOUSEF</div>
         <div class="divider fade-slide-text delay-2"></div>
-        <!-- BLUR لنص الترحيب -->
         <p class="welcome-text blur-text" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
         <p class="welcome-text blur-text delay-1" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-        <!-- ELASTIC للتاريخ -->
         <div class="date-bottom elastic-text delay-2" id="welcomeDate">29 August 2026</div>
-        <!-- الزر: بدون أي تأثير أنيميشن، فقط كلاس btn-pulse اختياري (يمكن إزالته) -->
-        <button class="btn-open btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
+        <button class="btn-open" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
     </div>
 
     <!-- ===== PRAYER SCREEN ===== -->
     <div class="prayer-screen" id="prayerScreen">
-        <div class="welcome-lang">
+        <div class="top-controls">
             <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="changeLang('prayer','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="changeLang('prayer','sv')">🇸🇪 Svenska</button>
+            <button class="music-btn" id="musicTogglePrayer" onclick="toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
         <div class="prayer-card">
             <div id="ayahText" class="ayah-text fade-slide-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
@@ -267,10 +297,10 @@
             <button class="lang-btn" onclick="changeLang('main','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="changeLang('main','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="changeLang('main','sv')">🇸🇪 Svenska</button>
+            <button class="music-btn" id="musicToggleMain" onclick="toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
 
         <div class="hero-section">
-            <!-- SHIMMER للأسماء الرئيسية -->
             <div class="hero-title shimmer-text" id="mainTitle">Nebras & Zena</div>
             <div class="hero-sub fade-slide-text delay-1 glow-pulse-soft" id="mainSub">Together With Their Families</div>
         </div>
@@ -280,9 +310,7 @@
         </div>
 
         <div class="invitation-text">
-            <!-- BOUNCE للاقتباس -->
             <div class="quote bounce-text" id="quoteText">"Your presence is our greatest gift"</div>
-            <!-- BLUR لنص الدعوة -->
             <p class="blur-text delay-1" id="inviteText1">بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
             <p class="fade-slide-text delay-2" style="font-size:16px; margin-top:20px">NEBRAS ALSHAREF & ZENA YOUSEF</p>
         </div>
@@ -298,7 +326,6 @@
         </div>
 
         <div class="details-section">
-            <!-- ELASTIC للتفاصيل -->
             <div class="detail-card elastic-text">
                 <div class="detail-icon">📅</div>
                 <div class="detail-title" id="dateTitle">التاريخ</div>
@@ -363,6 +390,62 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
+
+        // ===== MUSIC CONTROL =====
+        const audio = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
+
+        // وظيفة تشغيل/إيقاف الموسيقى
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audio.pause();
+                isMusicPlaying = false;
+            } else {
+                audio.play().catch(err => {
+                    // في حال منع المتصفح التشغيل التلقائي
+                    console.log('تفاعل المستخدم مطلوب لتشغيل الموسيقى');
+                });
+                isMusicPlaying = true;
+            }
+            updateMusicButtons();
+        }
+
+        // تحديث واجهة جميع أزرار الموسيقى
+        function updateMusicButtons() {
+            const btns = document.querySelectorAll('.music-btn');
+            btns.forEach(btn => {
+                if (isMusicPlaying) {
+                    btn.innerHTML = '🔊';
+                    btn.classList.add('playing');
+                } else {
+                    btn.innerHTML = '🔇';
+                    btn.classList.remove('playing');
+                }
+            });
+        }
+
+        // بدء الموسيقى عند أول نقرة على الصفحة (تجاوز حظر المتصفح)
+        document.addEventListener('click', function firstClick() {
+            if (!isMusicPlaying) {
+                audio.play().catch(() => {});
+                isMusicPlaying = true;
+                updateMusicButtons();
+            }
+            document.removeEventListener('click', firstClick);
+        }, { once: true });
+
+        // تحديث الأزرار عند تغيير حالة التشغيل يدوياً
+        audio.addEventListener('play', () => {
+            isMusicPlaying = true;
+            updateMusicButtons();
+        });
+        audio.addEventListener('pause', () => {
+            isMusicPlaying = false;
+            updateMusicButtons();
+        });
+
+        // ضبط مستوى الصوت (خفيف)
+        audio.volume = 0.4;
 
         // ===== TRANSLATIONS =====
         const translations = {
