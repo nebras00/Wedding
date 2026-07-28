@@ -83,7 +83,7 @@
         .blur-text.delay-1 { animation-delay: 0.3s; }
         .blur-text.delay-2 { animation-delay: 0.5s; }
 
-        /* ===== 4. ELASTIC (للتاريخ) ===== */
+        /* ===== 4. ELASTIC (للتاريخ والزر) ===== */
         .elastic-text {
             opacity: 0;
             animation: elasticIn 1s ease forwards;
@@ -98,8 +98,9 @@
         }
         .elastic-text.delay-1 { animation-delay: 0.2s; }
         .elastic-text.delay-2 { animation-delay: 0.4s; }
+        .elastic-text.delay-3 { animation-delay: 0.6s; }
 
-        /* ===== GLOW PULSE (توهج ذهبي خفيف للزينة) ===== */
+        /* ===== GLOW PULSE (توهج ذهبي للزينة) ===== */
         .glow-pulse-soft {
             animation: glowPulseSoft 3s ease-in-out infinite;
             display: inline-block;
@@ -109,11 +110,20 @@
             50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.15); }
         }
 
+        /* ===== PULSE GLOW للزر ===== */
+        .btn-pulse {
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.2); }
+        }
+
         /* ===== REST OF STYLES ===== */
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
-        .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative;cursor:pointer}
+        .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
         .welcome-lang{position:absolute;top:15px;right:15px;display:flex;gap:8px;z-index:100}
         .lang-btn{background:transparent;border:1px solid #d4af37;padding:5px 10px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:11px}
         .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
@@ -126,6 +136,8 @@
         .divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:10px auto}
         .welcome-text{font-size:14px;color:#9e8b6f;max-width:380px;margin:8px auto;line-height:1.6}
         .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
+        .btn-open{background:#d4af37;border:2px solid #d4af37;padding:16px 40px;border-radius:50px;color:#fff;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;margin:12px 0 5px;box-shadow:0 4px 15px rgba(212,175,55,0.4);letter-spacing:1px}
+        .btn-open:hover{background:#b89a2a;transform:scale(1.02);box-shadow:0 6px 25px rgba(212,175,55,0.6)}
         .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
         .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
         .ayah-text{font-size:24px;line-height:1.8;margin:20px 0;font-family:'Amiri',serif;color:#2c2c2c}
@@ -190,13 +202,14 @@
             .detail-card{width:100%;max-width:280px}
             .hero-title{font-size:38px}
             .quote{font-size:22px}
+            .btn-open{padding:14px 30px;font-size:16px}
         }
     </style>
 </head>
 <body>
 
     <!-- ===== WELCOME SCREEN ===== -->
-    <div class="welcome-screen" id="welcomeScreen" onclick="openPrayerPage()">
+    <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','en')">🇬🇧 English</button>
@@ -214,6 +227,8 @@
         <p class="welcome-text blur-text delay-1" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
         <!-- ELASTIC للتاريخ -->
         <div class="date-bottom elastic-text delay-2" id="welcomeDate">29 August 2026</div>
+        <!-- زر الفتح مع Elastic + Pulse -->
+        <button class="btn-open elastic-text delay-3 btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
     </div>
 
     <!-- ===== PRAYER SCREEN ===== -->
@@ -248,7 +263,7 @@
         </div>
 
         <div class="merged-gallery fade-slide-text delay-2">
-            <img class="merged-photo" src="IMG_9826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
+            <img class="merged-photo" src="IMG_98826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
         </div>
 
         <div class="invitation-text">
@@ -339,9 +354,9 @@
         // ===== TRANSLATIONS =====
         const translations = {
             welcome: {
-                ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", date: "29 August 2026" },
-                en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", date: "August 29, 2026" },
-                sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", date: "29 augusti 2026" }
+                ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", date: "29 August 2026", btn: "👇 اضغط لفتح الدعوة" },
+                en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", date: "August 29, 2026", btn: "👇 Click to Open Invitation" },
+                sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", date: "29 augusti 2026", btn: "👇 Klicka för att öppna inbjudan" }
             },
             prayer: {
                 ar: {
@@ -429,6 +444,7 @@
                 document.getElementById('welcomeText1').innerHTML = translations.welcome[lang].text1;
                 document.getElementById('welcomeText2').innerHTML = translations.welcome[lang].text2;
                 document.getElementById('welcomeDate').innerHTML = translations.welcome[lang].date;
+                document.getElementById('welcomeBtn').innerHTML = translations.welcome[lang].btn;
             } else if (section === 'prayer') {
                 document.getElementById('ayahText').innerHTML = translations.prayer[lang].ayah;
                 document.getElementById('ayahTrans').innerHTML = translations.prayer[lang].ayahTrans;
