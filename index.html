@@ -395,14 +395,12 @@
         const audio = document.getElementById('bgMusic');
         let isMusicPlaying = false;
 
-        // وظيفة تشغيل/إيقاف الموسيقى
         function toggleMusic() {
             if (isMusicPlaying) {
                 audio.pause();
                 isMusicPlaying = false;
             } else {
                 audio.play().catch(err => {
-                    // في حال منع المتصفح التشغيل التلقائي
                     console.log('تفاعل المستخدم مطلوب لتشغيل الموسيقى');
                 });
                 isMusicPlaying = true;
@@ -410,7 +408,6 @@
             updateMusicButtons();
         }
 
-        // تحديث واجهة جميع أزرار الموسيقى
         function updateMusicButtons() {
             const btns = document.querySelectorAll('.music-btn');
             btns.forEach(btn => {
@@ -434,7 +431,6 @@
             document.removeEventListener('click', firstClick);
         }, { once: true });
 
-        // تحديث الأزرار عند تغيير حالة التشغيل يدوياً
         audio.addEventListener('play', () => {
             isMusicPlaying = true;
             updateMusicButtons();
@@ -444,8 +440,52 @@
             updateMusicButtons();
         });
 
-        // ضبط مستوى الصوت (خفيف)
         audio.volume = 0.4;
+
+        // ===== PAGE FUNCTIONS =====
+        function openPrayerPage() {
+            // إيقاف الموسيقى فوراً عند الدخول إلى صفحة القرآن
+            if (isMusicPlaying) {
+                audio.pause();
+                isMusicPlaying = false;
+                updateMusicButtons();
+            }
+            
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
 
         // ===== TRANSLATIONS =====
         const translations = {
@@ -532,7 +572,6 @@
             }
         };
 
-        // ===== LANGUAGE FUNCTIONS =====
         function changeLang(section, lang) {
             if (section === 'welcome') {
                 document.getElementById('welcomeNames').innerHTML = translations.welcome[lang].names;
@@ -564,44 +603,6 @@
                 document.getElementById('menLabel').innerHTML = translations.main[lang].men + ':';
                 document.getElementById('rsvpTitle').innerHTML = translations.main[lang].rsvp;
             }
-        }
-
-        // ===== PAGE FUNCTIONS =====
-        function openPrayerPage() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('prayerScreen').style.display = 'flex';
-            startTimer();
-        }
-
-        function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
         }
 
         // ===== RSVP =====
