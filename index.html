@@ -67,10 +67,10 @@
         .detail-card:hover{transform:translateY(-5px)}
         .detail-icon{font-size:55px;margin-bottom:15px;display:inline-block;cursor:pointer}
         .detail-title{font-size:20px;color:#c9a227;margin-bottom:10px}
-        .detail-text{color:#7d6b52;line-height:1.6}
-        .detail-text .location-item{margin:8px 0;padding:8px 0;border-bottom:1px dashed #f0ebe3}
-        .detail-text .location-item:last-child{border-bottom:none}
-        .location-icon{font-size:20px;margin-left:8px}
+        .detail-text{color:#7d6b52;line-height:1.8}
+        .location-item{margin:6px 0;padding:6px 0}
+        .location-item:not(:last-child){border-bottom:1px dashed #f0ebe3}
+        .location-icon{font-size:18px;margin-right:6px}
         .map-link{color:#c9a227;text-decoration:none;border-bottom:1px dashed #d4af37;transition:0.3s}
         .map-link:hover{color:#b38f1f;border-bottom-color:#b38f1f}
         .rsvp-section{background:#fefcf8;padding:60px 20px;text-align:center}
@@ -156,7 +156,7 @@
         </div>
 
         <div class="merged-gallery" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-            <img class="merged-photo" src="IMG_98826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
+            <img class="merged-photo" src="IMG_9826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
         </div>
 
         <div class="invitation-text" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
@@ -192,12 +192,12 @@
                 <div class="detail-text" id="locationText">
                     <div class="location-item">
                         <span class="location-icon">👩</span>
-                        <strong>للنساء:</strong>
+                        <strong id="womenLabel">للنساء:</strong>
                         <a href="https://maps.google.com/?q=Björkvallen+IP+Kristianstad+FC" target="_blank" class="map-link">Björkvallen IP – Kristianstad FC</a>
                     </div>
                     <div class="location-item">
                         <span class="location-icon">👨</span>
-                        <strong>للرجال:</strong>
+                        <strong id="menLabel">للرجال:</strong>
                         <a href="https://maps.google.com/?q=Göingegatan+35+291+38+Kristianstad" target="_blank" class="map-link">Göingegatan 35, 291 38 Kristianstad</a>
                     </div>
                 </div>
@@ -277,7 +277,6 @@
                     sub: "Together With Their Families", 
                     quote: "Your presence is our greatest gift", 
                     invite1: "بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا", 
-                    invite2: "", 
                     countdown: "العد التنازلي لزفافنا", 
                     days: "أيام", 
                     hours: "ساعات", 
@@ -294,7 +293,6 @@
                     sub: "Together With Their Families", 
                     quote: "Your presence is our greatest gift", 
                     invite1: "With joy and happiness,<br>we are honored to invite you to share our wedding joy", 
-                    invite2: "", 
                     countdown: "Countdown To Our Wedding", 
                     days: "Days", 
                     hours: "Hours", 
@@ -311,7 +309,6 @@
                     sub: "Together With Their Families", 
                     quote: "Your presence is our greatest gift", 
                     invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", 
-                    invite2: "", 
                     countdown: "Nedräkning till vårt bröllop", 
                     days: "Dagar", 
                     hours: "Timmar", 
@@ -351,4 +348,129 @@
                 document.getElementById('hoursLabel').innerHTML = translations.main[lang].hours;
                 document.getElementById('minutesLabel').innerHTML = translations.main[lang].minutes;
                 document.getElementById('secondsLabel').innerHTML = translations.main[lang].seconds;
-                document
+                document.getElementById('dateTitle').innerHTML = translations.main[lang].date;
+                document.getElementById('timeTitle').innerHTML = translations.main[lang].time;
+                document.getElementById('locationTitle').innerHTML = translations.main[lang].location;
+                document.getElementById('womenLabel').innerHTML = translations.main[lang].women + ':';
+                document.getElementById('menLabel').innerHTML = translations.main[lang].men + ':';
+            }
+        }
+
+        // ===== PAGE FUNCTIONS =====
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
+
+        // ===== RSVP =====
+        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+        function saveRSVP() {
+            let name = document.getElementById('name').value.trim();
+            let count = document.getElementById('count').value;
+            let status = document.getElementById('status').value;
+            let notes = document.getElementById('notes').value;
+
+            if (name === "") {
+                alert("❌ الرجاء إدخال اسمك");
+                return;
+            }
+
+            let newResponse = {
+                id: Date.now(),
+                name: name,
+                count: count || "غير محدد",
+                status: status,
+                notes: notes || "لا يوجد",
+                date: new Date().toLocaleString('ar-EG')
+            };
+
+            responses.push(newResponse);
+            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+
+            document.getElementById('name').value = "";
+            document.getElementById('count').value = "";
+            document.getElementById('notes').value = "";
+
+            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+        }
+
+        function showAdminPanel() {
+            let panel = document.getElementById('adminPanel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                loadResponsesTable();
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function loadResponsesTable() {
+            let tbody = document.getElementById('responsesBody');
+            tbody.innerHTML = "";
+            if (responses.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+                return;
+            }
+            for (let i = 0; i < responses.length; i++) {
+                let r = responses[i];
+                let row = tbody.insertRow();
+                row.insertCell(0).innerHTML = i + 1;
+                row.insertCell(1).innerHTML = r.name;
+                row.insertCell(2).innerHTML = r.count;
+                row.insertCell(3).innerHTML = r.status;
+                row.insertCell(4).innerHTML = r.notes;
+                row.insertCell(5).innerHTML = r.date;
+            }
+        }
+
+        function exportToCSV() {
+            if (responses.length === 0) {
+                alert("لا توجد ردود للتصدير");
+                return;
+            }
+            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+            for (let r of responses) {
+                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+            }
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+    </script>
+</body>
+</html>
