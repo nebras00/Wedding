@@ -40,17 +40,6 @@
         .fade-slide-text.delay-5 { animation-delay: 1.0s; }
         .fade-slide-text.delay-6 { animation-delay: 1.2s; }
 
-        /* ===== تأثير خاص للزر (يضمن الظهور) ===== */
-        .btn-appear {
-            opacity: 0;
-            animation: btnFadeIn 0.8s ease forwards;
-            animation-delay: 0.6s;
-        }
-        @keyframes btnFadeIn {
-            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
         /* ===== 1. SHIMMER (لأسماء العروسين) ===== */
         .shimmer-text {
             background: linear-gradient(90deg, #c9a227 0%, #f5d742 25%, #c9a227 50%, #f5d742 75%, #c9a227 100%);
@@ -120,7 +109,7 @@
             50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.15); }
         }
 
-        /* ===== PULSE GLOW للزر ===== */
+        /* ===== PULSE GLOW للزر (اختياري) ===== */
         .btn-pulse {
             animation: btnPulse 2s ease-in-out infinite;
         }
@@ -251,8 +240,8 @@
         <p class="welcome-text blur-text delay-1" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
         <!-- ELASTIC للتاريخ -->
         <div class="date-bottom elastic-text delay-2" id="welcomeDate">29 August 2026</div>
-        <!-- الزر: يستخدم كلاس btn-appear بدلاً من fade-slide-text -->
-        <button class="btn-open btn-appear btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
+        <!-- الزر: بدون أي تأثير أنيميشن، فقط كلاس btn-pulse اختياري (يمكن إزالته) -->
+        <button class="btn-open btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
     </div>
 
     <!-- ===== PRAYER SCREEN ===== -->
