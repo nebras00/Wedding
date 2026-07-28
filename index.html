@@ -23,7 +23,7 @@
         [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
         [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
         
-        /* ===== FADE SLIDE (للعناصر الثانوية) ===== */
+        /* ===== FADE SLIDE (لجميع العناصر بما فيها الزر) ===== */
         .fade-slide-text {
             opacity: 0;
             transform: translateY(30px);
@@ -83,7 +83,7 @@
         .blur-text.delay-1 { animation-delay: 0.3s; }
         .blur-text.delay-2 { animation-delay: 0.5s; }
 
-        /* ===== 4. ELASTIC (للتاريخ والزر) ===== */
+        /* ===== 4. ELASTIC (للتاريخ وبطاقات التفاصيل) ===== */
         .elastic-text {
             opacity: 0;
             animation: elasticIn 1s ease forwards;
@@ -98,7 +98,6 @@
         }
         .elastic-text.delay-1 { animation-delay: 0.2s; }
         .elastic-text.delay-2 { animation-delay: 0.4s; }
-        .elastic-text.delay-3 { animation-delay: 0.6s; }
 
         /* ===== GLOW PULSE (توهج ذهبي للزينة) ===== */
         .glow-pulse-soft {
@@ -136,7 +135,21 @@
         .divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:10px auto}
         .welcome-text{font-size:14px;color:#9e8b6f;max-width:380px;margin:8px auto;line-height:1.6}
         .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
-        .btn-open{background:#d4af37;border:2px solid #d4af37;padding:16px 40px;border-radius:50px;color:#fff;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;margin:12px 0 5px;box-shadow:0 4px 15px rgba(212,175,55,0.4);letter-spacing:1px}
+        .btn-open{
+            background:#d4af37;
+            border:2px solid #d4af37;
+            padding:16px 40px;
+            border-radius:50px;
+            color:#fff;
+            font-size:18px;
+            font-weight:700;
+            cursor:pointer;
+            transition:0.3s;
+            margin:12px 0 5px;
+            box-shadow:0 4px 15px rgba(212,175,55,0.4);
+            letter-spacing:1px;
+            display:inline-block;
+        }
         .btn-open:hover{background:#b89a2a;transform:scale(1.02);box-shadow:0 6px 25px rgba(212,175,55,0.6)}
         .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
         .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
@@ -227,8 +240,8 @@
         <p class="welcome-text blur-text delay-1" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
         <!-- ELASTIC للتاريخ -->
         <div class="date-bottom elastic-text delay-2" id="welcomeDate">29 August 2026</div>
-        <!-- زر الفتح مع Elastic + Pulse -->
-        <button class="btn-open elastic-text delay-3 btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
+        <!-- الزر: الآن يستخدم fade-slide-text بدلاً من elastic-text ليظهر بوضوح -->
+        <button class="btn-open fade-slide-text delay-3 btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
     </div>
 
     <!-- ===== PRAYER SCREEN ===== -->
