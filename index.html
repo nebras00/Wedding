@@ -46,11 +46,39 @@
         .fade-slide-text.delay-5 { animation-delay: 1.0s; }
         .fade-slide-text.delay-6 { animation-delay: 1.2s; }
         
+        /* ===== GLOW PULSE EFFECT ===== */
+        .glow-pulse {
+            animation: glowPulse 2.5s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
+                transform: scale(1.02);
+            }
+        }
+        .glow-pulse-slow {
+            animation: glowPulseSlow 3.5s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes glowPulseSlow {
+            0%, 100% {
+                text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(212, 175, 55, 0.3);
+            }
+        }
+        
         /* ===== REST OF STYLES ===== */
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
-        .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
+        .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative;cursor:pointer}
         .welcome-lang{position:absolute;top:15px;right:15px;display:flex;gap:8px;z-index:100}
         .lang-btn{background:transparent;border:1px solid #d4af37;padding:5px 10px;border-radius:30px;color:#c9a227;cursor:pointer;transition:0.3s;font-size:11px}
         .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
@@ -62,10 +90,6 @@
         .names-english{font-size:18px;letter-spacing:4px;color:#b89a2a;margin-bottom:8px}
         .divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:10px auto}
         .welcome-text{font-size:14px;color:#9e8b6f;max-width:380px;margin:8px auto;line-height:1.6}
-        .btn-open{background:#d4af37;border:2px solid #d4af37;padding:16px 40px;border-radius:50px;color:#fff;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;margin:12px 0 5px;box-shadow:0 4px 15px rgba(212,175,55,0.4);letter-spacing:1px}
-        .btn-open:hover{background:#b89a2a;transform:scale(1.02);box-shadow:0 6px 25px rgba(212,175,55,0.6)}
-        .pulse-btn{animation:pulseGlow 2s ease-in-out infinite}
-        @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.5)}50%{box-shadow:0 0 30px 15px rgba(212,175,55,0.25)}}
         .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
         .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
         .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
@@ -126,7 +150,6 @@
             .timer{font-size:36px}
             .merged-gallery{max-width:280px}
             .detail-icon{font-size:45px}
-            .btn-open{padding:14px 30px;font-size:16px}
             .ring-icon{font-size:50px}
             .welcome-text{font-size:13px}
             .detail-card{width:100%;max-width:280px}
@@ -136,22 +159,21 @@
 <body>
 
     <!-- WELCOME SCREEN -->
-    <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-screen" id="welcomeScreen" onclick="openPrayerPage()">
         <div class="welcome-lang">
-            <button class="lang-btn" onclick="changeLang('welcome','ar')">🇸🇦 عربي</button>
-            <button class="lang-btn" onclick="changeLang('welcome','en')">🇬🇧 English</button>
-            <button class="lang-btn" onclick="changeLang('welcome','sv')">🇸🇪 Svenska</button>
+            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','ar')">🇸🇦 عربي</button>
+            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','en')">🇬🇧 English</button>
+            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','sv')">🇸🇪 Svenska</button>
         </div>
         <div class="rings">
             <div class="ring-icon mens-ring">💍</div>
         </div>
-        <div class="names-arabic fade-slide-text" id="welcomeNames">Nebras & Zena</div>
-        <div class="names-english fade-slide-text delay-1" id="welcomeSub">ALSHAREF & YOUSEF</div>
+        <div class="names-arabic fade-slide-text glow-pulse" id="welcomeNames">Nebras & Zena</div>
+        <div class="names-english fade-slide-text delay-1 glow-pulse-slow" id="welcomeSub">ALSHAREF & YOUSEF</div>
         <div class="divider fade-slide-text delay-2"></div>
-        <p class="welcome-text fade-slide-text delay-3" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
-        <p class="welcome-text fade-slide-text delay-4" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-        <button class="btn-open pulse-btn fade-slide-text delay-5" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
-        <div class="date-bottom fade-slide-text delay-6" id="welcomeDate">29 August 2026</div>
+        <p class="welcome-text fade-slide-text delay-3 glow-pulse-slow" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
+        <p class="welcome-text fade-slide-text delay-4 glow-pulse-slow" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
+        <div class="date-bottom fade-slide-text delay-5 glow-pulse-slow" id="welcomeDate">29 August 2026</div>
     </div>
 
     <!-- PRAYER SCREEN -->
@@ -180,8 +202,8 @@
         </div>
 
         <div class="hero-section">
-            <div class="hero-title fade-slide-text" id="mainTitle">Nebras & Zena</div>
-            <div class="hero-sub fade-slide-text delay-1" id="mainSub">Together With Their Families</div>
+            <div class="hero-title fade-slide-text glow-pulse" id="mainTitle">Nebras & Zena</div>
+            <div class="hero-sub fade-slide-text delay-1 glow-pulse-slow" id="mainSub">Together With Their Families</div>
         </div>
 
         <div class="merged-gallery fade-slide-text delay-2">
@@ -189,13 +211,13 @@
         </div>
 
         <div class="invitation-text">
-            <div class="quote fade-slide-text" id="quoteText">"Your presence is our greatest gift"</div>
+            <div class="quote fade-slide-text glow-pulse-slow" id="quoteText">"Your presence is our greatest gift"</div>
             <p class="fade-slide-text delay-1" id="inviteText1">بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
             <p class="fade-slide-text delay-2" style="font-size:16px; margin-top:20px">NEBRAS ALSHAREF & ZENA YOUSEF</p>
         </div>
 
         <div class="countdown-section">
-            <h2 class="countdown-title fade-slide-text" id="countdownTitle">العد التنازلي لزفافنا</h2>
+            <h2 class="countdown-title fade-slide-text glow-pulse-slow" id="countdownTitle">العد التنازلي لزفافنا</h2>
             <div class="countdown-box fade-slide-text delay-1">
                 <div class="time-card"><span class="time-number" id="days">0</span><span class="time-label" id="daysLabel">أيام</span></div>
                 <div class="time-card"><span class="time-number" id="hours">0</span><span class="time-label" id="hoursLabel">ساعات</span></div>
@@ -273,9 +295,9 @@
         // ===== TRANSLATIONS =====
         const translations = {
             welcome: {
-                ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", btn: "👇 اضغط لفتح الدعوة", date: "29 August 2026" },
-                en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", btn: "👇 Click to Open Invitation", date: "August 29, 2026" },
-                sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", btn: "👇 Klicka för att öppna inbjudan", date: "29 augusti 2026" }
+                ar: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا", text2: "لتكونوا جزءاً من أجمل أيام حياتنا", date: "29 August 2026" },
+                en: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "With all love and happiness, we are honored to invite you to our wedding", text2: "To be part of the most beautiful days of our lives", date: "August 29, 2026" },
+                sv: { names: "Nebras & Zena", sub: "ALSHAREF & YOUSEF", text1: "Med all kärlek och glädje, vi har äran att bjuda in dig till vårt bröllop", text2: "För att vara en del av de vackraste dagarna i våra liv", date: "29 augusti 2026" }
             },
             prayer: {
                 ar: {
@@ -362,7 +384,6 @@
                 document.getElementById('welcomeSub').innerHTML = translations.welcome[lang].sub;
                 document.getElementById('welcomeText1').innerHTML = translations.welcome[lang].text1;
                 document.getElementById('welcomeText2').innerHTML = translations.welcome[lang].text2;
-                document.getElementById('welcomeBtn').innerHTML = translations.welcome[lang].btn;
                 document.getElementById('welcomeDate').innerHTML = translations.welcome[lang].date;
             } else if (section === 'prayer') {
                 document.getElementById('ayahText').innerHTML = translations.prayer[lang].ayah;
