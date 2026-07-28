@@ -115,7 +115,7 @@
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
         .welcome-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#fff 0%,#faf7f0 100%);position:relative}
         
-        /* حاوية الأزرار العلوية (لغة + موسيقى) */
+        /* أزرار اللغة فقط */
         .top-controls {
             position:absolute;
             top:15px;
@@ -126,7 +126,7 @@
             align-items:center;
             flex-wrap:wrap;
         }
-        .lang-btn, .music-btn {
+        .lang-btn {
             background:transparent;
             border:1px solid #d4af37;
             padding:5px 10px;
@@ -138,15 +138,6 @@
             font-family:'Cinzel',serif;
         }
         .lang-btn:hover,.lang-btn.active{background:#d4af37;color:white}
-        .music-btn {
-            background:rgba(212, 175, 55, 0.1);
-            font-size:16px;
-            padding:5px 12px;
-            line-height:1;
-            border-color:rgba(212,175,55,0.5);
-        }
-        .music-btn:hover{background:rgba(212,175,55,0.2);transform:scale(1.05)}
-        .music-btn.playing{background:rgba(212,175,55,0.2);border-color:#d4af37;box-shadow:0 0 15px rgba(212,175,55,0.3)}
         
         .rings{display:flex;justify-content:center;align-items:center;margin-bottom:8px}
         .ring-icon{font-size:60px;animation:floatRing 3s ease-in-out infinite}
@@ -239,26 +230,18 @@
             .quote{font-size:22px}
             .btn-open{padding:14px 30px;font-size:16px}
             .top-controls{top:10px;right:10px;gap:4px}
-            .music-btn{font-size:14px;padding:4px 10px}
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== MUSIC AUDIO ELEMENT ===== -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الموسيقى.
-    </audio>
-
     <!-- ===== WELCOME SCREEN ===== -->
     <div class="welcome-screen" id="welcomeScreen">
-        <!-- الأزرار العلوية (اللغة + الموسيقى) -->
+        <!-- أزرار اللغة فقط -->
         <div class="top-controls">
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','sv')">🇸🇪 Svenska</button>
-            <button class="music-btn" id="musicToggle" onclick="event.stopPropagation(); toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
 
         <div class="rings">
@@ -279,7 +262,6 @@
             <button class="lang-btn" onclick="changeLang('prayer','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="changeLang('prayer','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="changeLang('prayer','sv')">🇸🇪 Svenska</button>
-            <button class="music-btn" id="musicTogglePrayer" onclick="toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
         <div class="prayer-card">
             <div id="ayahText" class="ayah-text fade-slide-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
@@ -297,7 +279,6 @@
             <button class="lang-btn" onclick="changeLang('main','ar')">🇸🇦 عربي</button>
             <button class="lang-btn" onclick="changeLang('main','en')">🇬🇧 English</button>
             <button class="lang-btn" onclick="changeLang('main','sv')">🇸🇪 Svenska</button>
-            <button class="music-btn" id="musicToggleMain" onclick="toggleMusic()" title="تشغيل/إيقاف الموسيقى">🎵</button>
         </div>
 
         <div class="hero-section">
@@ -306,7 +287,7 @@
         </div>
 
         <div class="merged-gallery fade-slide-text delay-2">
-            <img class="merged-photo" src="IMG_9826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
+            <img class="merged-photo" src="IMG_98826.png" alt="Nebras & Zena" onerror="this.src='https://via.placeholder.com/400x300?text=Nebras+❤️+Zena'">
         </div>
 
         <div class="invitation-text">
@@ -390,102 +371,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true, offset: 120, easing: 'ease-out-quad' });
-
-        // ===== MUSIC CONTROL =====
-        const audio = document.getElementById('bgMusic');
-        let isMusicPlaying = false;
-
-        function toggleMusic() {
-            if (isMusicPlaying) {
-                audio.pause();
-                isMusicPlaying = false;
-            } else {
-                audio.play().catch(err => {
-                    console.log('تفاعل المستخدم مطلوب لتشغيل الموسيقى');
-                });
-                isMusicPlaying = true;
-            }
-            updateMusicButtons();
-        }
-
-        function updateMusicButtons() {
-            const btns = document.querySelectorAll('.music-btn');
-            btns.forEach(btn => {
-                if (isMusicPlaying) {
-                    btn.innerHTML = '🔊';
-                    btn.classList.add('playing');
-                } else {
-                    btn.innerHTML = '🔇';
-                    btn.classList.remove('playing');
-                }
-            });
-        }
-
-        // بدء الموسيقى عند أول نقرة على الصفحة (تجاوز حظر المتصفح)
-        document.addEventListener('click', function firstClick() {
-            if (!isMusicPlaying) {
-                audio.play().catch(() => {});
-                isMusicPlaying = true;
-                updateMusicButtons();
-            }
-            document.removeEventListener('click', firstClick);
-        }, { once: true });
-
-        audio.addEventListener('play', () => {
-            isMusicPlaying = true;
-            updateMusicButtons();
-        });
-        audio.addEventListener('pause', () => {
-            isMusicPlaying = false;
-            updateMusicButtons();
-        });
-
-        audio.volume = 0.4;
-
-        // ===== PAGE FUNCTIONS =====
-        function openPrayerPage() {
-            // إيقاف الموسيقى فوراً عند الدخول إلى صفحة القرآن
-            if (isMusicPlaying) {
-                audio.pause();
-                isMusicPlaying = false;
-                updateMusicButtons();
-            }
-            
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('prayerScreen').style.display = 'flex';
-            startTimer();
-        }
-
-        function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
 
         // ===== TRANSLATIONS =====
         const translations = {
@@ -603,6 +488,44 @@
                 document.getElementById('menLabel').innerHTML = translations.main[lang].men + ':';
                 document.getElementById('rsvpTitle').innerHTML = translations.main[lang].rsvp;
             }
+        }
+
+        // ===== PAGE FUNCTIONS =====
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(() => {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
         }
 
         // ===== RSVP =====
