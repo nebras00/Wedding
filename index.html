@@ -14,101 +14,42 @@
         [data-aos].aos-animate{opacity:1;transform:translateY(0)!important}
         [data-aos="fade-up"]{transform:translateY(50px)}
         [data-aos="fade-down"]{transform:translateY(-50px)}
-        [data-aos="fade-left"]{transform:translateX(50px)}
-        [data-aos="fade-right"]{transform:translateX(-50px)}
         [data-aos="zoom-in"]{transform:scale(0.85)}
         [data-aos="zoom-in-up"]{transform:scale(0.85) translateY(40px)}
         [data-aos].aos-animate.zoom-in,[data-aos].aos-animate.zoom-in-up{transform:scale(1) translateY(0)}
         [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
         [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
         
-        .fade-slide-text {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeSlideIn 0.8s ease forwards;
-        }
-        @keyframes fadeSlideIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .fade-slide-text.delay-1 { animation-delay: 0.2s; }
-        .fade-slide-text.delay-2 { animation-delay: 0.4s; }
-        .fade-slide-text.delay-3 { animation-delay: 0.6s; }
-        .fade-slide-text.delay-4 { animation-delay: 0.8s; }
-        .fade-slide-text.delay-5 { animation-delay: 1.0s; }
-        .fade-slide-text.delay-6 { animation-delay: 1.2s; }
+        .fade-slide-text{opacity:0;transform:translateY(30px);animation:fadeSlideIn 0.8s ease forwards}
+        @keyframes fadeSlideIn{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+        .fade-slide-text.delay-1{animation-delay:0.2s}
+        .fade-slide-text.delay-2{animation-delay:0.4s}
+        .fade-slide-text.delay-3{animation-delay:0.6s}
+        .fade-slide-text.delay-4{animation-delay:0.8s}
+        .fade-slide-text.delay-5{animation-delay:1.0s}
+        .fade-slide-text.delay-6{animation-delay:1.2s}
 
-        .shimmer-text {
-            background: linear-gradient(90deg, #c9a227 0%, #f5d742 25%, #c9a227 50%, #f5d742 75%, #c9a227 100%);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
-            display: inline-block;
-        }
-        @keyframes shimmer {
-            0% { background-position: 0% 0; }
-            100% { background-position: 300% 0; }
-        }
+        .shimmer-text{background:linear-gradient(90deg,#c9a227 0%,#f5d742 25%,#c9a227 50%,#f5d742 75%,#c9a227 100%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s ease-in-out infinite;display:inline-block}
+        @keyframes shimmer{0%{background-position:0% 0}100%{background-position:300% 0}}
 
-        .bounce-text {
-            opacity: 0;
-            animation: bounceIn 0.9s ease forwards;
-            display: inline-block;
-        }
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3) translateY(30px); }
-            50% { opacity: 1; transform: scale(1.1) translateY(-8px); }
-            70% { transform: scale(0.9) translateY(4px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .bounce-text.delay-1 { animation-delay: 0.2s; }
-        .bounce-text.delay-2 { animation-delay: 0.4s; }
+        .bounce-text{opacity:0;animation:bounceIn 0.9s ease forwards;display:inline-block}
+        @keyframes bounceIn{0%{opacity:0;transform:scale(0.3) translateY(30px)}50%{opacity:1;transform:scale(1.1) translateY(-8px)}70%{transform:scale(0.9) translateY(4px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+        .bounce-text.delay-1{animation-delay:0.2s}
 
-        .blur-text {
-            opacity: 0;
-            filter: blur(8px);
-            animation: blurIn 0.9s ease forwards;
-        }
-        @keyframes blurIn {
-            0% { opacity: 0; filter: blur(8px); transform: translateY(15px); }
-            100% { opacity: 1; filter: blur(0); transform: translateY(0); }
-        }
-        .blur-text.delay-1 { animation-delay: 0.3s; }
-        .blur-text.delay-2 { animation-delay: 0.5s; }
+        .blur-text{opacity:0;filter:blur(8px);animation:blurIn 0.9s ease forwards}
+        @keyframes blurIn{0%{opacity:0;filter:blur(8px);transform:translateY(15px)}100%{opacity:1;filter:blur(0);transform:translateY(0)}}
+        .blur-text.delay-1{animation-delay:0.3s}
 
-        .elastic-text {
-            opacity: 0;
-            animation: elasticIn 1s ease forwards;
-            display: inline-block;
-        }
-        @keyframes elasticIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            40% { opacity: 1; transform: scale(1.2); }
-            60% { transform: scale(0.85); }
-            80% { transform: scale(1.05); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        .elastic-text.delay-1 { animation-delay: 0.2s; }
-        .elastic-text.delay-2 { animation-delay: 0.4s; }
+        .elastic-text{opacity:0;animation:elasticIn 1s ease forwards;display:inline-block}
+        @keyframes elasticIn{0%{opacity:0;transform:scale(0.3)}40%{opacity:1;transform:scale(1.2)}60%{transform:scale(0.85)}80%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+        .elastic-text.delay-1{animation-delay:0.2s}
+        .elastic-text.delay-2{animation-delay:0.4s}
 
-        .glow-pulse-soft {
-            animation: glowPulseSoft 3s ease-in-out infinite;
-            display: inline-block;
-        }
-        @keyframes glowPulseSoft {
-            0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
-            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.15); }
-        }
+        .glow-pulse-soft{animation:glowPulseSoft 3s ease-in-out infinite;display:inline-block}
+        @keyframes glowPulseSoft{0%,100%{text-shadow:0 0 5px rgba(212,175,55,0.2)}50%{text-shadow:0 0 20px rgba(212,175,55,0.4),0 0 40px rgba(212,175,55,0.15)}}
 
-        .btn-pulse {
-            animation: btnPulse 2s ease-in-out infinite;
-        }
-        @keyframes btnPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.2); }
-        }
+        .btn-pulse{animation:btnPulse 2s ease-in-out infinite}
+        @keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.4)}50%{box-shadow:0 0 30px 10px rgba(212,175,55,0.2)}}
 
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
@@ -126,21 +67,7 @@
         .divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:10px auto}
         .welcome-text{font-size:14px;color:#9e8b6f;max-width:380px;margin:8px auto;line-height:1.6}
         .date-bottom{font-size:14px;color:#b89a2a;margin-top:8px}
-        .btn-open{
-            background:#d4af37;
-            border:2px solid #d4af37;
-            padding:16px 40px;
-            border-radius:50px;
-            color:#fff;
-            font-size:18px;
-            font-weight:700;
-            cursor:pointer;
-            transition:0.3s;
-            margin:12px 0 5px;
-            box-shadow:0 4px 15px rgba(212,175,55,0.4);
-            letter-spacing:1px;
-            display:inline-block;
-        }
+        .btn-open{background:#d4af37;border:2px solid #d4af37;padding:16px 40px;border-radius:50px;color:#fff;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;margin:12px 0 5px;box-shadow:0 4px 15px rgba(212,175,55,0.4);letter-spacing:1px;display:inline-block}
         .btn-open:hover{background:#b89a2a;transform:scale(1.02);box-shadow:0 6px 25px rgba(212,175,55,0.6)}
         .prayer-screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;background:linear-gradient(135deg,#fef7e8,#fff6e5);display:none}
         .prayer-card{max-width:700px;margin:auto;background:rgba(255,255,255,0.95);border-radius:60px;padding:40px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}
@@ -215,9 +142,9 @@
     <!-- ===== WELCOME SCREEN ===== -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="welcome-lang">
-            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','ar')">🇸🇦 عربي</button>
-            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','en')">🇬🇧 English</button>
-            <button class="lang-btn" onclick="event.stopPropagation(); changeLang('welcome','sv')">🇸🇪 Svenska</button>
+            <button class="lang-btn" onclick="changeLang('welcome','ar')">🇸🇦 عربي</button>
+            <button class="lang-btn" onclick="changeLang('welcome','en')">🇬🇧 English</button>
+            <button class="lang-btn" onclick="changeLang('welcome','sv')">🇸🇪 Svenska</button>
         </div>
         <div class="rings">
             <div class="ring-icon mens-ring">💍</div>
@@ -416,4 +343,171 @@
                     title: "Nebras & Zena", 
                     sub: "Together With Their Families", 
                     quote: "Your presence is our greatest gift", 
-                    invite1: "Med glädje och
+                    invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", 
+                    countdown: "Nedräkning till vårt bröllop", 
+                    days: "Dagar", 
+                    hours: "Timmar", 
+                    minutes: "Minuter", 
+                    seconds: "Sekunder", 
+                    date: "Datum", 
+                    time: "Tid", 
+                    location: "Plats",
+                    women: "För kvinnor",
+                    men: "För män",
+                    rsvp: "OSA"
+                }
+            }
+        };
+
+        // ===== LANGUAGE FUNCTIONS =====
+        function changeLang(section, lang) {
+            if (section === 'welcome') {
+                document.getElementById('welcomeNames').innerHTML = translations.welcome[lang].names;
+                document.getElementById('welcomeSub').innerHTML = translations.welcome[lang].sub;
+                document.getElementById('welcomeText1').innerHTML = translations.welcome[lang].text1;
+                document.getElementById('welcomeText2').innerHTML = translations.welcome[lang].text2;
+                document.getElementById('welcomeDate').innerHTML = translations.welcome[lang].date;
+                document.getElementById('welcomeBtn').innerHTML = translations.welcome[lang].btn;
+            } else if (section === 'prayer') {
+                document.getElementById('ayahText').innerHTML = translations.prayer[lang].ayah;
+                document.getElementById('ayahTrans').innerHTML = translations.prayer[lang].ayahTrans;
+                document.getElementById('duaText').innerHTML = translations.prayer[lang].dua;
+                document.getElementById('duaTrans').innerHTML = translations.prayer[lang].duaTrans;
+                document.getElementById('waitingText').innerHTML = translations.prayer[lang].waiting;
+            } else if (section === 'main') {
+                document.getElementById('mainTitle').innerHTML = translations.main[lang].title;
+                document.getElementById('mainSub').innerHTML = translations.main[lang].sub;
+                document.getElementById('quoteText').innerHTML = translations.main[lang].quote;
+                document.getElementById('inviteText1').innerHTML = translations.main[lang].invite1;
+                document.getElementById('countdownTitle').innerHTML = translations.main[lang].countdown;
+                document.getElementById('daysLabel').innerHTML = translations.main[lang].days;
+                document.getElementById('hoursLabel').innerHTML = translations.main[lang].hours;
+                document.getElementById('minutesLabel').innerHTML = translations.main[lang].minutes;
+                document.getElementById('secondsLabel').innerHTML = translations.main[lang].seconds;
+                document.getElementById('dateTitle').innerHTML = translations.main[lang].date;
+                document.getElementById('timeTitle').innerHTML = translations.main[lang].time;
+                document.getElementById('locationTitle').innerHTML = translations.main[lang].location;
+                document.getElementById('womenLabel').innerHTML = translations.main[lang].women + ':';
+                document.getElementById('menLabel').innerHTML = translations.main[lang].men + ':';
+                document.getElementById('rsvpTitle').innerHTML = translations.main[lang].rsvp;
+            }
+        }
+
+        // ===== PAGE FUNCTIONS =====
+        function openPrayerPage() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('prayerScreen').style.display = 'flex';
+            startTimer();
+        }
+
+        function startTimer() {
+            let secondsLeft = 10;
+            let timerEl = document.getElementById('timer');
+            timerEl.innerText = secondsLeft;
+            let timerInterval = setInterval(function() {
+                secondsLeft--;
+                timerEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('prayerScreen').style.display = 'none';
+                    document.getElementById('main').style.display = 'block';
+                    AOS.refresh();
+                    startCountdown();
+                }
+            }, 1000);
+        }
+
+        function startCountdown() {
+            const target = new Date('2026-08-29T18:00:00').getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const diff = target - now;
+                if (diff > 0) {
+                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            }, 1000);
+        }
+
+        // ===== RSVP =====
+        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
+
+        function saveRSVP() {
+            let name = document.getElementById('name').value.trim();
+            let count = document.getElementById('count').value;
+            let status = document.getElementById('status').value;
+            let notes = document.getElementById('notes').value;
+
+            if (name === "") {
+                alert("❌ الرجاء إدخال اسمك");
+                return;
+            }
+
+            let newResponse = {
+                id: Date.now(),
+                name: name,
+                count: count || "غير محدد",
+                status: status,
+                notes: notes || "لا يوجد",
+                date: new Date().toLocaleString('ar-EG')
+            };
+
+            responses.push(newResponse);
+            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
+
+            document.getElementById('name').value = "";
+            document.getElementById('count').value = "";
+            document.getElementById('notes').value = "";
+
+            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
+        }
+
+        function showAdminPanel() {
+            let panel = document.getElementById('adminPanel');
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                loadResponsesTable();
+                panel.style.display = 'block';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+
+        function loadResponsesTable() {
+            let tbody = document.getElementById('responsesBody');
+            tbody.innerHTML = "";
+            if (responses.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
+                return;
+            }
+            for (let i = 0; i < responses.length; i++) {
+                let r = responses[i];
+                let row = tbody.insertRow();
+                row.insertCell(0).innerHTML = i + 1;
+                row.insertCell(1).innerHTML = r.name;
+                row.insertCell(2).innerHTML = r.count;
+                row.insertCell(3).innerHTML = r.status;
+                row.insertCell(4).innerHTML = r.notes;
+                row.insertCell(5).innerHTML = r.date;
+            }
+        }
+
+        function exportToCSV() {
+            if (responses.length === 0) {
+                alert("لا توجد ردود للتصدير");
+                return;
+            }
+            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
+            for (let r of responses) {
+                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
+            }
+            let blob = new Blob([csv], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+    </script>
+</body>
+</html>
