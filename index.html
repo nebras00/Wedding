@@ -10,7 +10,6 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#faf8f5;font-family:'Cinzel',serif;color:#4a4a4a;overflow-x:hidden}
         
-        /* ===== AOS CUSTOM ===== */
         [data-aos]{opacity:0;transition:all 0.8s cubic-bezier(0.25,0.95,0.4,1.1)}
         [data-aos].aos-animate{opacity:1;transform:translateY(0)!important}
         [data-aos="fade-up"]{transform:translateY(50px)}
@@ -23,7 +22,6 @@
         [data-aos="flip-left"]{transform:perspective(400px) rotateY(-25deg)}
         [data-aos].aos-animate.flip-left{transform:perspective(400px) rotateY(0)}
         
-        /* ===== FADE SLIDE (للعناصر الأخرى) ===== */
         .fade-slide-text {
             opacity: 0;
             transform: translateY(30px);
@@ -40,7 +38,6 @@
         .fade-slide-text.delay-5 { animation-delay: 1.0s; }
         .fade-slide-text.delay-6 { animation-delay: 1.2s; }
 
-        /* ===== 1. SHIMMER (لأسماء العروسين) ===== */
         .shimmer-text {
             background: linear-gradient(90deg, #c9a227 0%, #f5d742 25%, #c9a227 50%, #f5d742 75%, #c9a227 100%);
             background-size: 300% 100%;
@@ -55,7 +52,6 @@
             100% { background-position: 300% 0; }
         }
 
-        /* ===== 2. BOUNCE (للاقتباس) ===== */
         .bounce-text {
             opacity: 0;
             animation: bounceIn 0.9s ease forwards;
@@ -70,7 +66,6 @@
         .bounce-text.delay-1 { animation-delay: 0.2s; }
         .bounce-text.delay-2 { animation-delay: 0.4s; }
 
-        /* ===== 3. BLUR IN (لنص الدعوة) ===== */
         .blur-text {
             opacity: 0;
             filter: blur(8px);
@@ -83,7 +78,6 @@
         .blur-text.delay-1 { animation-delay: 0.3s; }
         .blur-text.delay-2 { animation-delay: 0.5s; }
 
-        /* ===== 4. ELASTIC (للتاريخ وبطاقات التفاصيل) ===== */
         .elastic-text {
             opacity: 0;
             animation: elasticIn 1s ease forwards;
@@ -99,7 +93,6 @@
         .elastic-text.delay-1 { animation-delay: 0.2s; }
         .elastic-text.delay-2 { animation-delay: 0.4s; }
 
-        /* ===== GLOW PULSE (توهج ذهبي للزينة) ===== */
         .glow-pulse-soft {
             animation: glowPulseSoft 3s ease-in-out infinite;
             display: inline-block;
@@ -109,7 +102,6 @@
             50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.15); }
         }
 
-        /* ===== PULSE GLOW للزر (اختياري) ===== */
         .btn-pulse {
             animation: btnPulse 2s ease-in-out infinite;
         }
@@ -118,7 +110,6 @@
             50% { box-shadow: 0 0 30px 10px rgba(212, 175, 55, 0.2); }
         }
 
-        /* ===== REST OF STYLES ===== */
         .detail-icon,.ring-icon,.heart-icon,.timer{transition:transform 0.3s ease,filter 0.3s ease;display:inline-block}
         .detail-icon:hover,.ring-icon:hover,.heart-icon:hover{transform:scale(1.15) rotate(5deg);filter:drop-shadow(0 0 10px rgba(212,175,55,0.7))}
         .timer:hover{transform:scale(1.05);text-shadow:0 0 15px #d4af37}
@@ -231,16 +222,12 @@
         <div class="rings">
             <div class="ring-icon mens-ring">💍</div>
         </div>
-        <!-- SHIMMER للأسماء -->
         <div class="names-arabic shimmer-text" id="welcomeNames">Nebras & Zena</div>
         <div class="names-english fade-slide-text delay-1 glow-pulse-soft" id="welcomeSub">ALSHAREF & YOUSEF</div>
         <div class="divider fade-slide-text delay-2"></div>
-        <!-- BLUR لنص الترحيب -->
         <p class="welcome-text blur-text" id="welcomeText1">بكل حب وسعادة، نتشرف بدعوتكم لحضور زفافنا</p>
         <p class="welcome-text blur-text delay-1" id="welcomeText2">لتكونوا جزءاً من أجمل أيام حياتنا</p>
-        <!-- ELASTIC للتاريخ -->
         <div class="date-bottom elastic-text delay-2" id="welcomeDate">29 August 2026</div>
-        <!-- الزر: بدون أي تأثير أنيميشن، فقط كلاس btn-pulse اختياري (يمكن إزالته) -->
         <button class="btn-open btn-pulse" id="welcomeBtn" onclick="openPrayerPage()">👇 اضغط لفتح الدعوة</button>
     </div>
 
@@ -270,7 +257,6 @@
         </div>
 
         <div class="hero-section">
-            <!-- SHIMMER للأسماء الرئيسية -->
             <div class="hero-title shimmer-text" id="mainTitle">Nebras & Zena</div>
             <div class="hero-sub fade-slide-text delay-1 glow-pulse-soft" id="mainSub">Together With Their Families</div>
         </div>
@@ -280,9 +266,7 @@
         </div>
 
         <div class="invitation-text">
-            <!-- BOUNCE للاقتباس -->
             <div class="quote bounce-text" id="quoteText">"Your presence is our greatest gift"</div>
-            <!-- BLUR لنص الدعوة -->
             <p class="blur-text delay-1" id="inviteText1">بكل فرحة وسعادة<br>نتشرف بدعوتكم لمشاركتنا فرحة زفافنا</p>
             <p class="fade-slide-text delay-2" style="font-size:16px; margin-top:20px">NEBRAS ALSHAREF & ZENA YOUSEF</p>
         </div>
@@ -298,7 +282,6 @@
         </div>
 
         <div class="details-section">
-            <!-- ELASTIC للتفاصيل -->
             <div class="detail-card elastic-text">
                 <div class="detail-icon">📅</div>
                 <div class="detail-title" id="dateTitle">التاريخ</div>
@@ -321,7 +304,7 @@
                     <div class="location-item">
                         <span class="location-icon">👨</span>
                         <strong id="menLabel">للرجال:</strong>
-                        <a href="https://maps.google.com/?q=Göingegatan+35+291+38+Kristianstad" target="_blank" class="map-link">Göingegatan 35, 291 38 Kristianstad</a>
+                        <a href="https://maps.google.com/?q=Nils+Mikkelsens+väg" target="_blank" class="map-link">Nils Mikkelsens väg</a>
                     </div>
                 </div>
             </div>
@@ -433,171 +416,4 @@
                     title: "Nebras & Zena", 
                     sub: "Together With Their Families", 
                     quote: "Your presence is our greatest gift", 
-                    invite1: "Med glädje och lycka,<br>vi har äran att bjuda in dig att dela vår bröllopsglädje", 
-                    countdown: "Nedräkning till vårt bröllop", 
-                    days: "Dagar", 
-                    hours: "Timmar", 
-                    minutes: "Minuter", 
-                    seconds: "Sekunder", 
-                    date: "Datum", 
-                    time: "Tid", 
-                    location: "Plats",
-                    women: "För kvinnor",
-                    men: "För män",
-                    rsvp: "OSA"
-                }
-            }
-        };
-
-        // ===== LANGUAGE FUNCTIONS =====
-        function changeLang(section, lang) {
-            if (section === 'welcome') {
-                document.getElementById('welcomeNames').innerHTML = translations.welcome[lang].names;
-                document.getElementById('welcomeSub').innerHTML = translations.welcome[lang].sub;
-                document.getElementById('welcomeText1').innerHTML = translations.welcome[lang].text1;
-                document.getElementById('welcomeText2').innerHTML = translations.welcome[lang].text2;
-                document.getElementById('welcomeDate').innerHTML = translations.welcome[lang].date;
-                document.getElementById('welcomeBtn').innerHTML = translations.welcome[lang].btn;
-            } else if (section === 'prayer') {
-                document.getElementById('ayahText').innerHTML = translations.prayer[lang].ayah;
-                document.getElementById('ayahTrans').innerHTML = translations.prayer[lang].ayahTrans;
-                document.getElementById('duaText').innerHTML = translations.prayer[lang].dua;
-                document.getElementById('duaTrans').innerHTML = translations.prayer[lang].duaTrans;
-                document.getElementById('waitingText').innerHTML = translations.prayer[lang].waiting;
-            } else if (section === 'main') {
-                document.getElementById('mainTitle').innerHTML = translations.main[lang].title;
-                document.getElementById('mainSub').innerHTML = translations.main[lang].sub;
-                document.getElementById('quoteText').innerHTML = translations.main[lang].quote;
-                document.getElementById('inviteText1').innerHTML = translations.main[lang].invite1;
-                document.getElementById('countdownTitle').innerHTML = translations.main[lang].countdown;
-                document.getElementById('daysLabel').innerHTML = translations.main[lang].days;
-                document.getElementById('hoursLabel').innerHTML = translations.main[lang].hours;
-                document.getElementById('minutesLabel').innerHTML = translations.main[lang].minutes;
-                document.getElementById('secondsLabel').innerHTML = translations.main[lang].seconds;
-                document.getElementById('dateTitle').innerHTML = translations.main[lang].date;
-                document.getElementById('timeTitle').innerHTML = translations.main[lang].time;
-                document.getElementById('locationTitle').innerHTML = translations.main[lang].location;
-                document.getElementById('womenLabel').innerHTML = translations.main[lang].women + ':';
-                document.getElementById('menLabel').innerHTML = translations.main[lang].men + ':';
-                document.getElementById('rsvpTitle').innerHTML = translations.main[lang].rsvp;
-            }
-        }
-
-        // ===== PAGE FUNCTIONS =====
-        function openPrayerPage() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('prayerScreen').style.display = 'flex';
-            startTimer();
-        }
-
-        function startTimer() {
-            let secondsLeft = 10;
-            let timerEl = document.getElementById('timer');
-            timerEl.innerText = secondsLeft;
-            let timerInterval = setInterval(() => {
-                secondsLeft--;
-                timerEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('prayerScreen').style.display = 'none';
-                    document.getElementById('main').style.display = 'block';
-                    AOS.refresh();
-                    startCountdown();
-                }
-            }, 1000);
-        }
-
-        function startCountdown() {
-            const target = new Date('2026-08-29T18:00:00').getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = target - now;
-                if (diff > 0) {
-                    document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
-
-        // ===== RSVP =====
-        let responses = JSON.parse(localStorage.getItem('weddingRSVP')) || [];
-
-        function saveRSVP() {
-            let name = document.getElementById('name').value.trim();
-            let count = document.getElementById('count').value;
-            let status = document.getElementById('status').value;
-            let notes = document.getElementById('notes').value;
-
-            if (name === "") {
-                alert("❌ الرجاء إدخال اسمك");
-                return;
-            }
-
-            let newResponse = {
-                id: Date.now(),
-                name: name,
-                count: count || "غير محدد",
-                status: status,
-                notes: notes || "لا يوجد",
-                date: new Date().toLocaleString('ar-EG')
-            };
-
-            responses.push(newResponse);
-            localStorage.setItem('weddingRSVP', JSON.stringify(responses));
-
-            document.getElementById('name').value = "";
-            document.getElementById('count').value = "";
-            document.getElementById('notes').value = "";
-
-            alert("✅ تم تسجيل ردك بنجاح! شكراً لتأكيد حضورك ♥");
-        }
-
-        function showAdminPanel() {
-            let panel = document.getElementById('adminPanel');
-            if (panel.style.display === 'none' || panel.style.display === '') {
-                loadResponsesTable();
-                panel.style.display = 'block';
-            } else {
-                panel.style.display = 'none';
-            }
-        }
-
-        function loadResponsesTable() {
-            let tbody = document.getElementById('responsesBody');
-            tbody.innerHTML = "";
-            if (responses.length === 0) {
-                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center'>لا توجد ردود حتى الآن</td></tr>";
-                return;
-            }
-            for (let i = 0; i < responses.length; i++) {
-                let r = responses[i];
-                let row = tbody.insertRow();
-                row.insertCell(0).innerHTML = i + 1;
-                row.insertCell(1).innerHTML = r.name;
-                row.insertCell(2).innerHTML = r.count;
-                row.insertCell(3).innerHTML = r.status;
-                row.insertCell(4).innerHTML = r.notes;
-                row.insertCell(5).innerHTML = r.date;
-            }
-        }
-
-        function exportToCSV() {
-            if (responses.length === 0) {
-                alert("لا توجد ردود للتصدير");
-                return;
-            }
-            let csv = "الاسم,عدد الأشخاص,الحضور,الملاحظة,التاريخ\n";
-            for (let r of responses) {
-                csv += `"${r.name}","${r.count}","${r.status}","${r.notes}","${r.date}"\n`;
-            }
-            let blob = new Blob([csv], { type: 'text/csv' });
-            let link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `wedding_responses_${new Date().toISOString().slice(0, 10)}.csv`;
-            link.click();
-        }
-    </script>
-</body>
-</html>
+                    invite1: "Med glädje och
